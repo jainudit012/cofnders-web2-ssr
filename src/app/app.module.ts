@@ -61,7 +61,7 @@ import { NgtUniversalModule } from '@ng-toolkit/universal';
     PostSignUpFormComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule,
     MaterialModule,
