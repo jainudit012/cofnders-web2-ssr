@@ -60,20 +60,22 @@ export class AuthService {
         this.window.location.hash = ''
         const token = authResult.idToken
         const res = await this.userService.getToken(token)
-        authResult['user_token'] = res.data.token
-        const decoded = this.userService.decodeToken(res.data.token)
-        this.localLogin(authResult)
-        
-        // correct this line
-        if(decoded.isFormFilled){
-          let dialogRef = this.dialog.open(PostSignUpFormComponent, {
-            width: '100vw',
-            height: '100%',
-            maxWidth: '100vw',
-            panelClass: 'dialog-form-pane',
-            disableClose: true
-          })
+        if(res.data){
+          authResult['user_token'] = res.data.token
+          const decoded = this.userService.decodeToken(res.data.token)
+
+          if(decoded.isFormFilled){
+            let dialogRef = this.dialog.open(PostSignUpFormComponent, {
+              width: '100vw',
+              height: '100%',
+              maxWidth: '100vw',
+              panelClass: 'dialog-form-pane',
+              disableClose: true
+            })
+          }
         }
+        this.localLogin(authResult)
+        // correct this line
         // this.router.navigate(['/'])
       } else if (err) {
         this.router.navigate(['/'])
