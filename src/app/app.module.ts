@@ -15,7 +15,6 @@ import { FundComponent } from './components/funds/fund/fund.component';
 import { FundCardComponent } from './components/funds/fund-card/fund-card.component';
 import { ListFundFormComponent } from './components/funds/list-fund-form/list-fund-form.component';
 import { IdeaComponent } from './components/ideas/idea/idea.component';
-import { IdeaCardComponent } from './components/ideas/idea-card/idea-card.component';
 import { OpportunityCardComponent } from './components/ideas/opportunity-card/opportunity-card.component';
 import { ProjectCardComponent } from './components/ideas/project-card/project-card.component';
 import { ProjectFormComponent } from './components/ideas/project-form/project-form.component';
@@ -42,7 +41,6 @@ import { TrustPageComponent } from './components/trust-page/trust-page.component
     FundCardComponent,
     ListFundFormComponent,
     IdeaComponent,
-    IdeaCardComponent,
     OpportunityCardComponent,
     ProjectCardComponent,
     ProjectFormComponent,
