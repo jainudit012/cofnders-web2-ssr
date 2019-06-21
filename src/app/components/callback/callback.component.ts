@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { LOCAL_STORAGE } from '@ng-toolkit/universal';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-callback',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CallbackComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService, 
+    private router: Router,
+    @Inject(LOCAL_STORAGE) private localStorage: any) {
+
+    this.authService.handleAuthentication()
+    
+   }
 
   ngOnInit() {
+    
   }
 
 }
