@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +28,7 @@ import { ProfileCardComponent } from './components/profile-card/profile-card.com
 import { RecentCardComponent } from './components/recent-card/recent-card.component';
 import { TermsPageComponent } from './components/terms-page/terms-page.component';
 import { TrustPageComponent } from './components/trust-page/trust-page.component';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -52,9 +56,16 @@ import { TrustPageComponent } from './components/trust-page/trust-page.component
     TermsPageComponent,
     TrustPageComponent
   ],
+  entryComponents: [
+    PostSignUpFormComponent
+  ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    MaterialModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
