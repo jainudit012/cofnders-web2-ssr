@@ -1,7 +1,47 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { AboutPageComponent } from './components/about-page/about-page.component';
+import { CallbackComponent } from './components/callback/callback.component';
+import { FundComponent } from './components/funds/fund/fund.component';
+import { IdeaComponent } from './components/ideas/idea/idea.component';
+import { PrivacyPageComponent } from './components/privacy-page/privacy-page.component';
+import { TermsPageComponent } from './components/terms-page/terms-page.component';
+import { TrustPageComponent } from './components/trust-page/trust-page.component';
+
+const routes: Routes = [
+  {
+    path: 'callback', component: CallbackComponent
+  },
+
+  {
+    path: 'ideas', component: IdeaComponent
+  },
+
+  {
+    path: 'funds', component: FundComponent
+  },
+
+  {
+    path: 'about', component: AboutPageComponent
+  },
+
+  {
+    path: 'privacy', component: PrivacyPageComponent
+  },
+
+  {
+    path: 'terms', component: TermsPageComponent
+  },
+
+  {
+    path: 'trust', component: TrustPageComponent
+  },
+
+  {
+    path: '**', component: IdeaComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
