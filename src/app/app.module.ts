@@ -29,6 +29,7 @@ import { RecentCardComponent } from './components/recent-card/recent-card.compon
 import { TermsPageComponent } from './components/terms-page/terms-page.component';
 import { TrustPageComponent } from './components/trust-page/trust-page.component';
 import { MaterialModule } from './material.module';
+import { NgtUniversalModule } from '@ng-toolkit/universal';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { MaterialModule } from './material.module';
     HttpClientModule,
     MaterialModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, 
+    NgtUniversalModule
   ],
   providers: [],
   bootstrap: [AppComponent]
