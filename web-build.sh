@@ -1,6 +1,4 @@
 #!/bin/bash
-cd cofnders-web2-ssr
-git pull
 npm i
 npm i pm2
 npm run build:ssr
