@@ -60,10 +60,10 @@ export class AuthService {
         this.window.location.hash = ''
         const token = authResult.idToken
         const res = await this.userService.getToken(token)
-        if(res.data){
+        if(res&&res.data&&res.data.token){
           authResult['user_token'] = res.data.token
           const decoded = this.userService.decodeToken(res.data.token)
-
+          if(!environment.production) console.log(decoded)
           if(decoded.isFormFilled){
             let dialogRef = this.dialog.open(PostSignUpFormComponent, {
               width: '100vw',
@@ -75,6 +75,7 @@ export class AuthService {
           }
         }
         this.localLogin(authResult)
+
         // correct this line
         // this.router.navigate(['/'])
       } else if (err) {
@@ -90,7 +91,7 @@ export class AuthService {
     this._accessToken = authResult.accessToken
     this._idToken = authResult.idToken
     this._expiresAt = expiresAt
-    this.localStorage.setItem('user_token', authResult.user_token)
+    if(authResult.user_token) this.localStorage.setItem('user_token', authResult.user_token)
     this.localStorage.setItem('expiresAt', this._expiresAt)
     this.localStorage.setItem('isLoggedIn', true)
     this.localStorage.setItem('id_token', this._idToken)
@@ -98,8 +99,10 @@ export class AuthService {
   }
 
   public renewTokens(): void {
-    this.webAuth.checkSession({}, (err, authResult) => {
+    this.webAuth.checkSession({}, async (err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
+        const res = await this.userService.getToken(authResult.idToken)
+        if(res&&res.data&&res.data.token) authResult['user_token'] = res.data.token
         this.localLogin(authResult);
       } else if (err) {
         alert(`Could not get a new token (${err.error}: ${err.error_description}).`);
@@ -132,5 +135,10 @@ export class AuthService {
     const expiresAt = this.localStorage.getItem('expiresAt')
     const accessToken = this.localStorage.getItem('access_token')
     return accessToken && Date.now() < expiresAt
+  }
+
+  public isUserAuthenticated(): boolean {
+    if(this.localStorage.getItem('user_token')) return true 
+    else false
   }
 }
