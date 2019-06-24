@@ -42,7 +42,7 @@ export class AuthService {
   }
 
   get idToken(): string {
-    return this._idToken
+    return this.localStorage.getItem('id_token')
   }
 
   get userToken(): string {
@@ -59,12 +59,13 @@ export class AuthService {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.window.location.hash = ''
         const token = authResult.idToken
+        this.userService.setUser(authResult.idToken)
         const res = await this.userService.getToken(token)
         if(res&&res.data&&res.data.token){
           authResult['user_token'] = res.data.token
           const decoded = this.userService.decodeToken(res.data.token)
           if(!environment.production) console.log(decoded)
-          if(decoded.isFormFilled){
+          if(!decoded.isFormFilled){
             let dialogRef = this.dialog.open(PostSignUpFormComponent, {
               width: '100vw',
               height: '100%',
@@ -80,7 +81,7 @@ export class AuthService {
         // this.router.navigate(['/'])
       } else if (err) {
         this.router.navigate(['/'])
-        console.log(err)
+        if(!environment.production) console.log(err)
       }
     });
   }
