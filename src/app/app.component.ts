@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { environment } from '../environments/environment';
 import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +11,15 @@ import { AuthService } from './services/auth.service';
 export class AppComponent {
   title = 'cofnders-web2-ssr';
 
-  constructor(private authService: AuthService){ 
+  constructor(private authService: AuthService,
+    private userService: UserService){ 
   }
 
   ngOnInit(){
-    if(this.authService.isAuthenticated()) this.authService.renewTokens()
+    if(this.authService.isAuthenticated()) {
+      this.authService.renewTokens()
+      this.userService.setUserLocal()
+    }
   }
 }
 
