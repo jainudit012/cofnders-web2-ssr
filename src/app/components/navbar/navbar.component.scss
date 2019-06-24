@@ -18,6 +18,11 @@
         .logo {
             &__link {
                 height: 100%;
+                margin-right: 2rem;
+
+                @media only screen and (max-width:360px){
+                    margin-right: auto;
+                }
             }
 
             &__link:link, &__link:visited {
@@ -103,10 +108,66 @@
 
         .controls {
             font-size: 1.8rem;
+            height: 100%;
+            display: flex;
+            align-items: center;
+
+            @media only screen and (max-width:360px){
+                margin-left: 1rem;
+            }
+
+            .user__menu {
+                &--button {
+                    height: 100%;
+                    display: flex;
+                    background-color: inherit;
+                    border: none;
+                    align-items: center;
+                    padding: .1rem;
+                }
+
+                // &__menu:focus {
+                //     outline: none;
+                // }
+
+                &--image{
+                    height: 5rem;
+                    border-radius: 50%;
+                    width: 5rem;
+                    padding: .2rem;
+
+                    @media only screen and (max-width:410px){
+                        height: 4.3rem;
+                        width: 4.3rem;
+                        margin-right: auto;
+                    }
+                }
+
+                &--name{
+                    color: #fff;
+                    margin-left: 1rem;
+
+                    @media only screen and (max-width:650px){
+                        font-size: 1.5rem;
+                    }
+
+                    @media only screen and (max-width:410px){
+                        display: none;
+                    }
+                }
+
+            }
         }
     }
 }
 
 .active {
     border-bottom: 3px solid #00BCD4;
+}
+
+.btn--sign-out {
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
 }
