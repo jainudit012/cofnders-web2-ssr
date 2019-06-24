@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { print } from '../../app.component';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'navbar',
@@ -13,7 +14,8 @@ export class NavbarComponent implements OnInit {
   activeRouteString = ''
 
   constructor(private authService: AuthService,
-    private router: Router) { 
+    private router: Router,
+    private userService: UserService) { 
       this.router.events.subscribe(()=>this.activeRouteString = router.url)
     }
 
