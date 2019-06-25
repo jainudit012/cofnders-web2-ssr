@@ -68,6 +68,9 @@ export class AuthService {
           authResult['user_token'] = res.data.token
           const decoded = this.userService.decodeToken(res.data.token)
           if(!environment.production) console.log(decoded)
+
+          // change to this
+          // if(!decoded.isFormFilled){
           if(decoded.isFormFilled){
             console.log(token)
             let dialogRef = this.dialog.open(PostSignUpFormComponent, {
@@ -75,7 +78,7 @@ export class AuthService {
               height: '100%',
               maxWidth: '100vw',
               panelClass: 'dialog-form-pane',
-              // disableClose: true,
+              disableClose: true,
               data: { user: this.userService.authUser, token: res.data.token}
             })
           }

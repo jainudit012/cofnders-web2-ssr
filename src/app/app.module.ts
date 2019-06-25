@@ -31,6 +31,7 @@ import { TermsPageComponent } from './components/terms-page/terms-page.component
 import { TrustPageComponent } from './components/trust-page/trust-page.component';
 import { MaterialModule } from './material.module';
 import { SubmitIfValidDirective } from './submit-if-valid.directive';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [

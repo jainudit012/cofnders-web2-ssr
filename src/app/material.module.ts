@@ -4,6 +4,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   imports: [
@@ -11,13 +13,17 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatProgressSpinnerModule,
     MatDialogModule,
     MatSnackBarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule,
+    MatInputModule
   ],
   exports: [
     MatProgressSpinnerModule,
     MatDialogModule,
     MatSnackBarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule,
+    MatInputModule
   ]
 })
 export class MaterialModule { }
