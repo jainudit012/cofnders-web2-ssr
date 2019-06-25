@@ -1,8 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgtUniversalModule } from '@ng-toolkit/universal';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,14 +15,14 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ApplicationFormComponent } from './components/forms/application-form/application-form.component';
 import { GetInTouchFormComponent } from './components/forms/get-in-touch-form/get-in-touch-form.component';
 import { PostSignUpFormComponent } from './components/forms/post-sign-up-form/post-sign-up-form.component';
-import { FundComponent } from './components/funds/fund/fund.component';
 import { FundCardComponent } from './components/funds/fund-card/fund-card.component';
+import { FundComponent } from './components/funds/fund/fund.component';
 import { ListFundFormComponent } from './components/funds/list-fund-form/list-fund-form.component';
 import { IdeaComponent } from './components/ideas/idea/idea.component';
 import { OpportunityCardComponent } from './components/ideas/opportunity-card/opportunity-card.component';
+import { OpportunityFormComponent } from './components/ideas/opportunity-form/opportunity-form.component';
 import { ProjectCardComponent } from './components/ideas/project-card/project-card.component';
 import { ProjectFormComponent } from './components/ideas/project-form/project-form.component';
-import { OpportunityFormComponent } from './components/ideas/opportunity-form/opportunity-form.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PrivacyPageComponent } from './components/privacy-page/privacy-page.component';
 import { ProfileCardComponent } from './components/profile-card/profile-card.component';
@@ -29,7 +30,7 @@ import { RecentCardComponent } from './components/recent-card/recent-card.compon
 import { TermsPageComponent } from './components/terms-page/terms-page.component';
 import { TrustPageComponent } from './components/trust-page/trust-page.component';
 import { MaterialModule } from './material.module';
-import { NgtUniversalModule } from '@ng-toolkit/universal';
+import { SubmitIfValidDirective } from './submit-if-valid.directive';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { NgtUniversalModule } from '@ng-toolkit/universal';
     ProfileCardComponent,
     RecentCardComponent,
     TermsPageComponent,
-    TrustPageComponent
+    TrustPageComponent,
+    SubmitIfValidDirective
   ],
   entryComponents: [
     PostSignUpFormComponent
@@ -69,7 +71,9 @@ import { NgtUniversalModule } from '@ng-toolkit/universal';
     ReactiveFormsModule, 
     NgtUniversalModule
   ],
-  providers: [],
+  providers: [
+    // {provide: MatDialogRef, useValue: {}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

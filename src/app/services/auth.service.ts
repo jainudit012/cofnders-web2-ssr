@@ -1,11 +1,13 @@
-import { Injectable, Inject } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { LOCAL_STORAGE, WINDOW } from '@ng-toolkit/universal';
+import * as auth0 from 'auth0-js';
+
+import { environment } from '../../environments/environment';
 import { PostSignUpFormComponent } from '../components/forms/post-sign-up-form/post-sign-up-form.component';
 import { UserService } from './user.service';
-import { Router } from '@angular/router';
-import * as auth0 from "auth0-js";
-import { environment } from '../../environments/environment';
-import { MatDialog } from '@angular/material/dialog';
 
 
 @Injectable({
@@ -30,7 +32,8 @@ export class AuthService {
     @Inject(WINDOW) private window: Window,
     @Inject(LOCAL_STORAGE) private localStorage: any,
     private userService: UserService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private _snackBar: MatSnackBar,
     ) { 
     this._idToken = ''
     this._accessToken = ''
@@ -65,22 +68,23 @@ export class AuthService {
           authResult['user_token'] = res.data.token
           const decoded = this.userService.decodeToken(res.data.token)
           if(!environment.production) console.log(decoded)
-          if(!decoded.isFormFilled){
+          if(decoded.isFormFilled){
+            console.log(token)
             let dialogRef = this.dialog.open(PostSignUpFormComponent, {
               width: '100vw',
               height: '100%',
               maxWidth: '100vw',
               panelClass: 'dialog-form-pane',
-              disableClose: true
+              // disableClose: true,
+              data: { user: this.userService.authUser, token: res.data.token}
             })
           }
         }
         this.localLogin(authResult)
-
-        // correct this line
-        // this.router.navigate(['/'])
+        this.router.navigate(['/'])
       } else if (err) {
         this.router.navigate(['/'])
+        this._snackBar.open('Could Not Sign In!', 'X', {duration: 3000})
         if(!environment.production) console.log(err)
       }
     });

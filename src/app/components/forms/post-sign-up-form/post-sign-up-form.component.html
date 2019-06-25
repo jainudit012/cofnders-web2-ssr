@@ -1,3 +1,29 @@
-<p>
-  post-sign-up-form works!
-</p>
+<div class="modal-form">
+  <div class="logo__box">
+    <img src="../../../../assets/logo-compressed.png" alt="Cofnders Logo" class="logo">
+  </div>
+  <div class="form__box">
+    <div class="user__name">
+      {{'Welcome' + ' ' + user ? user?.name : ''}}
+    </div>
+    <form [formGroup]="form">
+      <div class="form-group">
+        <select formControlName="purpose" class="form-control" id="signupselect" name="purpose">
+          <option *ngFor="let p of purposeValue" [value]="p">{{p}}</option>
+        </select>
+        <span *ngIf="purpose.touched && purpose.invalid && purpose.errors.required">Purpose is required</span>
+      </div>
+      <div class="form-group">
+        <textarea name="brief" formControlName="brief" class="form-control" id="signupbrief" rows="3" placeholder="Give us a brief introduction about yourself." maxlength="300"></textarea>
+        <div class="characterCount">{{300 - (brief? brief.value.length : 0) }} Characters</div>
+      </div>
+      <div class="form-group">
+        <input type="tel" formControlName="phone" class="form-control" id="signupphone">
+        <span *ngIf="phoneNumber.touched && phoneNumber.invalid && phoneNumber.errors.pattern">In Correct Phone Number! Remove any Special Characters.</span>
+        <span *ngIf="phoneNumber.touched && phoneNumber.invalid && phoneNumber.errors.maxlength">Invalid Phone Number!</span>
+      </div>
+      <button type="button" class="form__submit" [tsSubmitIfValid]="form" (valid)="send()">Proceed</button>
+    </form>
+  </div>
+  <p>We respect your data and privacy. We don't post on your behalf.</p>
+</div>

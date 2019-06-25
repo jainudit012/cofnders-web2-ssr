@@ -19,3 +19,9 @@ export class User {
     opportunities?: number
     applications?: number
 }
+
+export enum Purpose {
+    FOUNDER = 'Founder',
+    INVESTOR = 'Investor',
+    MENTOR = 'Mentor'
+}

@@ -1,11 +1,12 @@
-import { Injectable, Inject } from '@angular/core';
-import { JwtHelperService } from '@auth0/angular-jwt'
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
-import Axios from 'axios';
+import { Inject, Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AuthUser } from '../models/auth-user.model';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { LOCAL_STORAGE } from '@ng-toolkit/universal';
+import Axios from 'axios';
+
+import { environment } from '../../environments/environment';
+import { AuthUser } from '../models/auth-user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -35,12 +36,18 @@ export class UserService {
   }
 
   public decodeToken(token:string){
-    // const helper = new JwtHelperService()
-    // return helper.decodeToken(token)
     return this.helper.decodeToken(token)
   }
 
-  public editUser(token:string){
+  public editUser(token:string, data:any){
+    Axios.put(`${environment.apiUrl}/users`, data, {headers: {'Authorization': token}})
+    .then(res=>{
+      if(!environment.production) console.log(res)
+    })
+    .catch(err=>{
+      if(!environment.production) console.log(err.response.data)
+      this._snackBar.open('Could Not Update the Information!', 'X', {duration: 2000})
+    })
   }
 
   public setUser(token:string){

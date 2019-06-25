@@ -8,6 +8,7 @@ import { IdeaComponent } from './components/ideas/idea/idea.component';
 import { PrivacyPageComponent } from './components/privacy-page/privacy-page.component';
 import { TermsPageComponent } from './components/terms-page/terms-page.component';
 import { TrustPageComponent } from './components/trust-page/trust-page.component';
+import { PostSignUpFormComponent } from './components/forms/post-sign-up-form/post-sign-up-form.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
 
   {
     path: 'trust', component: TrustPageComponent
+  },
+
+  {
+    path: 'form', component: PostSignUpFormComponent
   },
 
   {
