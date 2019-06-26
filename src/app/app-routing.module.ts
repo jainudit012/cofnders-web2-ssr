@@ -9,6 +9,7 @@ import { PrivacyPageComponent } from './components/privacy-page/privacy-page.com
 import { TermsPageComponent } from './components/terms-page/terms-page.component';
 import { TrustPageComponent } from './components/trust-page/trust-page.component';
 import { PostSignUpFormComponent } from './components/forms/post-sign-up-form/post-sign-up-form.component';
+import { ProfileCardComponent } from './components/profile-card/profile-card.component';
 
 const routes: Routes = [
   {
@@ -40,7 +41,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'form', component: PostSignUpFormComponent
+    path: 'profile', component: ProfileCardComponent
   },
 
   {
