@@ -71,7 +71,7 @@ export class AuthService {
 
           // change to this
           // if(!decoded.isFormFilled){
-          if(decoded.isFormFilled){
+          if(!decoded.isFormFilled){
             console.log(token)
             let dialogRef = this.dialog.open(PostSignUpFormComponent, {
               width: '100vw',
