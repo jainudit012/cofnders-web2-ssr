@@ -14,7 +14,15 @@ html {
     font-size: 62.5%; // 1rem is 10 px
 
     @media only screen and (max-width:575px){
+        font-size: 55%;
+    }
+
+    @media only screen and (max-width:375px){
         font-size: 50%;
+    }
+
+    @media only screen and (max-width:319px){
+        font-size: 45%;
     }
 }
 
@@ -26,97 +34,27 @@ body {
     box-sizing: border-box;
 }
 
-.container {
-
-    margin: 0 auto;
-    padding:  0 1.5rem;
-
-    @media only screen and (min-width: 460px) {
-        width: 100%;
-        max-width: 430px;
-    }
-
-
-    @media only screen and (min-width: 576px) {
-        width: 560px;
-        max-width: 550px;
-    }
-
-    @media only screen and (min-width: 650px) {
-        width: 630px;
-        max-width: 620px;
-    }
-
-    @media only screen and (min-width: 768px) {
-        width: 740px;
-        max-width: 720px;
-    }
-
-    @media only screen and (min-width: 874px) {
-        width: 860px;
-        max-width: 830px;
-    }
-
-    @media only screen and (min-width: 992px) {
-        width: 970px;
-        max-width: 960px;
-    }
-
-    @media only screen and (min-width: 1200px) {
-        width: 1170px;
-        max-width: 1140px;
-    }
-
-    @media only screen and (min-width: 1400px) {
-        width: 1370px;
-        max-width: 1340px;
-    }
-
-    @media only screen and (min-width: 1600px) {
-        width: 1570px;
-        max-width: 1540px;
-    }
-
-    @media only screen and (min-width: 1800px) {
-        width: 1770px;
-        max-width: 1740px;
-    }
-
-    @media only screen and (min-width: 2000px) {
-        width: 1970px;
-        max-width: 1940px;
-    }
-
-    @media only screen and (min-width: 2200px) {
-        width: 2170px;
-        max-width: 2140px;
-    }
-}
-
-.container-2 {
-   padding: 0 12rem;
-
-   @media only screen and (max-width: 768px) {
-    padding: 0 9rem;
-   }
-
-   @media only screen and (max-width: 650px) {
-    padding: 0 5rem;
-   }
-
-   @media only screen and (max-width: 576px) {
-    padding: 0 7rem;
-   }
-
-   @media only screen and (max-width: 490px) {
-    padding: 0 5rem;
-   }
-
-   @media only screen and (max-width: 450px) {
-    padding: 0 3rem;
-   }
-}
-
-.btn {
+.btn--app {
     cursor: pointer;
+}
+
+.btn--round {
+    border: 2px solid #00BCD4; 
+    background: #00BCD4;
+    color: #fff;
+    font-weight: 300;
+    display: inline-block;
+    padding: 0 1.2rem;
+    font-size: 1.4rem;
+    border-radius: 2.4rem 2.4rem 2.4rem 2.4rem;
+    min-height: 3.8rem;
+    text-align: center;
+
+    &:hover {
+        background: #ffda00;
+        color: #000;
+        border: 2px solid #ffda00;
+        border-color: transparent;
+        transition-duration: 500ms;
+    }
 }
