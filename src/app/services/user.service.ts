@@ -7,6 +7,9 @@ import Axios from 'axios';
 
 import { environment } from '../../environments/environment';
 import { AuthUser } from '../models/auth-user.model';
+import { Observable } from 'rxjs';
+import { map, catchError } from 'rxjs/operators'
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -59,5 +62,15 @@ export class UserService {
       let localUser = this.helper.decodeToken(idToken)
       if(localUser) this.authUser = localUser
     }
+  }
+
+  public getUser(token: string){
+    return Axios.get(`${environment.apiUrl}/users/me`, {headers: {'Authorization': token}}).then(
+      res=>{
+        return res.data
+      }
+    ).catch(err=>{
+      this._snackBar.open('Could not load the Profile!', 'X', {duration: 2000})
+    })
   }
 }
