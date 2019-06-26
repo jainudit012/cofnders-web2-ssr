@@ -1,5 +1,5 @@
 <header class="header" *ngIf="activeRouteString !=='/form'">
-  <nav class="header__nav container-2">
+  <nav class="header__nav container">
     <a routerLink="/ideas" class="logo__link">
       <div class="logo__box">
         <img srcset="https://res.cloudinary.com/cofnderscloud/image/upload/q_65/v1560324814/logo.png 320w,
@@ -33,14 +33,14 @@
       </div>
     </div>
     <div class="controls">
-      <a (click)="login()" class="btn--sign-in btn" *ngIf="!authService.isAuthenticated(); else loggedInUser">Sign In</a>
+      <a (click)="login()" class="btn--sign-in btn--app" *ngIf="!authService.isAuthenticated(); else loggedInUser">Sign In</a>
       <ng-template #loggedInUser>
         <button mat-button [matMenuTriggerFor]="menu" class="user__menu--button" onclick="this.blur();">
           <img *ngIf="userService.authUser" [src]="userService.authUser?.picture" alt="User" class="user__menu--image">
           <h2 class="user__menu--name">{{userService.authUser?.name}}</h2>
         </button>
         <mat-menu #menu="matMenu" class="user__menu--list">
-            <a (click)="logout()" class="btn--sign-out btn">Log Out</a>
+            <a (click)="logout()" class="btn--sign-out btn--app">Log Out</a>
         </mat-menu>
       </ng-template>
     </div>
