@@ -2,4 +2,5 @@
 <div class="container">
     <profile-card *ngIf="!router.url.includes('/callback')"></profile-card>
     <router-outlet></router-outlet>
+    <cta *ngIf="!router.url.includes('/callback')"></cta>
 </div>
