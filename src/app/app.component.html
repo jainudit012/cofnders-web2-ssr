@@ -1,6 +1,7 @@
 <navbar></navbar>
 <div class="container">
-    <profile-card *ngIf="!router.url.includes('/callback')"></profile-card>
+    <profile-card *ngIf="!(router.url.includes('/callback'))"></profile-card>
     <router-outlet></router-outlet>
-    <cta *ngIf="!router.url.includes('/callback')"></cta>
+    <cta *ngIf="!(router.url.includes('/callback'))"></cta>
+    <recent-card *ngIf="!(router.url.includes('/callback'))"></recent-card>
 </div>
