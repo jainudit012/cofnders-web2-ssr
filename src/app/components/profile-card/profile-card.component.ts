@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { Observable } from 'rxjs';
+import { UserService } from '../../services/user.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'profile-card',

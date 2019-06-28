@@ -5,6 +5,7 @@
     "baseUrl": "."
   },
   "angularCompilerOptions": {
+    // "enableIvy": true,
     "entryModule": "app/app.server.module#AppServerModule"
   }
 }
