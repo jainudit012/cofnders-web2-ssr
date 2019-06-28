@@ -10,6 +10,9 @@ import { TermsPageComponent } from './components/terms-page/terms-page.component
 import { TrustPageComponent } from './components/trust-page/trust-page.component';
 import { PostSignUpFormComponent } from './components/forms/post-sign-up-form/post-sign-up-form.component';
 import { ProfileCardComponent } from './components/profile-card/profile-card.component';
+import { CtaComponent } from './components/cta/cta.component';
+import { RecentCardComponent } from './components/recent-card/recent-card.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 const routes: Routes = [
   {
@@ -38,10 +41,6 @@ const routes: Routes = [
 
   {
     path: 'trust', component: TrustPageComponent
-  },
-
-  {
-    path: 'profile', component: ProfileCardComponent
   },
 
   {

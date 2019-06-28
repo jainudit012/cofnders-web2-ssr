@@ -167,3 +167,7 @@
     justify-content: center;
     margin-top: 1rem;
 }
+
+.btn--sign-in:focus {
+    outline: -webkit-focus-ring-color auto 5px !important;
+}

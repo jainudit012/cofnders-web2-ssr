@@ -1,0 +1,21 @@
+.card{
+    width: 22%;
+
+    &__content {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 1rem 0;
+
+        & > li {
+            margin-left: .5rem;
+            font-size: 1.3rem;
+
+            & > a {
+                &:hover, &:focus {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
