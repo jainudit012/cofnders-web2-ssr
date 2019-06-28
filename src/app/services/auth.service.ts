@@ -113,7 +113,8 @@ export class AuthService {
         if(res&&res.data&&res.data.token) authResult['user_token'] = res.data.token
         this.localLogin(authResult);
       } else if (err) {
-        alert(`Could not get a new token (${err.error}: ${err.error_description}).`);
+        this._snackBar.open(`Could not get a new token! (${err.error}: ${err.error_description})`, 'X', {duration: 3000})
+        // alert(`Could not get a new token (${err.error}: ${err.error_description}).`);
         // print(`Could not get a new token (${err.error}: ${err.error_description}).`)
         this.logout()
       }
