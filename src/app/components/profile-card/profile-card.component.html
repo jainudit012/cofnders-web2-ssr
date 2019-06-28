@@ -1,4 +1,4 @@
-<div *ngIf="(appUserRes$| async) as userData;else anonymousUser">
+<div *ngIf="(appUserRes$| async) as userData;else anonymousUser" style="display: inline;">
   <mat-card class="card card--info">
       <mat-card-header class="card__header">
         <div mat-card-avatar [style.background-image]="'url('+userService.authUser.picture+')'" class="card__image"></div>
