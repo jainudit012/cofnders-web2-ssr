@@ -14,13 +14,15 @@ export class ProfileCardComponent implements OnInit, OnDestroy {
   constructor(private userService: UserService, 
     private authService: AuthService) {
 
-      if(this.authService.isAuthenticated()&&this.authService.isUserAuthenticated()){
-        this.appUserRes$ = this.userService.getUser(this.authService.userToken)
-      }
+      // if(this.authService.isAuthenticated()&&this.authService.isUserAuthenticated()){
+      //   this.appUserRes$ = this.userService.getUser(this.authService.userToken)
+      // }
     }
 
   ngOnInit() {
-
+    if(this.authService.isAuthenticated()&&this.authService.isUserAuthenticated()){
+      this.appUserRes$ = this.userService.getUser(this.authService.userToken)
+    }
   }
 
   ngOnDestroy(){
