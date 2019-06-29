@@ -1,0 +1,94 @@
+.foot {
+    display: flex;
+    flex-direction: column;
+    background-color: #0f1010;
+    padding-top: 1rem;
+    margin-top: 5rem;
+    
+
+    &__nav {
+        color: #fff;
+        display: flex;
+        justify-content: space-evenly;
+
+        @media only screen and (max-width:768px){
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    &__nav > div {
+        margin-top: 2rem;
+        text-align: center;
+
+        @media only screen and (max-width:768px){
+            border-bottom: 1px solid #ddd;
+            width: 90%;
+            padding-bottom: 1.5rem;
+        }
+         
+        &:last-child {
+            border: none;
+        }
+    }
+
+    &__heading {
+        font-size: 1.5rem;
+
+        &--pics {
+            font-size: 1.8rem;
+        }
+    }
+
+    &__list {
+        list-style: none;
+        padding-top: 1.5rem;
+
+        &--pics {
+            list-style: none;
+            display: flex;
+            padding-top: 1.5rem;
+            justify-content: center;
+        }
+    }
+
+    &__item {
+        transition: all .2s ease-in;
+
+        &--pics {
+            background: #fff;
+            padding: 1.2rem .5rem;
+            border-radius: 3%;
+            margin: .5rem;
+            transition: all .2s ease-in;
+        }
+    }
+
+    &__item:not(:last-child){
+        margin-bottom: .5rem;
+    }
+
+    &__item:hover{
+        transform: scale(1.2);
+    }
+
+    &__item--pics:hover{
+        transform: scale(1.1);
+    }
+
+    &__links {
+        color: white;
+        font-size: 1.2rem;
+    }
+
+    &__links:hover {
+        text-decoration: none;
+    }
+
+    &__footer {
+        color: #ddd;
+        background: rgba(0, 0, 0, 0.5);
+        text-align: center;
+        padding: 1.5rem 0 1rem 0;
+    }
+}
