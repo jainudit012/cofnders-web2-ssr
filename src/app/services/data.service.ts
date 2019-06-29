@@ -16,7 +16,7 @@ export class DataService {
     return Axios.get(`${environment.apiUrl}/ideas`).then(res=>{
       return res.data
     }).catch(err=>{
-      if(!environment.production) console.log(err.response.data)
+      if(!environment.production) console.log(err)
       this._snackBar.open('Could not Load Recent Ideas!', 'X', {duration: 2000})
     })
   }
