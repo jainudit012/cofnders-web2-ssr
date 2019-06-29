@@ -32,6 +32,7 @@ import { TrustPageComponent } from './components/trust-page/trust-page.component
 import { MaterialModule } from './material.module';
 import { SubmitIfValidDirective } from './submit-if-valid.directive';
 import { MatDialogRef } from '@angular/material/dialog';
+import { FooterBlackComponent } from './components/footer-black/footer-black.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { MatDialogRef } from '@angular/material/dialog';
     RecentCardComponent,
     TermsPageComponent,
     TrustPageComponent,
-    SubmitIfValidDirective
+    SubmitIfValidDirective,
+    FooterBlackComponent
   ],
   entryComponents: [
     PostSignUpFormComponent

@@ -6,3 +6,4 @@
     <recent-card *ngIf="(router.url.includes('/ideas')||router.url.includes('/funds')||router.url === '/')"></recent-card>
     <app-footer *ngIf="(router.url.includes('/ideas')||router.url.includes('/funds')||router.url === '/')"></app-footer>
 </div>
+<footer-black *ngIf="!(router.url.includes('/ideas')||router.url.includes('/funds')||router.url === '/')"></footer-black>

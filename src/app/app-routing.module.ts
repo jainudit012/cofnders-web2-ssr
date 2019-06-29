@@ -13,6 +13,7 @@ import { ProfileCardComponent } from './components/profile-card/profile-card.com
 import { CtaComponent } from './components/cta/cta.component';
 import { RecentCardComponent } from './components/recent-card/recent-card.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { FooterBlackComponent } from './components/footer-black/footer-black.component';
 
 const routes: Routes = [
   {
