@@ -10,10 +10,17 @@
         & > li {
             margin-left: .5rem;
             font-size: 1.3rem;
+            padding: 1.5rem 0;
 
             & > a {
+                padding: 1.5rem 0;
+                font-size: 1.4rem;
+                transition: all .2s ease-in;
+
                 &:hover, &:focus {
+                    font-weight: 700;
                     text-decoration: none;
+                    
                 }
             }
         }

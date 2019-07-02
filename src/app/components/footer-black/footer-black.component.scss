@@ -33,7 +33,8 @@
     }
 
     &__heading {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
+        font-weight: 700;
 
         &--pics {
             font-size: 1.8rem;
@@ -54,6 +55,7 @@
 
     &__item {
         transition: all .2s ease-in;
+        padding: 1.4rem;
 
         &--pics {
             background: #fff;
@@ -63,22 +65,16 @@
             transition: all .2s ease-in;
         }
     }
-
-    &__item:not(:last-child){
-        margin-bottom: .5rem;
-    }
-
-    &__item:hover{
+    
+    &__item:hover, &__item--pics:hover{
         transform: scale(1.2);
-    }
-
-    &__item--pics:hover{
-        transform: scale(1.1);
     }
 
     &__links {
         color: white;
         font-size: 1.2rem;
+        margin-top: 1rem;
+        padding: 1.5rem .5rem;
     }
 
     &__links:hover {
