@@ -1,12 +1,12 @@
 <navbar class="container" style="background-color: black"></navbar>
 <!-- <div > -->
 <div class="container">
-    <aside class="aside-1">
-        <profile-card *ngIf="(router.url.includes('/ideas')||router.url.includes('/funds')||router.url === '/')"></profile-card>
+    <aside class="aside-1" *ngIf="(router.url.includes('/ideas')||router.url.includes('/funds')||router.url === '/')">
+        <profile-card></profile-card>
     </aside>
     <router-outlet></router-outlet>
-    <aside class="aside-2">
-        <cta *ngIf="(router.url.includes('/ideas')||router.url.includes('/funds')||router.url === '/')"></cta>
+    <aside class="aside-2" *ngIf="(router.url.includes('/ideas')||router.url.includes('/funds')||router.url === '/')">
+        <cta></cta>
         <recent-card *ngIf="(router.url.includes('/ideas')||router.url.includes('/funds')||router.url === '/')"></recent-card>
         <app-footer *ngIf="(router.url.includes('/ideas')||router.url.includes('/funds')||router.url === '/')"></app-footer>
     </aside>
