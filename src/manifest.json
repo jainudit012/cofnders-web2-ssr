@@ -1,6 +1,6 @@
 {
   "name": "cofnders-web2-ssr",
-  "short_name": "cofnders-web2-ssr",
+  "short_name": "Cofnders App",
   "theme_color": "#fff",
   "background_color": "#fafafa",
   "display": "standalone",
