@@ -10,7 +10,8 @@ export const environment = {
 
   siteUrl: 'http://localhost:4200',
   // apiUrl: 'https://b2wuhx8v6d.execute-api.ap-southeast-1.amazonaws.com/dev'
-  apiUrl: 'http://localhost:3000'
+  apiUrl: 'https://uidoc2pyyj.execute-api.ap-southeast-1.amazonaws.com/test-ssr'
+  // apiUrl: 'http://localhost:3000'
 };
 
 /*
