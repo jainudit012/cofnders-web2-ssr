@@ -1,15 +1,17 @@
-<mat-card class="card">
-  <mat-card-header>
-    <mat-card-title class="card__heading">Recent Ideas</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <ul *ngIf="(res$ | async) as data" class="list">
-      <li *ngFor="let a of data.trending" class="data">
-        <div class="logo__box">
-          <img [src]="a.logo" alt="Project Logo" class="logo">
-        </div>
-        <div>{{a.projectName}}</div>
-      </li>
-    </ul>
-  </mat-card-content>
-</mat-card>
+<div>
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title class="card__heading">Recent Ideas</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <ul *ngIf="(res$ | async) as data" class="list">
+        <li *ngFor="let a of data.trending" class="data">
+          <div class="logo__box">
+            <img [src]="a.logo" alt="Project Logo" class="logo">
+          </div>
+          <div>{{a.projectName}}</div>
+        </li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+</div>

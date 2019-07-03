@@ -1,0 +1,49 @@
+.container {
+    display: grid;
+    grid-template-columns: [blank-1-start] 1fr [blank-1-end container-start block-1-start] 2fr [block-1-end block-2-start]
+    4fr [block-2-end block-3-start] 2fr [block-3-end container-end blank-2-start] 1fr [blank-2-end];
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+
+    & > profile-card {
+        grid-column: block-1-start / block-1-end;
+        margin: 1rem;
+    }
+
+    :host /deep/ & > header {
+        grid-column: container-start / container-end;
+    }
+
+    .aside-1 {
+        grid-column: block-1-start / block-1-end;
+    }
+
+    .aside-2 {
+        grid-column:  block-3-start / block-3-end;
+        
+        :host /deep/ & > cta > div, :host /deep/ & > recent-card > div {
+            padding-bottom: 2rem;
+        }
+    }
+
+    .aside-1 , .aside-2 {
+        justify-self: center;
+        margin: 1rem;
+        position: sticky;
+        top: 1.5rem;
+        right: 0;
+        height: 100vh;
+    }
+
+    & > router-outlet {
+        display: none;
+    }
+}
+
+:host /deep/ router-outlet + app-idea {
+    grid-column: block-2-start / block-2-end;
+}
+
+:host /deep/ router-outlet + app-privacy-page, :host /deep/ router-outlet + app-terms-page, :host /deep/ router-outlet + app-trust-page {
+    grid-column: container-start / container-end;
+}

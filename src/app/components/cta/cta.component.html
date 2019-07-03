@@ -1,4 +1,4 @@
-<div *ngIf="router.url =='/funds'; else IdeaCta" style="display: inline;">
+<div *ngIf="router.url =='/funds'; else IdeaCta">
   <mat-card class="card">
     <mat-card-header>
       <mat-card-title class="card__heading">Are you an Investor / Incubator?</mat-card-title>
@@ -14,17 +14,19 @@
   </mat-card>
 </div>
 <ng-template #IdeaCta>
-  <mat-card class="card">
-    <mat-card-header>
-      <mat-card-title class="card__heading">Have an Idea/Startup Project?</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p class="card__content">Tell the world now and look for people to help you launch or scale.</p>
-    </mat-card-content>
-    <mat-card-actions class="card__actions">
-      <button class="btn--app btn--round card__btn" (click)="createProject()">Create Project</button>
-      <button class="btn--app btn--round card__btn" (click)="createOpportunity()">Post Opportunity</button>
-    </mat-card-actions>
-  </mat-card>
+  <div>
+      <mat-card class="card">
+        <mat-card-header>
+          <mat-card-title class="card__heading">Have an Idea/Startup Project?</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="card__content">Tell the world now and look for people to help you launch or scale.</p>
+        </mat-card-content>
+        <mat-card-actions class="card__actions">
+          <button class="btn--app btn--round card__btn" (click)="createProject()">Create Project</button>
+          <button class="btn--app btn--round card__btn" (click)="createOpportunity()">Post Opportunity</button>
+        </mat-card-actions>
+      </mat-card>
+  </div>
 </ng-template>
 
