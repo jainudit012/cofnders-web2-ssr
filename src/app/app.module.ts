@@ -33,6 +33,8 @@ import { MaterialModule } from './material.module';
 import { SubmitIfValidDirective } from './submit-if-valid.directive';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FooterBlackComponent } from './components/footer-black/footer-black.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -72,7 +74,7 @@ import { FooterBlackComponent } from './components/footer-black/footer-black.com
     MaterialModule,
     BrowserAnimationsModule,
     ReactiveFormsModule, 
-    NgtUniversalModule
+    NgtUniversalModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     // {provide: MatDialogRef, useValue: {}}
