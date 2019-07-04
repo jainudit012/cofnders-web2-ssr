@@ -35,6 +35,11 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { FooterBlackComponent } from './components/footer-black/footer-black.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { CustomDatePipe } from './pipes/customDate.pipe';
+import { TeamSizePipe } from './pipes/teamSize.pipe';
+import { ProjectCategoryPipe } from './pipes/projectCategory.pipe';
+import { ProjectSectorPipe } from './pipes/projectSector.pipe';
+import { ProjectStagePipe } from './pipes/projectStage.pipe';
 
 @NgModule({
   declarations: [
@@ -62,7 +67,12 @@ import { environment } from '../environments/environment';
     TermsPageComponent,
     TrustPageComponent,
     SubmitIfValidDirective,
-    FooterBlackComponent
+    FooterBlackComponent,
+    CustomDatePipe,
+    TeamSizePipe,
+    ProjectCategoryPipe,
+    ProjectSectorPipe,
+    ProjectStagePipe
   ],
   entryComponents: [
     PostSignUpFormComponent
