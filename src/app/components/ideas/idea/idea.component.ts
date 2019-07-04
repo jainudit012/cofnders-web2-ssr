@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { DataService } from '../../../services/data.service';
+
 @Component({
   selector: 'app-idea',
   templateUrl: './idea.component.html',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IdeaComponent implements OnInit {
 
-  constructor() { }
+  feedData:any[]
+
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.dataService.getFeed().then(data=>{
+      this.feedData = data.feed
+    })
   }
+
+
 
 }
