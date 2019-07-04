@@ -1,15 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
-  selector: 'app-project-card',
+  selector: 'project-card',
   templateUrl: './project-card.component.html',
   styleUrls: ['./project-card.component.scss']
 })
 export class ProjectCardComponent implements OnInit {
 
-  constructor() { }
+  @Input('project') projectData
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
+  }
+
+  getInTouch() {
+    if(this.authService.isAuthenticated() && this.authService.isUserAuthenticated()){
+
+    }else {
+      this.authService.login()
+    }
+    console.log('get in touch tapped')
   }
 
 }
