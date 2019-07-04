@@ -10,7 +10,7 @@ export class ProjectCardComponent implements OnInit {
 
   @Input('project') projectData
 
-  constructor(private authService: AuthService) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }

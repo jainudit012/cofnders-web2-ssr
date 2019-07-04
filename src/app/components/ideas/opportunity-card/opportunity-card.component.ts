@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'opportunity-card',
@@ -9,9 +10,18 @@ export class OpportunityCardComponent implements OnInit {
 
   @Input('opportunity') opportunityData
 
-  constructor() { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
+  }
+
+  getInTouch() {
+    if(this.authService.isAuthenticated() && this.authService.isUserAuthenticated()){
+
+    }else {
+      this.authService.login()
+    }
+    console.log('get in touch tapped')
   }
 
 }
