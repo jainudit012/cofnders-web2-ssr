@@ -11,4 +11,4 @@
         <app-footer *ngIf="(router.url.includes('/ideas')||router.url.includes('/funds')||router.url === '/')"></app-footer>
     </aside>
 </div>
-<footer-black *ngIf="!(router.url.includes('/ideas')||router.url.includes('/funds')||router.url === '/')"></footer-black>
+<footer-black *ngIf="!(router.url.includes('/ideas')||router.url.includes('/funds')||router.url === '/'||router.url.includes('/callback'))"></footer-black>
