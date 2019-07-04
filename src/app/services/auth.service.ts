@@ -53,6 +53,12 @@ export class AuthService {
     else return null;
   }
 
+  get decodedToken() {
+    if(this.localStorage.getItem('user_token')){
+      return this.userService.decodeToken(this.localStorage.getItem('user_token'))
+    }else return {id: null}
+  }
+
   public login(){
     this.webAuth.authorize()
   }
