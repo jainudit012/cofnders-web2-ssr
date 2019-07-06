@@ -1,4 +1,25 @@
-<h1>OPPORTUNITY</h1>
-<p>
-    {{opportunityData | json}}
-</p>
+<mat-card class="card">
+    <mat-card-header class="card__header">
+        <div *ngIf="opportunityData.project.logo" mat-card-avatar class="opportunity__logo--box">
+            <cl-image [public-id]="opportunityData.project.logo.substr(54)" secure="true"  class="opportunity__logo" alt="Project Logo">
+                <cl-transformation width="50" height="50" crop="fill" quality="auto" fetch-format="auto" dpr="auto" >
+                </cl-transformation>
+            </cl-image>
+        </div>
+        <mat-card-title class="opportunity__projectName">{{opportunityData.project.projectName}}</mat-card-title>
+        <mat-card-subtitle class="opportunity__createdBy">{{opportunityData.createdBy.fullName}}</mat-card-subtitle>
+        <div class="opportunity__createdAt"> {{ opportunityData.createdAt | dateFromNow }}</div>
+    </mat-card-header>
+    <mat-card-content class="opportunity__content">
+        <div class="opportunity__details">{{opportunityData.details}}</div>
+        <div class="opportunity__requirement"><b>Looking For: </b>{{opportunityData.requirement | requirement}}</div>
+    </mat-card-content>
+    <mat-card-actions class="opportunity__cardActions">
+        <div *ngIf="opportunityData.createdBy._id===authService.userToken; else getInTouch">
+            <button class="btn--app btn--round card__btn">Response(s) {{opportunityData?.responseCount || 0}}</button>
+        </div>
+        <ng-template #getInTouch>
+            <button class="btn--app btn--round card__btn" (click)="getInTouch()">Get in Touch</button>
+        </ng-template>
+    </mat-card-actions>
+</mat-card>
