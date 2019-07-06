@@ -1,0 +1,151 @@
+:host /deep/ mat-card .mat-card-avatar {
+    width: 5rem;
+    height: 5rem;
+}
+
+:host /deep/ mat-card .mat-card-content {
+    margin-bottom: 0;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+}
+
+.card {
+    border-radius: 8px;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    padding: 0;
+    margin-bottom: 5rem;
+
+    &__header {
+        border-bottom: 1px solid rgba(112, 112, 112, 0.3);
+        padding: 1.6rem 1.6rem 0 1.6rem;
+    }
+
+    &__content {
+        border-bottom: 1px solid rgba(112, 112, 112, 0.3);
+    }
+
+    .fund {
+        &__logo {
+            // height: 100%;
+            // width: 100%;
+            // border-radius: 50%;
+
+            :host /deep/ & > img {
+                height: 100%;
+                width: 100%;
+                border-radius: 50%;
+            }
+
+            &--other {
+                height: 100%;
+                width: 100%;
+                border-radius: 50%;
+            }
+            
+        }
+
+        &__name {
+            font-size: 2rem;
+        }
+
+        &__createdBy {
+            font-size: 1.35rem;
+        }
+
+        &__createdAt {
+            position: absolute;
+            right: 2rem;
+            font-size: 1.4rem;
+            color: rgb(112, 112, 112);
+        }
+
+        &__description {
+            margin-top: 1rem;
+            padding: 1.6rem;
+        }
+
+        &__details {
+            padding: 1.6rem;
+            display: flex;
+            flex-wrap: wrap;
+
+            & > * {
+                padding: 1rem;
+                font-size: 1.2rem;
+
+                &:not(:last-child) {
+                    width: 50%;
+                }
+            }
+        }
+
+        &__criteria{
+            list-style: none;
+
+            &--item::before {
+                content: "\2014\a0";
+                padding: .25rem;
+            }
+
+            &--item {
+                padding: .50rem 1rem;
+            }
+        }
+
+        &__links {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100% !important;
+            padding: 1.6rem;
+
+            & > * {
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            &--heading {
+                padding-bottom: .5rem;
+                font-size: 1.2rem;
+            }
+
+            &--link:link,  &--link:visited {
+                text-decoration: none;
+                font-size: 1.2rem;
+            }
+
+            &--iconBox{
+                padding: .35rem;
+                background-color: darkgray;
+                border-radius: 50%;
+                margin: 1rem;
+
+                .svg--facebook {
+                    transform: translateY(3px);
+                }
+            }
+
+            &--icon {
+                fill: white;
+                margin: .15rem;
+            }
+        }
+
+        &__socials {
+            display: flex;
+        }
+
+        &__cardActions {
+            display: flex;
+            justify-content: flex-end;
+            padding: 1.3rem 2.5rem 1.5rem 0;
+        }
+
+        &__apply--btn{
+            width: 20%;
+        }
+    }
+}
