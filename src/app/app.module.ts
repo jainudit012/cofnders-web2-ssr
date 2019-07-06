@@ -4,6 +4,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgtUniversalModule } from '@ng-toolkit/universal';
+import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
+import { Cloudinary } from 'cloudinary-core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -84,7 +86,8 @@ import { ProjectStagePipe } from './pipes/projectStage.pipe';
     MaterialModule,
     BrowserAnimationsModule,
     ReactiveFormsModule, 
-    NgtUniversalModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    NgtUniversalModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'cofnderscloud' } as CloudinaryConfiguration)
   ],
   providers: [
     // {provide: MatDialogRef, useValue: {}}
