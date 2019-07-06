@@ -1,6 +1,5 @@
 <mat-card class="card">
     <mat-card-header class="card__header">
-      {{projectData.logo.substr(54)}}
       <div *ngIf="projectData.logo" mat-card-avatar class="project__logo--box">
           <cl-image [public-id]="projectData.logo.substr(54)" secure="true" class="project__logo" alt="Project Logo" format="jpg" >
               <cl-transformation width="50" height="50" crop="fill" quality="auto" dpr="auto">
