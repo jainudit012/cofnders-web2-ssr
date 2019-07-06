@@ -42,6 +42,7 @@ import { TeamSizePipe } from './pipes/teamSize.pipe';
 import { ProjectCategoryPipe } from './pipes/projectCategory.pipe';
 import { ProjectSectorPipe } from './pipes/projectSector.pipe';
 import { ProjectStagePipe } from './pipes/projectStage.pipe';
+import { OpportunityRequirementPipe } from './pipes/opportunityRequirement.pipe';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { ProjectStagePipe } from './pipes/projectStage.pipe';
     TeamSizePipe,
     ProjectCategoryPipe,
     ProjectSectorPipe,
-    ProjectStagePipe
+    ProjectStagePipe,
+    OpportunityRequirementPipe
   ],
   entryComponents: [
     PostSignUpFormComponent
