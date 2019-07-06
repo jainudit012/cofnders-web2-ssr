@@ -30,14 +30,33 @@ export class DataService {
         return res.data
       }).catch(err=>{
         if(!environment.production) console.log(err)
-        this._snackBar.open('Could not Your Feed!', 'X', {duration: 2000})
+        this._snackBar.open('Could not Load Your Feed!', 'X', {duration: 2000})
       })
     }else {
-      return Axios.get(`${environment.apiUrl}/feed`).then(res=>{
+      return Axios.get(`${environment.apiUrl}/feed?limit=10`).then(res=>{
         return res.data
       }).catch(err=>{
         if(!environment.production) console.log(err)
-        this._snackBar.open('Could not Your Feed!', 'X', {duration: 2000})
+        this._snackBar.open('Could not Load Your Feed!', 'X', {duration: 2000})
+      })
+    }
+  }
+
+  public getFunds(){
+    if(this.authService.isAuthenticated() && this.authService.isUserAuthenticated()){
+      const token = this.authService.userToken
+      return Axios.get(`${environment.apiUrl}/funds`, {headers: {'Authorization': token}}).then(res=>{
+        return res.data
+      }).catch(err=>{
+        if(!environment.production) console.log(err)
+        this._snackBar.open('Could not Load Funds!', 'X', {duration: 2000})
+      })
+    }else{
+      return Axios.get(`${environment.apiUrl}/funds`).then(res=>{
+        return res.data
+      }).catch(err=>{
+        if(!environment.production) console.log(err)
+        this._snackBar.open('Could not Load Funds!', 'X', {duration: 2000})
       })
     }
   }
