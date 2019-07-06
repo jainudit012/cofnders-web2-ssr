@@ -26,7 +26,7 @@ export class DataService {
   public getFeed(){
     if(this.authService.isAuthenticated() && this.authService.isUserAuthenticated()){
       const token = this.authService.userToken
-      return Axios.get(`${environment.apiUrl}/feed`, {headers: {'Authorization': token}}).then(res=>{
+      return Axios.get(`${environment.apiUrl}/feed?limit=10`, {headers: {'Authorization': token}}).then(res=>{
         return res.data
       }).catch(err=>{
         if(!environment.production) console.log(err)
