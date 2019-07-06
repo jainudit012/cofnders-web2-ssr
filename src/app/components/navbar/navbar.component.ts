@@ -25,7 +25,7 @@ export class NavbarComponent implements OnInit {
 
   login() {
     print('login button tap')
-    this.authService.login()
+    this.authService.login(this.router.url)
   }
 
   logout(){

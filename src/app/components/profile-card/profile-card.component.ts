@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'profile-card',
@@ -12,7 +13,8 @@ export class ProfileCardComponent implements OnInit, OnDestroy {
   appUserRes$:any
 
   constructor(private userService: UserService, 
-    private authService: AuthService) {
+    private authService: AuthService,
+    private router: Router) {
 
       // if(this.authService.isAuthenticated()&&this.authService.isUserAuthenticated()){
       //   this.appUserRes$ = this.userService.getUser(this.authService.userToken)
@@ -29,7 +31,7 @@ export class ProfileCardComponent implements OnInit, OnDestroy {
   }
 
   login(){
-    this.authService.login()
+    this.authService.login(this.router.url)
   }
 
   

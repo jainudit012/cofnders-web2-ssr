@@ -59,11 +59,13 @@ export class AuthService {
     }else return {id: null}
   }
 
-  public login(){
+  public login(returnUrl?:string){
+    if(returnUrl) this.localStorage.setItem('returnUrl', returnUrl)
     this.webAuth.authorize()
   }
 
   public handleAuthentication(): void {
+    const returnUrl = this.localStorage.getItem('returnUrl')
     this.webAuth.parseHash(async(err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.window.location.hash = ''
@@ -78,7 +80,6 @@ export class AuthService {
           // change to this
           // if(!decoded.isFormFilled){
           if(!decoded.isFormFilled){
-            console.log(token)
             let dialogRef = this.dialog.open(PostSignUpFormComponent, {
               width: '100vw',
               height: '100%',
@@ -88,12 +89,16 @@ export class AuthService {
               data: { user: this.userService.authUser, token: res.data.token}
             })
           }
+          if(!environment.production) console.log(authResult)
         }
         this.localLogin(authResult)
-        this.router.navigate(['/'])
+
+        if(returnUrl) this.router.navigate([returnUrl])
+        else this.router.navigate(['/'])
       } else if (err) {
-        this.router.navigate(['/'])
+        if(returnUrl) this.router.navigate([returnUrl])
         this._snackBar.open('Could Not Sign In!', 'X', {duration: 3000})
+        this.router.navigate(['/'])
         if(!environment.production) console.log(err)
       }
     });
@@ -137,6 +142,7 @@ export class AuthService {
     this.localStorage.removeItem('id_token')
     this.localStorage.removeItem('access_token')
     this.localStorage.removeItem('user_token')
+    this.localStorage.removeItem('returnUrl')
 
     this.webAuth.logout({
       returnTo: this.window.location.origin

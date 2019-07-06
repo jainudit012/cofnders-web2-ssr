@@ -19,7 +19,7 @@ export class CtaComponent implements OnInit {
     if(this.authService.isAuthenticated()&&this.authService.isUserAuthenticated()){
       console.log('create project tap')
     }else{
-      this.authService.login()
+      this.authService.login(this.router.url)
     }    
   }
 
@@ -27,7 +27,7 @@ export class CtaComponent implements OnInit {
     if(this.authService.isAuthenticated()&&this.authService.isUserAuthenticated()){
       console.log('create opportunity tap')
     }else{
-      this.authService.login()
+      this.authService.login(this.router.url)
     }
   }
 
@@ -35,7 +35,7 @@ export class CtaComponent implements OnInit {
     if(this.authService.isAuthenticated()&&this.authService.isUserAuthenticated()){
       console.log('list fund tap')
     }else{
-      this.authService.login()
+      this.authService.login(this.router.url)
     }
   }
 

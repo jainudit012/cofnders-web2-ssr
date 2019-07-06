@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'project-card',
@@ -10,7 +11,8 @@ export class ProjectCardComponent implements OnInit {
 
   @Input('project') projectData
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
   }
@@ -19,7 +21,7 @@ export class ProjectCardComponent implements OnInit {
     if(this.authService.isAuthenticated() && this.authService.isUserAuthenticated()){
 
     }else {
-      this.authService.login()
+      this.authService.login(this.router.url)
     }
     console.log('get in touch tapped')
   }
