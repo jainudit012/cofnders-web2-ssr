@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../../services/data.service';
 
 @Component({
   selector: 'app-fund',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FundComponent implements OnInit {
 
-  constructor() { }
+  fundData:any
+
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.dataService.getFunds().then(data=>{
+      this.fundData = data.funds
+    })
   }
 
 }
