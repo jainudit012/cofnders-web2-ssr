@@ -7,7 +7,11 @@
       <ul *ngIf="(res$ | async) as data" class="list">
         <li *ngFor="let a of data.trending" class="data">
           <div class="logo__box">
-            <img [src]="a.logo" alt="Project Logo" class="logo">
+              <!-- <cl-image [public-id]="a.logo.substr(54)" class="logo">
+                  <cl-transformation quality="auto" fetch-format="auto" dpr="auto" width="25px" height="25px">
+                  </cl-transformation>
+              </cl-image> -->
+            <img [clSrc]="a.logo" alt="Project Logo" class="logo" quality="auto" width="25" height="25" fetch-format="auto" dpr="auto">
           </div>
           <div>{{a.projectName}}</div>
         </li>

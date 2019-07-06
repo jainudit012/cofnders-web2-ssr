@@ -23,6 +23,13 @@
             height: 100%;
             width: 100%;
             border-radius: 50%;
+
+            // :host /deep/ & > img {
+            //     height: 100%;
+            //     width: 100%;
+            //     border-radius: 50%;
+            // }
+            
         }
 
         &__name {
@@ -127,6 +134,12 @@
             height: 100%;
             width: 100%;
             border-bottom: 1px solid rgba(112, 112, 112, 0.3);
+
+            // :host /deep/ & > img {
+            //     height: 100%;
+            //     width: 100%;
+            //     border-bottom: 1px solid rgba(112, 112, 112, 0.3);
+            // }
         }
 
         &__cardActions {
