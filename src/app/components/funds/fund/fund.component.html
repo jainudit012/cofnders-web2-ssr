@@ -1,5 +1,7 @@
-<main role="main" style="display: inline-block; width: 54%">
-  <p>
-    Fund Works
-  </p>
+<main role="main" class="funds">
+  <div *ngIf="fundData" style="max-width: 50rem;">
+    <div *ngFor="let data of fundData">
+      <fund-card [fund]="data"></fund-card>
+    </div>
+  </div>
 </main>
