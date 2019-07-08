@@ -1,5 +1,6 @@
 <main role="main" class="funds">
-  <div *ngIf="fundData" style="max-width: 50rem;">
+  <div *ngIf="fundData">
+  <!-- <div *ngIf="fundData" style="max-width: 50rem;"> -->
     <div *ngFor="let data of fundData">
       <fund-card [fund]="data"></fund-card>
     </div>
