@@ -14,12 +14,12 @@
         <div class="opportunity__details">{{opportunityData.details}}</div>
         <div class="opportunity__requirement"><b>Looking For: </b>{{opportunityData.requirement | requirement}}</div>
     </mat-card-content>
-    <mat-card-actions class="opportunity__cardActions">
+    <mat-card-actions class="opportunity__cardActions" *ngIf="!opportunityData.getInTouchFilled">
         <div *ngIf="opportunityData.createdBy._id===authService.decodedToken.id; else getInTouch">
             <button class="btn--app btn--round card__btn">Response(s): {{opportunityData?.responseCount || 0}}</button>
         </div>
         <ng-template #getInTouch>
-            <button class="btn--app btn--round card__btn" (click)="touch()">Get in Touch</button>
+            <button *ngIf="!opportunityData.getInTouchFilled" class="btn--app btn--round card__btn" (click)="touch()">Get in Touch</button>
         </ng-template>
     </mat-card-actions>
 </mat-card>
