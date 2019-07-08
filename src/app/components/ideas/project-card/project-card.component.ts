@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { GetInTouchFormComponent } from '../../forms/get-in-touch-form/get-in-touch-form.component';
 
 @Component({
   selector: 'project-card',
@@ -12,18 +14,21 @@ export class ProjectCardComponent implements OnInit {
   @Input('project') projectData
 
   constructor(public authService: AuthService,
-    private router: Router) { }
+    private router: Router,
+    public dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
-  getInTouch() {
+  touch() {
     if(this.authService.isAuthenticated() && this.authService.isUserAuthenticated()){
-
+      let dialogRef = this.dialog.open(GetInTouchFormComponent, {
+        panelClass: "dialog-form-pane",
+        data: {}
+      })
     }else {
       this.authService.login(this.router.url)
     }
-    console.log('get in touch tapped')
   }
 
 }
