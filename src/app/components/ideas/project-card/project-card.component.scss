@@ -154,6 +154,13 @@ a:link, a:visited {
     }
 }
 
+.bdr_btm {
+    :host /deep/ & > img {
+        border-bottom: none !important;
+    }
+}
+
+
 .border {
     height: 1px;
     background-color: rgba(112, 112, 112, 0.3);
