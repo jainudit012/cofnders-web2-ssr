@@ -81,7 +81,12 @@ import { InvestorTypePipe } from './pipes/investorType.pipe';
     InvestorTypePipe
   ],
   entryComponents: [
-    PostSignUpFormComponent
+    PostSignUpFormComponent,
+    ProjectFormComponent,
+    OpportunityFormComponent,
+    ListFundFormComponent,
+    ApplicationFormComponent,
+    GetInTouchFormComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -94,7 +99,7 @@ import { InvestorTypePipe } from './pipes/investorType.pipe';
     CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'cofnderscloud' } as CloudinaryConfiguration)
   ],
   providers: [
-    // {provide: MatDialogRef, useValue: {}}
+    {provide: MatDialogRef, useValue: {}}
   ],
   bootstrap: [AppComponent]
 })
