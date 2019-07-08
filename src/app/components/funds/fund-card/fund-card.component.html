@@ -3,7 +3,7 @@
     <div *ngIf="fundData.logo" mat-card-avatar class="fund__logo--box">
       <div *ngIf="fundData.logo.indexOf('res.cloudinary.com')>0; else otherImages">
           <cl-image [public-id]="fundData.logo.substr(54)" secure="true" class="fund__logo" alt="Company Logo">
-              <cl-transformation width="50" height="50" crop="fill" quality="auto" dpr="auto" fetch-format="auto">
+              <cl-transformation width="50" height="50" crop="fill" quality="auto" dpr="auto" radius="max" fetch-format="auto">
               </cl-transformation>
           </cl-image>
       </div>
