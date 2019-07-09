@@ -40,7 +40,10 @@
     grid-column: block-2-start / block-2-end;
 }
 
-:host /deep/ router-outlet + app-privacy-page, :host /deep/ router-outlet + app-terms-page, :host /deep/ router-outlet + app-trust-page {
+:host /deep/ router-outlet + app-privacy-page, :host /deep/ router-outlet + app-terms-page, :host /deep/ router-outlet + app-trust-page{
     grid-column: container-start / container-end;
-    
+}
+
+:host /deep/ router-outlet + app-about-page  {
+    grid-column: blank-1-start / blank-2-end;
 }
