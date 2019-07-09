@@ -1,5 +1,5 @@
 import { Directive, EventEmitter, HostListener, Input, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Directive({
   selector: '[tsSubmitIfValid]',
@@ -14,6 +14,7 @@ export class SubmitIfValidDirective {
   @HostListener('click')
   handleClick(){
     this.markFieldsAsDirtyAndTouched()
+    this.markFieldsAsDirtyAndTouched2()
     this.emitIfValid()
   }
 
@@ -23,6 +24,19 @@ export class SubmitIfValidDirective {
         this.formRef.controls[fieldName].markAsDirty()
         this.formRef.controls[fieldName].markAsTouched()
       }
+    )
+  }
+
+  private markFieldsAsDirtyAndTouched2() {
+    Object.keys(this.formRef.controls).forEach(
+      c=>{
+        if((<any>this.formRef.controls[c]).controls){
+          Object.keys((<any>this.formRef.controls[c]).controls).forEach(a=>{
+            (<FormControl>(<FormGroup>this.formRef.controls[c]).controls[a]).markAsDirty();
+            (<FormControl>(<FormGroup>this.formRef.controls[c]).controls[a]).markAsTouched();
+           })
+        }
+      } 
     )
   }
 
