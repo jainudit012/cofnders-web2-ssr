@@ -1,0 +1,317 @@
+.wrapper {
+    overflow-x: hidden;
+    font-family: "Open Sans", sans-serif;
+    color: #505962;
+}
+
+.navbar {
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.0125rem;
+  background-color: white;
+  padding: 1rem 0.625rem;
+  box-shadow: 2px 2px 2px  #ccc !important;
+   z-index: 10; 
+   border: 1px solid #e7e7e7!important;
+}
+
+.navbar-brand img {
+  height: 50px;
+}
+
+.navbar-toggler {
+  color: black;
+  font-size: 1.875rem;
+  padding-top: 10px;
+}
+
+.form-inline .form-control {
+  background-color: #00b7ff;
+  border-radius: 1.875rem;
+  -webkit-border-radius: 1.875rem;
+  -moz-border-radius: 1.875rem;
+  -ms-border-radius: 1.875rem;
+  -o-border-radius: 1.875rem;
+  width: 10.437rem;
+  height: 1.375rem;
+  margin-right: 1.25rem !important;
+  border: 0;
+}
+
+.navbar-nav li {
+  padding-right: 1rem;
+}
+
+.navbar-nav .nav-link {
+  color: black;
+  font-size: 15px
+}
+
+.clearfix {
+  clear: both;
+  overflow: hidden;
+}
+
+.home-wrap {
+  position: relative;
+  .feature-para {
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+  }
+  .landing-des{
+    @media screen and (max-width: 575px) {
+      display: none;
+    }
+  }
+  .landing-mobile{
+    @media screen and (max-width: 575px) {
+      background-image: linear-gradient(rgba(white, 0.75), rgba(white, 0.75)), url("../../../assets/012-compressor.jpg");
+      background-size: cover;
+      height: 100vh;
+    }
+    @media screen and (min-width: 576px) {
+      display: none
+    }
+  }
+  .btn{
+    @media screen and (max-width: 575px) {
+      margin-bottom: 40px;
+    }
+  }
+  
+}
+
+
+.landing-detail {
+  height: 100%;
+  padding-top: 80px;
+  display: flex;
+  align-items: center;
+
+  .landing-icon {
+    .icon-item {
+      color: white;
+      font-size: 1.875rem;
+      margin-right: 3.125rem;
+    }
+  }
+
+  .landing-text {
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: white;
+
+    .landing-title {
+      font-size: 1.56rem;
+      font-weight: 600;
+      margin-bottom: 0.781rem;
+    }
+
+    .landing-heading {
+      h2 {
+        font-size: 3.43rem;
+        font-weight: 600;
+      }
+
+      margin-bottom: 1.56rem;
+    }
+
+    .landing-para {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 3.125rem;
+    }
+  }
+}
+
+.narrow {
+  margin: 0 auto;
+  width:90%;
+
+  @media screen and (max-width: 1024px) {
+    width: 85%;
+  }
+
+  @media screen and (max-width: 575px) {
+    width: 90%;
+  }
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 black;
+}
+
+.row {
+  align-items: center;
+}
+
+.btn:focus {
+  box-shadow: 0 0 0 0rem rgba(0, 123, 255, 0.25);
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus{
+    box-shadow: none;
+}
+
+.btn-submit:hover,
+.btn-submit:active,
+.btn-submit:not(:disabled):not(.disabled):active {
+  color: black;
+  background-color: #ffda00;
+  border: 2px solid #ffda00;
+}
+
+.btn-submit {
+  color: white;
+  background-color: #00BCD4;
+  border: 2px solid #00BCD4;
+  box-shadow: 0rem 1.25px 1.25px rgba(0, 0, 0, 0.34);
+  padding: 1rem 1.2rem;
+  font-size: 1.4rem;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
+  margin: 0.625rem 0.625rem;
+}
+
+
+
+
+
+.section-heading {
+  font-size: 2rem;
+  font-weight: 600;
+  color: black;
+  margin-bottom: 2rem;
+}
+
+.features {
+  .section-heading {
+    margin-top: 3.125rem;
+
+    @media screen and (max-width: 767px) {
+      margin-bottom: -1.25rem;
+    }
+  }
+
+
+  .feature-part {
+    padding: 3.125rem 0;
+
+    @media screen and (max-width: 767px) {
+      padding: 3.125rem 0 5rem 0;
+    }
+
+    @media screen and (max-width: 767px) {
+      .mobile-dir {
+        display: flex;
+        flex-direction: column;
+
+        .mobile-order-2 {
+          order: -1;
+          text-align: center;
+        }
+      }
+    }
+    .btncenter{
+      @media screen and (max-width: 575px) {
+       text-align: center;
+      }
+    }
+
+    img {
+      width: 100%;
+      // margin-bottom: 2rem;
+      transition: transform 0.5s;
+
+      @media screen and (max-width: 767px) {
+        max-width: 80%;
+        margin-bottom: 3.75rem;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+    .feature-heading {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: black
+      }
+      .feature-para {
+        font-size: 1.25rem;
+      }
+
+    .feature-detail {
+      // margin-bottom: 2rem;
+      color: #4a4a4a;
+      padding: 0 3rem;
+
+      @media screen and (max-width: 767px) {
+        padding: 0 3.125rem;
+      }
+
+     
+    }
+  }
+}
+
+.current-alt {
+  background-image: linear-gradient(rgba(white, 0.95), rgba(white, 0.95)), url("../../../assets/07-compressor.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 5rem 0 5rem 0;
+  p{
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: black;
+  }
+}
+
+@media (max-width: 991px) {
+  .home-inner h1 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .home-inner h1 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .home-inner h1 {
+    font-size: 1rem;
+  }
+
+  .footer .container-fluid {
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .footer img {
+    height: 29px;
+  }
+
+  .footer .icon {
+    max-width: 55%;
+  }
+}
+
+@media (max-width: 450px) {
+  .home-inner h1 {
+    font-size: 0.8125rem;
+  }
+}
