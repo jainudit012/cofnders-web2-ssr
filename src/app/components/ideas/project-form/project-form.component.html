@@ -1,3 +1,138 @@
-<p>
-  project-form works!
-</p>
+<div>
+  <h1 class="heading">Create Project</h1>
+  <div *ngIf="page===0" class="heading__sub">Project Basics</div>
+  <div *ngIf="page===1" class="heading__sub">Project Details</div>
+  <div *ngIf="page===2" class="heading__sub">Finishing Touch</div>
+  <svg  version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" class="btn__close">
+    <title>cross</title>
+    <path d="M31.708 25.708c-0-0-0-0-0-0l-9.708-9.708 9.708-9.708c0-0 0-0 0-0 0.105-0.105 0.18-0.227 0.229-0.357 0.133-0.356 0.057-0.771-0.229-1.057l-4.586-4.586c-0.286-0.286-0.702-0.361-1.057-0.229-0.13 0.048-0.252 0.124-0.357 0.228 0 0-0 0-0 0l-9.708 9.708-9.708-9.708c-0-0-0-0-0-0-0.105-0.104-0.227-0.18-0.357-0.228-0.356-0.133-0.771-0.057-1.057 0.229l-4.586 4.586c-0.286 0.286-0.361 0.702-0.229 1.057 0.049 0.13 0.124 0.252 0.229 0.357 0 0 0 0 0 0l9.708 9.708-9.708 9.708c-0 0-0 0-0 0-0.104 0.105-0.18 0.227-0.229 0.357-0.133 0.355-0.057 0.771 0.229 1.057l4.586 4.586c0.286 0.286 0.702 0.361 1.057 0.229 0.13-0.049 0.252-0.124 0.357-0.229 0-0 0-0 0-0l9.708-9.708 9.708 9.708c0 0 0 0 0 0 0.105 0.105 0.227 0.18 0.357 0.229 0.356 0.133 0.771 0.057 1.057-0.229l4.586-4.586c0.286-0.286 0.362-0.702 0.229-1.057-0.049-0.13-0.124-0.252-0.229-0.357z">
+    </path>
+  </svg>
+  <form [formGroup]="form" class="slides">
+    <div formGroupName="projectBasic">
+      <div class="startup__identity">
+        <div class="startup__identity--image-box">
+          <div class="startup--img" [style.background-image]="'url('+logoImage+')'">&nbsp;</div>
+        </div>
+        <h3 class="startup__identity--heading">Your Startup Identity</h3>
+        <input type="file" (change)="insertedFile($event)" #chooseStartupIdentity hidden ng2FileSelect [uploader]="uploader" accept="image/*">
+        <button mat-button type="button" class="startup__identity--btn" (click)="triggerUploadPhoto()">Choose File</button>
+        <span class="startup__identity--formats">Only PNG/JPEG files</span>
+      </div>
+      <div class="project__details--basic">
+        <div>
+          <mat-form-field class="project__name">
+            <input matInput placeholder="Name Your Startup Project" formControlName="name" class="form-control" required>
+            <mat-error *ngIf="projectName.touched && projectName.invalid && projectName.errors.required">Please enter a Project Name</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="project__category">
+            <mat-label>Choose Project Category</mat-label>
+            <mat-select required formControlName="category">
+              <mat-option *ngFor="let c of categories" [value]="c">
+                {{c}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="projectCategory.touched && projectCategory.invalid && projectCategory.errors.required">Project Category is Required</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="project__sector">
+            <mat-label>Choose Project Sector</mat-label>
+            <mat-select required formControlName="sector">
+              <mat-option *ngFor="let s of sectors" [value]="s">
+                {{s}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="projectSector.touched && projectSector.invalid && projectSector.errors.required">Project Category is Required</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="project__stage">
+            <mat-label>Choose Project Stage</mat-label>
+            <mat-select required formControlName="stage">
+              <mat-option *ngFor="let s of stages" [value]="s">
+                {{s}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="projectStage.touched && projectStage.invalid && projectStage.errors.required">Project Stage is Required</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="project__team">
+            <mat-label>Choose your Team Size</mat-label>
+            <mat-select required formControlName="team">
+              <mat-option *ngFor="let t of teamSize" [value]="t">
+                {{t}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="projectTeamSize.touched && projectTeamSize.invalid && projectTeamSize.errors.required">Project Category is Required</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <!-- <div formGroupName="projectDetails">
+      <mat-form-field class="project__acceptingFunds">
+        <mat-label>Are you Accepting Funding?</mat-label>
+        <mat-select required formControlName="acceptingFunds">
+          <mat-option value="true">Yes</mat-option>
+          <mat-option value="false">No</mat-option>
+        </mat-select>
+        <mat-error *ngIf="acceptingFunds.touched && acceptingFunds.invalid && acceptingFunds.errors.required">Accepting Funding is Required</mat-error>
+      </mat-form-field>
+      <div>
+        <mat-form-field class="project__pitch">
+          <textarea matInput placeholder="Write your 300 character pitch" required formControlName="pitch" maxlength="300"></textarea>
+          <mat-error *ngIf="projectPitch.touched && projectPitch.invalid && projectPitch.errors.required">Accepting Funding is Required</mat-error>
+        </mat-form-field>
+        <div class="characterCount">{{300 - (projectPitch? projectPitch.value.length : 0) }} Characters</div> 
+      </div>
+      <div>
+        <mat-form-field class="project__problem">
+          <textarea matInput placeholder="What is the problem you are Solving?" formControlName="problemSolvingDescription" maxlength="300"></textarea>
+        </mat-form-field>
+        <div class="characterCount">{{300 - (projectProblem? projectProblem.value.length : 0) }} Characters</div>
+      </div>
+      <div>
+        <mat-form-field class="project__value">
+          <textarea matInput placeholder="What is the value that you are adding for your Customers?" formControlName="valueAddCustomer" maxlength="300"></textarea>
+        </mat-form-field>
+        <div class="characterCount">{{300 - (projectValue? projectValue.value.length : 0) }} Characters</div>
+      </div>
+    </div> -->
+    <div formGroupName="projectFinishing">
+      <div>
+        <mat-form-field class="project__website">
+          <input matInput placeholder="Link to Website" formControlName="website" class="form-control">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="project__website">
+          <input matInput placeholder="Link to Website" formControlName="website" class="form-control">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="project__facebook">
+          <input matInput placeholder="Link to Facebook Page" formControlName="facebook" class="form-control">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="project__twitter">
+          <input matInput placeholder="Link to Twitter Page" formControlName="twitter" class="form-control">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="project__linkedIn">
+          <input matInput placeholder="Link to LinkedIn Page" formControlName="linkedIn" class="form-control">
+        </mat-form-field>
+      </div>
+      <div>
+        <input type="file" class="project__coverImage"  ng2FileSelect [uploader]="uploader" (change)="uploadCoverImage($event)" id="validatedCustomFile" accept="image/*" >
+        <label class="project__coverImage--label" for="validatedCustomFile">{{ fileName || 'Add Cover Image' }}</label>
+        <div class="file-css">Only PNG/JPEG files 800 px x 800</div>
+      </div>
+    </div>
+    <button type="submit" [tsSubmitIfValid]="form" [disabled]="form.valid" (click)="send()">Submit</button>
+  </form>
+</div>
