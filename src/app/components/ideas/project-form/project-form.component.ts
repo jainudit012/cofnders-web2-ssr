@@ -24,6 +24,30 @@ export class ProjectFormComponent implements OnInit {
   logoImage: any
   coverImage: any
   fileName: string
+  selectedValue: number
+
+  prevBtnName: string = 'Previous'
+  nextBtnName: string = 'Next'
+  public steps: number[] = [];
+  public pages = [
+
+    {
+      formTitle: 'Create Project',
+      description: 'Project Basics',
+      nextBtnText: 'Project Details'
+    },
+    {
+      formTitle: 'Create Project',
+      description: 'Project Details',
+      nextBtnText: 'Finishing Touch'
+    },
+    {
+      formTitle: 'Create Project',
+      description: 'Finishing Touch',
+      nextBtnText: 'Finish',
+      submitOnFinish: true
+    }
+  ]
 
   uploader: CloudinaryUploader = new CloudinaryUploader(
     new CloudinaryOptions({ cloudName: 'cofnderscloud', uploadPreset: 'wtittxoq' })
@@ -66,6 +90,10 @@ export class ProjectFormComponent implements OnInit {
     this.stages = [StartupStage.IDEA, StartupStage.MVP, StartupStage.GROWTH, StartupStage.BETA, StartupStage.GROWING]
     this.teamSize = [TeamSizes.SINGLE, TeamSizes.VERY_SMALL, TeamSizes.SMALL, TeamSizes.TEN_PLUS, TeamSizes.TWENTY_PLUS, TeamSizes.MEDIUM, TeamSizes.LARGE]
     this.uploadToCloudinary()
+    this.selectedValue = 0
+    this.steps = [1, 2, 3]
+    this.prevBtnName = this.pages[this.selectedValue].description
+    this.nextBtnName = this.pages[this.selectedValue].nextBtnText
   }
 
   onNoClick(): void {
@@ -111,12 +139,6 @@ export class ProjectFormComponent implements OnInit {
     }
   }
 
-  send(){
-    console.log(this.form)
-    console.log(this.form.value)
-    console.log(this.form.get('projectBasic.name'))
-  }
-
   get projectName(){
     return this.form.get('projectBasic.name')
   }
@@ -152,5 +174,53 @@ export class ProjectFormComponent implements OnInit {
   get projectValue(){
     return this.form.get('projectDetails.valueAddCustomer')
   }
+
+  clickNext() {
+    if(this.selectedValue===0){
+      let isFormValid = this.form.get('projectBasic').valid
+      if(!isFormValid){
+       Object.keys((<any>this.form.controls['projectBasic']).controls).forEach(a=>{
+        (<FormControl>(<FormGroup>this.form.controls['projectBasic']).controls[a]).markAsDirty();
+        (<FormControl>(<FormGroup>this.form.controls['projectBasic']).controls[a]).markAsTouched();
+       })
+      }else {
+        this.goNext()
+      }
+    }else if(this.selectedValue===1){
+      let isFormValid = this.form.get('projectDetails').valid
+      if(!isFormValid){
+        Object.keys((<any>this.form.controls['projectDetails']).controls).forEach(a=>{
+          (<FormControl>(<FormGroup>this.form.controls['projectDetails']).controls[a]).markAsDirty();
+          (<FormControl>(<FormGroup>this.form.controls['projectDetails']).controls[a]).markAsTouched();
+         })
+      }else {
+        this.goNext()
+      }
+    }
+  }
+
+  goNext() {
+    if (this.selectedValue < this.steps.length - 1) {
+      this.selectedValue = this.selectedValue + 1;
+
+      /* set next button name */
+      this.prevBtnName = this.pages[this.selectedValue - 1].description;
+      this.nextBtnName = this.pages[this.selectedValue].nextBtnText;
+    }
+  }
+
+  goPrev(){
+    if (this.selectedValue !== 0) {
+      this.selectedValue = this.selectedValue - 1;
+      /* set prev button name */
+      this.prevBtnName = this.pages[this.selectedValue]['description'];
+      this.nextBtnName = this.pages[this.selectedValue]['nextBtnText'];
+    }
+  }
+
+  createProject() {
+    console.log(this.form)
+  }
+
 
 }
