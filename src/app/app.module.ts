@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgtUniversalModule } from '@ng-toolkit/universal';
 import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
 import { Cloudinary } from 'cloudinary-core';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -94,12 +95,13 @@ import { InvestorTypePipe } from './pipes/investorType.pipe';
     HttpClientModule,
     MaterialModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
     NgtUniversalModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'cofnderscloud' } as CloudinaryConfiguration)
+    CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'cofnderscloud' } as CloudinaryConfiguration),
+    FileUploadModule
   ],
   providers: [
-    {provide: MatDialogRef, useValue: {}}
+    // {provide: MatDialogRef, useValue: {}}
   ],
   bootstrap: [AppComponent]
 })
