@@ -3,7 +3,7 @@
   <div *ngIf="selectedValue===0" class="heading__sub">Project Basics</div>
   <div *ngIf="selectedValue===1" class="heading__sub">Project Details</div>
   <div *ngIf="selectedValue===2" class="heading__sub">Finishing Touch</div>
-  <svg  version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" class="btn__close">
+  <svg  version="1.1" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 32 32" class="btn__close" (click)="onClose()" tabindex="0">
     <title>cross</title>
     <path d="M31.708 25.708c-0-0-0-0-0-0l-9.708-9.708 9.708-9.708c0-0 0-0 0-0 0.105-0.105 0.18-0.227 0.229-0.357 0.133-0.356 0.057-0.771-0.229-1.057l-4.586-4.586c-0.286-0.286-0.702-0.361-1.057-0.229-0.13 0.048-0.252 0.124-0.357 0.228 0 0-0 0-0 0l-9.708 9.708-9.708-9.708c-0-0-0-0-0-0-0.105-0.104-0.227-0.18-0.357-0.228-0.356-0.133-0.771-0.057-1.057 0.229l-4.586 4.586c-0.286 0.286-0.361 0.702-0.229 1.057 0.049 0.13 0.124 0.252 0.229 0.357 0 0 0 0 0 0l9.708 9.708-9.708 9.708c-0 0-0 0-0 0-0.104 0.105-0.18 0.227-0.229 0.357-0.133 0.355-0.057 0.771 0.229 1.057l4.586 4.586c0.286 0.286 0.702 0.361 1.057 0.229 0.13-0.049 0.252-0.124 0.357-0.229 0-0 0-0 0-0l9.708-9.708 9.708 9.708c0 0 0 0 0 0 0.105 0.105 0.227 0.18 0.357 0.229 0.356 0.133 0.771 0.057 1.057-0.229l4.586-4.586c0.286-0.286 0.362-0.702 0.229-1.057-0.049-0.13-0.124-0.252-0.229-0.357z">
     </path>
@@ -13,12 +13,17 @@
       <div formGroupName="projectBasic" *ngIf="selectedValue===0">
         <div class="startup__identity">
           <div class="startup__identity--image-box">
-            <div class="startup--img" [style.background-image]="'url('+logoImage+')'">&nbsp;</div>
+            <img *ngIf="logoImage; else block" [src]="logoImage" alt="Logo Image" class="startup__img">
+            <ng-template #block>
+                <div class="startup__img--block">&nbsp;</div>
+            </ng-template>
           </div>
-          <h3 class="startup__identity--heading">Your Startup Identity</h3>
-          <input type="file" (change)="insertedFile($event)" #chooseStartupIdentity hidden ng2FileSelect [uploader]="uploader" accept="image/*">
-          <button mat-button type="button" class="startup__identity--btn" (click)="triggerUploadPhoto()">Choose File</button>
-          <span class="startup__identity--formats">Only PNG/JPEG files</span>
+          <div class="startup__identity--details-box">
+            <h3 class="startup__identity--heading">Your&nbsp;Startup&nbsp;Identity</h3>
+            <input type="file" (change)="insertedFile($event)" #chooseStartupIdentity hidden ng2FileSelect [uploader]="uploader" accept="image/*">
+            <button mat-button type="button" class="startup__identity--btn" (click)="triggerUploadPhoto()">Choose File</button>
+            <span class="startup__identity--formats">Only PNG/JPEG files</span>
+          </div>
         </div>
         <div class="project__details--basic">
           <div>
@@ -46,7 +51,7 @@
                   {{s}}
                 </mat-option>
               </mat-select>
-              <mat-error *ngIf="projectSector.touched && projectSector.invalid && projectSector.errors.required">Project Category is Required</mat-error>
+              <mat-error *ngIf="projectSector.touched && projectSector.invalid && projectSector.errors.required">Project Sector is Required</mat-error>
             </mat-form-field>
           </div>
           <div>
@@ -63,29 +68,32 @@
           <div>
             <mat-form-field class="project__team">
               <mat-label>Choose your Team Size</mat-label>
-              <mat-select required formControlName="team">
-                <mat-option *ngFor="let t of teamSize" [value]="t">
+              <mat-select required formControlName="teamSize">
+                <mat-option *ngFor="let t of teamSizes" [value]="t">
                   {{t}}
                 </mat-option>
               </mat-select>
-              <mat-error *ngIf="projectTeamSize.touched && projectTeamSize.invalid && projectTeamSize.errors.required">Project Category is Required</mat-error>
+              <mat-error *ngIf="projectTeamSize.touched && projectTeamSize.invalid && projectTeamSize.errors.required">Project Team Size Required</mat-error>
             </mat-form-field>
           </div>
         </div>
       </div>
-      <div formGroupName="projectDetails" *ngIf="selectedValue===1">
-        <mat-form-field class="project__acceptingFunds">
-          <mat-label>Are you Accepting Funding?</mat-label>
-          <mat-select required formControlName="acceptingFunds">
-            <mat-option value="true">Yes</mat-option>
-            <mat-option value="false">No</mat-option>
-          </mat-select>
-          <mat-error *ngIf="acceptingFunds.touched && acceptingFunds.invalid && acceptingFunds.errors.required">Accepting Funding is Required</mat-error>
-        </mat-form-field>
+      <div formGroupName="projectDetails" *ngIf="selectedValue===1" class="project__details">
+        <div>
+          <mat-form-field class="project__acceptingFunds">
+            <mat-label>Are you Accepting Funding?</mat-label>
+            <mat-select required formControlName="acceptingFunds">
+              <mat-option value="true">Yes</mat-option>
+              <mat-option value="false">No</mat-option>
+            </mat-select>
+            <mat-error *ngIf="acceptingFunds.touched && acceptingFunds.invalid && acceptingFunds.errors.required">Accepting Funding is Required</mat-error>
+          </mat-form-field>
+        </div>
         <div>
           <mat-form-field class="project__pitch">
             <textarea matInput placeholder="Write your 300 character pitch" required formControlName="pitch" maxlength="300"></textarea>
-            <mat-error *ngIf="projectPitch.touched && projectPitch.invalid && projectPitch.errors.required">Accepting Funding is Required</mat-error>
+            <mat-error *ngIf="projectPitch.touched && projectPitch.invalid && projectPitch.errors.required">Pitch is Required</mat-error>
+            <mat-error *ngIf="projectPitch.touched && projectPitch.invalid && projectPitch.errors.maxlength">Pitch should be less than 300 Characters</mat-error>
           </mat-form-field>
           <div class="characterCount">{{300 - (projectPitch? projectPitch.value.length : 0) }} Characters</div> 
         </div>
@@ -97,52 +105,51 @@
         </div>
         <div>
           <mat-form-field class="project__value">
-            <textarea matInput placeholder="What is the value that you are adding for your Customers?" formControlName="valueAddCustomer" maxlength="300"></textarea>
+            <textarea matInput placeholder="What is the value that you are adding for your Customers?" formControlName="valueAddDescription" maxlength="300"></textarea>
           </mat-form-field>
           <div class="characterCount">{{300 - (projectValue? projectValue.value.length : 0) }} Characters</div>
         </div>
       </div>
-      <div formGroupName="projectFinishing" *ngIf="selectedValue===2">
+      <div formGroupName="projectFinishing" *ngIf="selectedValue===2" class="project__finishing">
         <div>
           <mat-form-field class="project__website">
-            <input matInput placeholder="Link to Website" formControlName="website" class="form-control">
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field class="project__website">
-            <input matInput placeholder="Link to Website" formControlName="website" class="form-control">
+            <input matInput placeholder="Link to Website" formControlName="websiteLink" class="form-control">
           </mat-form-field>
         </div>
         <div>
           <mat-form-field class="project__facebook">
-            <input matInput placeholder="Link to Facebook Page" formControlName="facebook" class="form-control">
+            <input matInput placeholder="Link to Facebook Page" formControlName="facebookLink" class="form-control">
           </mat-form-field>
         </div>
         <div>
           <mat-form-field class="project__twitter">
-            <input matInput placeholder="Link to Twitter Page" formControlName="twitter" class="form-control">
+            <input matInput placeholder="Link to Twitter Page" formControlName="twitterLink" class="form-control">
           </mat-form-field>
         </div>
         <div>
           <mat-form-field class="project__linkedIn">
-            <input matInput placeholder="Link to LinkedIn Page" formControlName="linkedIn" class="form-control">
+            <input matInput placeholder="Link to LinkedIn Page" formControlName="linkedInLink" class="form-control">
           </mat-form-field>
         </div>
-        <div>
-          <input type="file" class="project__coverImage"  ng2FileSelect [uploader]="uploader" (change)="uploadCoverImage($event)" id="validatedCustomFile" accept="image/*" >
-          <label class="project__coverImage--label" for="validatedCustomFile">{{ fileName || 'Add Cover Image' }}</label>
-          <div class="file-css">Only PNG/JPEG files 800 px x 800</div>
+        <div class="project__coverImage--box">
+          <div class="project__coverImage--input-box">
+              <label class="project__coverImage--label" for="validatedCustomFile" tabindex="0">{{ fileName || 'Add Cover Image' }}
+                  <input type="file" class="project__coverImage"  ng2FileSelect [uploader]="uploader" (change)="uploadCoverImage($event)" id="validatedCustomFile" accept="image/*" >
+                  <span class="project__coverImage--text">Choose File</span>
+              </label>
+          </div>
+          <div class="file-css">Only PNG/JPEG files 800px x 800px</div>
         </div>
       </div>
       <div class="pager">
-        <button class="prevnext" [style.visibility]="selectedValue !== 0 ? 'visible' : 'hidden'" [disabled]="selectedValue === 0" (click)="goPrev()">&lt;{{prevBtnName}}</button>
+        <button class="prevnext" [style.visibility]="selectedValue !== 0 ? 'visible' : 'hidden'" [disabled]="selectedValue === 0" (click)="goPrev()">&lt; {{prevBtnName}}</button>
         <div class="pager__dots--wrapper">
           <div *ngFor="let page of pages;index as i">
-            <div [class.pager__dots-selected]="i === selectedValue" class="pager__dots"></div>
+            <div [class.pager__dots--selected]="i === selectedValue" class="pager__dots"></div>
           </div>
         </div>
         <button type="button" *ngIf="selectedValue !== 2" class="prevnext" (click)="clickNext()">{{nextBtnName}} &gt;</button>
-        <button type="submit" [tsSubmitIfValid]="form" *ngIf="selectedValue === 2" class="submit__btn" (click)="createProject()">{{nextBtnName}}</button>
+        <button type="submit" [tsSubmitIfValid]="form" *ngIf="selectedValue === 2" class="btn--app btn--round card__btn" (click)="createProject()">{{nextBtnName}}</button>
       </div>
     </form>
   </div>
