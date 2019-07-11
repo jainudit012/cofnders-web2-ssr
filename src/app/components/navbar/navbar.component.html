@@ -34,14 +34,14 @@
       </div>
     </div>
     <div class="controls">
-      <a (click)="login()" class="btn--sign-in btn--app" *ngIf="!authService.isAuthenticated(); else loggedInUser">Sign&nbsp;In</a>
+      <a (click)="login()" (keyup.enter)="login()" class="btn--sign-in btn--app" *ngIf="!authService.isAuthenticated(); else loggedInUser" tabindex="0">Sign&nbsp;In</a>
       <ng-template #loggedInUser>
-        <button mat-button [matMenuTriggerFor]="menu" class="user__menu--button" onclick="this.blur();">
+        <button mat-button [matMenuTriggerFor]="menu" class="user__menu--button"  tabindex="0">
           <img *ngIf="userService.authUser" [src]="userService.authUser?.picture" alt="User" class="user__menu--image">
-          <h2 class="user__menu--name">{{userService.authUser?.name}}</h2>
+          <h3 class="user__menu--name">{{userService.authUser?.name}}</h3>
         </button>
-        <mat-menu #menu="matMenu" class="user__menu--list">
-            <a (click)="logout()" class="btn--sign-out btn--app">Log Out</a>
+        <mat-menu #menu="matMenu" class="user__menu--list" [overlapTrigger]="false">
+            <a mat-menu-item (keyup.enter)="logout()" (click)="logout()" class="btn--sign-out btn--app">Log Out</a>
         </mat-menu>
       </ng-template>
     </div>
