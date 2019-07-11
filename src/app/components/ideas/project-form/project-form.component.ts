@@ -3,22 +3,24 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ProjectNature, Sector, StartupStage, TeamSizes } from '../../../models/project.model';
 import { CloudinaryUploader, CloudinaryOptions } from 'ng2-cloudinary';
+import { DataService } from '../../../services/data.service';
 
 @Component({
   selector: 'app-project-form',
   templateUrl: './project-form.component.html',
   styleUrls: ['./project-form.component.scss'],
   providers: [
-    { provide: MAT_DIALOG_DATA, useValue: {}}
+    // { provide: MAT_DIALOG_DATA, useValue: {}}
   ]
 })
 export class ProjectFormComponent implements OnInit {
+
 
   page:number = 0
   categories: string[]
   sectors: string[]
   stages: string[]
-  teamSize: string[]
+  teamSizes: string[]
   imageType: string
   @ViewChild('chooseStartupIdentity', {static: true}) chooseStartupIdentity: any;
   logoImage: any
@@ -63,32 +65,32 @@ export class ProjectFormComponent implements OnInit {
       category: new FormControl('', Validators.required),
       sector: new FormControl('', Validators.required),
       stage: new FormControl('', Validators.required),
-      team: new FormControl('', Validators.required),
+      teamSize: new FormControl('', Validators.required),
     }),
     projectDetails: new FormGroup({
       acceptingFunds: new FormControl('', Validators.required),
-      pitch: new FormControl('', [Validators.required, Validators.maxLength(13)]),
+      pitch: new FormControl('', [Validators.required, Validators.maxLength(300)]),
       problemSolvingDescription: new FormControl(''),
-      valueAddCustomer: new FormControl('')
+      valueAddDescription: new FormControl('')
     }),
     projectFinishing : new FormGroup({
-      website: new FormControl(''),
-      facebook: new FormControl(''),
-      twitter: new FormControl(''),
-      linkedIn: new FormControl(''),
+      websiteLink: new FormControl(''),
+      facebookLink: new FormControl(''),
+      twitterLink: new FormControl(''),
+      linkedInLink: new FormControl(''),
       coverImage: new FormControl('')
     })
   })
 
   constructor(public dialogRef: MatDialogRef<ProjectFormComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) private data: any,
-    private fb: FormBuilder) { }
+    private dataService: DataService) { }
 
   ngOnInit() {
     this.categories = [ProjectNature.CAUSE, ProjectNature.SERVICE ,ProjectNature.PRODUCT, ProjectNature.OTHERS]
     this.sectors = [Sector.HEALTHCARE_FITNESS, Sector.FIN_TECH, Sector.E_COMMERCE, Sector.CONSUMER, Sector.FOOD, Sector.EDUCATION, Sector.HR]
     this.stages = [StartupStage.IDEA, StartupStage.MVP, StartupStage.GROWTH, StartupStage.BETA, StartupStage.GROWING]
-    this.teamSize = [TeamSizes.SINGLE, TeamSizes.VERY_SMALL, TeamSizes.SMALL, TeamSizes.TEN_PLUS, TeamSizes.TWENTY_PLUS, TeamSizes.MEDIUM, TeamSizes.LARGE]
+    this.teamSizes = [TeamSizes.SINGLE, TeamSizes.VERY_SMALL, TeamSizes.SMALL, TeamSizes.TEN_PLUS, TeamSizes.TWENTY_PLUS, TeamSizes.MEDIUM, TeamSizes.LARGE]
     this.uploadToCloudinary()
     this.selectedValue = 0
     this.steps = [1, 2, 3]
@@ -121,12 +123,13 @@ export class ProjectFormComponent implements OnInit {
     }
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any)=>{
       const res = JSON.parse(response)
-      console.log(res)
       if(this.imageType === 'logo'){
-        this.logoImage = res.secure_url
+        this.logoImage = res.secure_url;
+        (<FormControl>(<FormGroup>this.form.controls['projectBasic']).controls['logo']).setValue(res.secure_url)
       }else{
         this.coverImage = res.secure_url
         this.fileName = res.original_filename + '.' + res.format;
+        (<FormControl>(<FormGroup>this.form.controls['projectFinishing']).controls['coverImage']).setValue(res.secure_url)
       }
     }
 
@@ -156,7 +159,7 @@ export class ProjectFormComponent implements OnInit {
   }
 
   get projectTeamSize(){
-    return this.form.get('projectBasic.team')
+    return this.form.get('projectBasic.teamSize')
   }
 
   get acceptingFunds(){
@@ -172,7 +175,7 @@ export class ProjectFormComponent implements OnInit {
   }
 
   get projectValue(){
-    return this.form.get('projectDetails.valueAddCustomer')
+    return this.form.get('projectDetails.valueAddDescription')
   }
 
   clickNext() {
@@ -218,8 +221,13 @@ export class ProjectFormComponent implements OnInit {
     }
   }
 
+  onClose() {
+    this.dialogRef.close()
+  }
+
   createProject() {
-    console.log(this.form)
+    this.dialogRef.close()
+    this.dataService.createProject(this.form.value)
   }
 
 
