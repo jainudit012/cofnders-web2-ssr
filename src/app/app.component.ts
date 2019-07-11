@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
     private userService: UserService,
     public router: Router,
     private swUpdate: SwUpdate,
-    @Inject(WINDOW) private window: Window,){ 
+    @Inject(WINDOW) private window: Window){ 
   }
 
   ngOnInit(){
