@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProjectFormComponent } from '../ideas/project-form/project-form.component';
 import { OpportunityFormComponent } from '../ideas/opportunity-form/opportunity-form.component';
 import { ListFundFormComponent } from '../funds/list-fund-form/list-fund-form.component';
+// import { WINDOW } from '@ng-toolkit/universal';
 
 @Component({
   selector: 'cta',
@@ -12,11 +13,17 @@ import { ListFundFormComponent } from '../funds/list-fund-form/list-fund-form.co
   styleUrls: ['./cta.component.scss']
 })
 export class CtaComponent implements OnInit {
+  
+  // isMobile: boolean = false;
 
   constructor(public router: Router,
     private authService: AuthService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    // @Inject(WINDOW) private window: Window
     ) { 
+      // if (this.window.screen.width < 450 && this.window.screen.width < this.window.screen.height) { // 768px portrait
+      //   this.isMobile = true;
+      // }
     }
 
   ngOnInit() {
@@ -50,6 +57,9 @@ export class CtaComponent implements OnInit {
     if(this.authService.isAuthenticated()&&this.authService.isUserAuthenticated()){
       console.log('list fund tap')
       let dialogRef = this.dialog.open(ListFundFormComponent, {
+        // width: this.isMobile ? '100vw' : 'auto',
+        // height: this.isMobile ? this.window.screen.height + 'px' : 'auto',
+        // maxWidth: '100%',
         panelClass: "dialog-form-pane",
         data: {}
       })
