@@ -1,3 +1,53 @@
-<p>
-  application-form works!
-</p>
+<div class="applyFunds--form">
+  <h1 class="heading">Apply for Funds</h1>
+  <div class="heading__sub">Select your project to apply</div>
+  <svg  version="1.1" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 32 32" class="btn__close" (click)="onClose()" tabindex="0">
+    <title>cross</title>
+    <path d="M31.708 25.708c-0-0-0-0-0-0l-9.708-9.708 9.708-9.708c0-0 0-0 0-0 0.105-0.105 0.18-0.227 0.229-0.357 0.133-0.356 0.057-0.771-0.229-1.057l-4.586-4.586c-0.286-0.286-0.702-0.361-1.057-0.229-0.13 0.048-0.252 0.124-0.357 0.228 0 0-0 0-0 0l-9.708 9.708-9.708-9.708c-0-0-0-0-0-0-0.105-0.104-0.227-0.18-0.357-0.228-0.356-0.133-0.771-0.057-1.057 0.229l-4.586 4.586c-0.286 0.286-0.361 0.702-0.229 1.057 0.049 0.13 0.124 0.252 0.229 0.357 0 0 0 0 0 0l9.708 9.708-9.708 9.708c-0 0-0 0-0 0-0.104 0.105-0.18 0.227-0.229 0.357-0.133 0.355-0.057 0.771 0.229 1.057l4.586 4.586c0.286 0.286 0.702 0.361 1.057 0.229 0.13-0.049 0.252-0.124 0.357-0.229 0-0 0-0 0-0l9.708-9.708 9.708 9.708c0 0 0 0 0 0 0.105 0.105 0.227 0.18 0.357 0.229 0.356 0.133 0.771 0.057 1.057-0.229l4.586-4.586c0.286-0.286 0.362-0.702 0.229-1.057-0.049-0.13-0.124-0.252-0.229-0.357z">
+    </path>
+  </svg>
+  <form [formGroup]="form" class="applyFunds__form">
+    <div>
+      <mat-form-field class="project__select">
+        <mat-label>Select Project</mat-label>
+        <mat-select required formControlName="projectId">
+          <mat-option *ngFor="let p of approvedProjects" [value]="p._id">
+            {{ p.projectName | removeQuotes }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="projectId.touched && projectId.invalid && projectId.errors.required">Project is Required</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="applyFunds__amount">
+        <input matInput placeholder="Funding Amount" required formControlName="amount">
+        <mat-error *ngIf="amount.touched && amount.invalid && amount.errors.required">Funding Amount is Required</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="applyFunds__valuation">
+        <input matInput placeholder="Company Valuation" required formControlName="valuation">
+        <mat-error *ngIf="valuation.touched && valuation.invalid && valuation.errors.required">Company Valuation is Required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="applyFunds__pdf--box">
+      <div class="applyFunds__pdf--input-box">
+          <label class="applyFunds__pdf--label" for="validatedCustomFile" tabindex="0">{{ fileName || 'Upload Pitch Deck' }}
+            <input type="file" class="applyFunds__pdf"  ng2FileSelect [uploader]="uploader" (change)="uploadPdf($event)" id="validatedCustomFile" accept="application/pdf">
+            <span class="applyFunds__pdf--text">Choose File</span>
+          </label>
+      </div>
+      <div class="file-css">Only pdf files</div>
+    </div>
+    <div>
+      <mat-form-field class="applyFunds__message">
+        <textarea matInput placeholder="Write your 300 character pitch" formControlName="message" maxlength="300" required></textarea>
+        <mat-error *ngIf="message.touched && message.invalid && message.errors.required">Pitch is Required</mat-error>
+      </mat-form-field>
+      <div class="characterCount">{{300 - (message ? message.value.length : 0) }} Characters</div>
+    </div>
+    <div class="footer">
+      <button type="button" [tsSubmitIfValid]="form" class="btn--app btn--round" (valid)="createApplication()">Submit</button>
+    </div>
+  </form>
+</div>
