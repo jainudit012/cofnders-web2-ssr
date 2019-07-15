@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProjectFormComponent } from '../ideas/project-form/project-form.component';
 import { OpportunityFormComponent } from '../ideas/opportunity-form/opportunity-form.component';
 import { ListFundFormComponent } from '../funds/list-fund-form/list-fund-form.component';
-// import { WINDOW } from '@ng-toolkit/universal';
+import { WINDOW } from '@ng-toolkit/universal';
 
 @Component({
   selector: 'cta',
@@ -14,16 +14,16 @@ import { ListFundFormComponent } from '../funds/list-fund-form/list-fund-form.co
 })
 export class CtaComponent implements OnInit {
   
-  // isMobile: boolean = false;
+  isMobile: boolean = false;
 
   constructor(public router: Router,
     private authService: AuthService,
     public dialog: MatDialog,
-    // @Inject(WINDOW) private window: Window
+    @Inject(WINDOW) private window: Window
     ) { 
-      // if (this.window.screen.width < 450 && this.window.screen.width < this.window.screen.height) { // 768px portrait
-      //   this.isMobile = true;
-      // }
+      if (this.window.screen.width < 450 && this.window.screen.width < this.window.screen.height) { // 768px portrait
+        this.isMobile = true;
+      }
     }
 
   ngOnInit() {
@@ -33,6 +33,8 @@ export class CtaComponent implements OnInit {
     if(this.authService.isAuthenticated()&&this.authService.isUserAuthenticated()){
       console.log('create project tap')
       let dialogRef = this.dialog.open(ProjectFormComponent, {
+        width: this.isMobile ? '100vw' : '45rem',
+        height: 'auto',
         panelClass: "dialog-form-pane",
         data: {}
       })
@@ -45,6 +47,8 @@ export class CtaComponent implements OnInit {
     if(this.authService.isAuthenticated()&&this.authService.isUserAuthenticated()){
       console.log('create opportunity tap')
       let dialogRef = this.dialog.open(OpportunityFormComponent, {
+        width: this.isMobile ? '100vw' : '40rem',
+        height: 'auto',
         panelClass: "dialog-form-pane",
         data: {}
       })
