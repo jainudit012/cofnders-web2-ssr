@@ -1,3 +1,54 @@
-<p>
-  list-fund-form works!
-</p>
+<div class="listFund--form">
+  <h1 class="heading">List your Fund</h1>
+  <div class="heading__sub">We will get in touch!</div>
+  <svg  version="1.1" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 32 32" class="btn__close" (click)="onClose()" tabindex="0">
+    <title>cross</title>
+    <path d="M31.708 25.708c-0-0-0-0-0-0l-9.708-9.708 9.708-9.708c0-0 0-0 0-0 0.105-0.105 0.18-0.227 0.229-0.357 0.133-0.356 0.057-0.771-0.229-1.057l-4.586-4.586c-0.286-0.286-0.702-0.361-1.057-0.229-0.13 0.048-0.252 0.124-0.357 0.228 0 0-0 0-0 0l-9.708 9.708-9.708-9.708c-0-0-0-0-0-0-0.105-0.104-0.227-0.18-0.357-0.228-0.356-0.133-0.771-0.057-1.057 0.229l-4.586 4.586c-0.286 0.286-0.361 0.702-0.229 1.057 0.049 0.13 0.124 0.252 0.229 0.357 0 0 0 0 0 0l9.708 9.708-9.708 9.708c-0 0-0 0-0 0-0.104 0.105-0.18 0.227-0.229 0.357-0.133 0.355-0.057 0.771 0.229 1.057l4.586 4.586c0.286 0.286 0.702 0.361 1.057 0.229 0.13-0.049 0.252-0.124 0.357-0.229 0-0 0-0 0-0l9.708-9.708 9.708 9.708c0 0 0 0 0 0 0.105 0.105 0.227 0.18 0.357 0.229 0.356 0.133 0.771 0.057 1.057-0.229l4.586-4.586c0.286-0.286 0.362-0.702 0.229-1.057-0.049-0.13-0.124-0.252-0.229-0.357z">
+    </path>
+  </svg>
+  <form [formGroup]="form" class="listFund__form">
+    <div>
+      <mat-form-field class="listFund__investorType">
+        <mat-label>Investor Type</mat-label>
+        <mat-select required formControlName="investorType">
+          <mat-option *ngFor="let i of investorTypes" [value]="i">
+            {{ i }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="investorType.touched && investorType.invalid && investorType.errors.required">Investor's type is Required</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="listFund__name">
+        <input matInput placeholder="Name" formControlName="name" required>
+        <mat-error *ngIf="name.touched && name.invalid && name.errors.required">Name is Required</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="listFund__contact">
+        <input matInput placeholder="Mobile Number" formControlName="contact" required>
+        <mat-error *ngIf="contact.touched && contact.invalid && contact.errors.required">Mobile Number is Required</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="listFund__linkedInLink">
+        <input matInput placeholder="LinkedIn Profile" formControlName="linkedInLink" required>
+        <mat-error *ngIf="linkedInLink.touched && linkedInLink.invalid && linkedInLink.errors.required">LinkedIn Profile is Required</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="listFund__startupStage">
+        <mat-label>Preferred Startup Stage</mat-label>
+        <mat-select required formControlName="startupStage">
+          <mat-option *ngFor="let s of startupStages" [value]="s">
+            {{ s }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="startupStage.touched && startupStage.invalid && startupStage.errors.required">Startup Stage is required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="footer">
+      <button type="button" [tsSubmitIfValid]="form" class="btn--app btn--round card__btn" (valid)="createList()">Submit</button>
+    </div>
+  </form>
+</div>
