@@ -58,9 +58,8 @@ export class CtaComponent implements OnInit {
   listFund(){
     if(this.authService.isAuthenticated()&&this.authService.isUserAuthenticated()){
       let dialogRef = this.dialog.open(ListFundFormComponent, {
-        // width: this.isMobile ? '100vw' : 'auto',
-        // height: this.isMobile ? this.window.screen.height + 'px' : 'auto',
-        // maxWidth: '100%',
+        width: this.isMobile ? '100vw' : '40rem',
+        height: 'auto',
         panelClass: "dialog-form-pane",
         data: {}
       })
