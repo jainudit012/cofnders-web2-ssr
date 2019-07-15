@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators'
 import { Requirement } from '../models/opportunity.model';
 import { Router } from '@angular/router';
 import { UserType } from '../models/user.model';
+import { InvestorType } from '../models/fund.model';
 
 @Injectable({
   providedIn: 'root'
@@ -175,6 +176,42 @@ export class DataService {
       }else {
         this._snackBar.open('Some Error Occurred', 'X', {duration: 2000})
       }
+    }else {
+      this._snackBar.open('Not Logged In!', 'X',{duration: 2000})
+    }
+  }
+
+  public createFundList(data:any){
+    if(this.authService.isAuthenticated() && this.authService.isUserAuthenticated()){
+      const token = this.authService.userToken
+      let formData = {
+        ...data
+      }
+      formData.investorType = Object.keys(InvestorType).find(k=> InvestorType[k]=== data.investorType)
+      formData.startupStage = Object.keys(StartupStage).find(k=> StartupStage[k]=== data.startupStage)
+      Axios.post(`${environment.apiUrl}/funds`, formData, {headers: {'Authorization': token}}).then(res=>{
+        this._snackBar.open('Fund has been Listed. Under Approval', 'X', {duration: 2000})
+        if(!environment.production) console.log(res.data)
+      }).catch(err=>{
+        this._snackBar.open('Could not send your Response!', 'X', {duration: 2000})
+        if(!environment.production) console.log('Error response data',err.response.data)
+      })
+    }else {
+      this._snackBar.open('Not Logged In!', 'X',{duration: 2000})
+    }
+  }
+
+  public applyFunds(data:any, options:any){
+    if(this.authService.isAuthenticated() && this.authService.isUserAuthenticated()){
+      const token = this.authService.userToken
+
+      Axios.post(`${environment.apiUrl}/funds/apply/${options.id}`, data , {headers: {'Authorization': token}}).then(res=>{
+        this._snackBar.open('Successfully Recorded Your Response', 'X', {duration: 2000})
+        if(!environment.production) console.log(res.data)
+      }).catch(err=>{
+        this._snackBar.open('Could not send your Response!', 'X', {duration: 2000})
+        if(!environment.production) console.log('Error response data',err.response.data)
+      })
     }else {
       this._snackBar.open('Not Logged In!', 'X',{duration: 2000})
     }
