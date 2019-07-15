@@ -18,7 +18,4 @@ export class IdeaComponent implements OnInit {
       this.feedData = data.feed
     })
   }
-
-
-
 }
