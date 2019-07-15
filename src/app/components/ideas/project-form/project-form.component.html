@@ -149,9 +149,8 @@
           </div>
         </div>
         <button type="button" *ngIf="selectedValue !== 2" class="prevnext" (click)="clickNext()">{{nextBtnName}} &gt;</button>
-        <button type="submit" [tsSubmitIfValid]="form" *ngIf="selectedValue === 2" class="btn--app btn--round card__btn" (click)="createProject()">{{nextBtnName}}</button>
+        <button type="button" [tsSubmitIfValid]="form" *ngIf="selectedValue === 2" class="btn--app btn--round card__btn" (valid)="createProject()">{{nextBtnName}}</button>
       </div>
     </form>
   </div>
-  
 </div>
