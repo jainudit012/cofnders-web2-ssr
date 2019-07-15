@@ -20,9 +20,12 @@
     <div class="fund__details">
       <div class="fund__stage"><b>Preferred Startup Stage: </b>{{fundData.preferredStartupStage}}</div>
       <div class="fund__value"><b>Fund Value: </b>{{fundData.fundValue}}</div>
-      <ul class="fund__criteria"><b>Fund Criteria:</b>
-        <li *ngFor="let criteria of fundData.criteria" class="fund__criteria--item">{{criteria}}</li>
-      </ul>
+      <div>
+        <p><b>Fund Criteria:</b></p>
+        <ul class="fund__criteria">
+            <li *ngFor="let criteria of fundData.criteria" class="fund__criteria--item">{{criteria}}</li>
+          </ul>
+      </div>
     </div>
     <div class="fund__links">
       <div *ngIf="fundData.website" class="fund__website">
