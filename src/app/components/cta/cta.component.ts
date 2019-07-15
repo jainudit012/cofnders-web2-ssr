@@ -2,9 +2,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ProjectFormComponent } from '../ideas/project-form/project-form.component';
-import { OpportunityFormComponent } from '../ideas/opportunity-form/opportunity-form.component';
-import { ListFundFormComponent } from '../funds/list-fund-form/list-fund-form.component';
+import { ProjectFormComponent } from '../forms/project-form/project-form.component';
+import { OpportunityFormComponent } from '../forms/opportunity-form/opportunity-form.component';
+import { ListFundFormComponent } from '../forms/list-fund-form/list-fund-form.component';
 import { WINDOW } from '@ng-toolkit/universal';
 
 @Component({

@@ -20,12 +20,12 @@ import { GetInTouchFormComponent } from './components/forms/get-in-touch-form/ge
 import { PostSignUpFormComponent } from './components/forms/post-sign-up-form/post-sign-up-form.component';
 import { FundCardComponent } from './components/funds/fund-card/fund-card.component';
 import { FundComponent } from './components/funds/fund/fund.component';
-import { ListFundFormComponent } from './components/funds/list-fund-form/list-fund-form.component';
+import { ListFundFormComponent } from './components/forms/list-fund-form/list-fund-form.component';
 import { IdeaComponent } from './components/ideas/idea/idea.component';
 import { OpportunityCardComponent } from './components/ideas/opportunity-card/opportunity-card.component';
-import { OpportunityFormComponent } from './components/ideas/opportunity-form/opportunity-form.component';
+import { OpportunityFormComponent } from './components/forms/opportunity-form/opportunity-form.component';
 import { ProjectCardComponent } from './components/ideas/project-card/project-card.component';
-import { ProjectFormComponent } from './components/ideas/project-form/project-form.component';
+import { ProjectFormComponent } from './components/forms/project-form/project-form.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PrivacyPageComponent } from './components/privacy-page/privacy-page.component';
 import { ProfileCardComponent } from './components/profile-card/profile-card.component';
