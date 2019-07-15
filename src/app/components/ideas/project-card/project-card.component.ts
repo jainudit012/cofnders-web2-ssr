@@ -13,16 +13,12 @@ import { WINDOW } from '@ng-toolkit/universal';
 export class ProjectCardComponent implements OnInit {
 
   @Input('project') projectData
-  isMobile: boolean = false;
 
   constructor(public authService: AuthService,
     private router: Router,
-    public dialog: MatDialog,
-    @Inject(WINDOW) private window: Window) { 
-      if (this.window.screen.width < 450 && this.window.screen.width < this.window.screen.height) { // 768px portrait
-        this.isMobile = true;
-      }
-    }
+    public dialog: MatDialog) { 
+      
+  }
 
   ngOnInit() {
   }
@@ -30,7 +26,7 @@ export class ProjectCardComponent implements OnInit {
   touch() {
     if(this.authService.isAuthenticated() && this.authService.isUserAuthenticated()){
       let dialogRef = this.dialog.open(GetInTouchFormComponent, {
-        width: this.isMobile ? '100vw' : '40rem',
+        width: '40rem',
         height: 'auto',
         panelClass: "dialog-form-pane",
         data: {id: this.projectData._id, type: 'project'}

@@ -14,16 +14,10 @@ import { WINDOW } from '@ng-toolkit/universal';
 })
 export class CtaComponent implements OnInit {
   
-  isMobile: boolean = false;
-
   constructor(public router: Router,
     private authService: AuthService,
-    public dialog: MatDialog,
-    @Inject(WINDOW) private window: Window
-    ) { 
-      if (this.window.screen.width < 450 && this.window.screen.width < this.window.screen.height) { // 768px portrait
-        this.isMobile = true;
-      }
+    public dialog: MatDialog) { 
+      
     }
 
   ngOnInit() {
@@ -32,7 +26,7 @@ export class CtaComponent implements OnInit {
   createProject(){
     if(this.authService.isAuthenticated()&&this.authService.isUserAuthenticated()){
       let dialogRef = this.dialog.open(ProjectFormComponent, {
-        width: this.isMobile ? '100vw' : '45rem',
+        width: '45rem',
         height: 'auto',
         panelClass: "dialog-form-pane",
         data: {}
@@ -45,7 +39,7 @@ export class CtaComponent implements OnInit {
   createOpportunity(){
     if(this.authService.isAuthenticated()&&this.authService.isUserAuthenticated()){
       let dialogRef = this.dialog.open(OpportunityFormComponent, {
-        width: this.isMobile ? '100vw' : '40rem',
+        width: '40rem',
         height: 'auto',
         panelClass: "dialog-form-pane",
         data: {}
@@ -58,7 +52,7 @@ export class CtaComponent implements OnInit {
   listFund(){
     if(this.authService.isAuthenticated()&&this.authService.isUserAuthenticated()){
       let dialogRef = this.dialog.open(ListFundFormComponent, {
-        width: this.isMobile ? '100vw' : '40rem',
+        width: '40rem',
         height: 'auto',
         panelClass: "dialog-form-pane",
         data: {}
