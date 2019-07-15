@@ -75,6 +75,10 @@ export class ApplicationFormComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  onClose() {
+    this.dialogRef.close()
+  }
+
   get projectId(){
     return this.form.get('projectId')
   }
