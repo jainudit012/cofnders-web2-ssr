@@ -1,0 +1,60 @@
+/deep/ .mat-dialog-container {
+    padding: 2.4rem 0 0 0;
+}
+
+.btn__close {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 1.25rem;
+    opacity: .2;
+    padding: 0 !important;
+}
+
+.heading {
+
+    &__sub {
+        font-size: 1.4rem;
+        color: #ababab;
+        padding-top: .5rem;
+    }
+}
+
+.opportunity {
+    &--form {
+        position: relative;
+
+        & > *:not(:last-child) {
+            padding: 0 2.4rem;
+        }
+    }
+
+    &__form {
+        & > div {
+            padding: 1rem;
+        }
+
+        & > div:first-child {
+            padding-top: 3rem;
+        }
+
+        & > div > mat-form-field{
+            width: 100%;
+            font-size: 150%;
+            padding: 0 1.5rem;
+        }
+    }
+}
+
+.characterCount {
+    padding: 0 1.5rem;
+}
+
+
+.footer {
+    display: flex;
+    background-color: #000000;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 8rem;
+}

@@ -1,5 +1,8 @@
 import { Component, OnInit, Inject, Optional } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Requirement } from '../../../models/opportunity.model';
+import { DataService } from '../../../services/data.service';
 
 @Component({
   selector: 'app-opportunity-form',
@@ -11,14 +14,54 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class OpportunityFormComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<OpportunityFormComponent>,
-    @Optional() @Inject(MAT_DIALOG_DATA) private data: any) { }
+  requirementData: string[]
+  myProjectResponse: any
+  allUserProjects: any[] = []
+  approvedProjects: any[]
 
-  ngOnInit() {
+  form = new FormGroup({
+    projectId: new FormControl('', Validators.required),
+    requirement: new FormControl('', Validators.required),
+    details: new FormControl('', Validators.maxLength(300))
+  })
+
+  constructor(public dialogRef: MatDialogRef<OpportunityFormComponent>,
+    @Optional() @Inject(MAT_DIALOG_DATA) private data: any,
+    public dataService: DataService) { }
+
+  async ngOnInit() {
+    this.requirementData = [Requirement.CO_FOUNDER, Requirement.FUNDING, Requirement.IDEA_VALIDATION, Requirement.MENTORS_CONSULTANTS, Requirement.REFERENCE_CONNECTIONS, Requirement.SERVICE_PARTNERS_VENDORS]
+    this.myProjectResponse = await this.dataService.getMyProjects()
+    this.allUserProjects = [...this.myProjectResponse.projects]
+    this.approvedProjects = this.allUserProjects.filter(p=>{
+      return p.isApproved
+    })
   }
   
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close()
+  }
+
+  onClose(){
+    this.dialogRef.close()
+  }
+
+  get projectId(){
+    return this.form.get('projectId')
+  }
+
+  get requirement(){
+    return this.form.get('requirement')
+  }
+
+  get details(){
+    return this.form.get('details')
+  }
+
+  createOpportunity(){
+    this.dialogRef.close()
+    console.log(this.form.value)
+    this.dataService.createOpportunity(this.form.value)
   }
 
 }
