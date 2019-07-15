@@ -31,7 +31,6 @@ export class CtaComponent implements OnInit {
 
   createProject(){
     if(this.authService.isAuthenticated()&&this.authService.isUserAuthenticated()){
-      console.log('create project tap')
       let dialogRef = this.dialog.open(ProjectFormComponent, {
         width: this.isMobile ? '100vw' : '45rem',
         height: 'auto',
@@ -45,7 +44,6 @@ export class CtaComponent implements OnInit {
 
   createOpportunity(){
     if(this.authService.isAuthenticated()&&this.authService.isUserAuthenticated()){
-      console.log('create opportunity tap')
       let dialogRef = this.dialog.open(OpportunityFormComponent, {
         width: this.isMobile ? '100vw' : '40rem',
         height: 'auto',
@@ -59,7 +57,6 @@ export class CtaComponent implements OnInit {
 
   listFund(){
     if(this.authService.isAuthenticated()&&this.authService.isUserAuthenticated()){
-      console.log('list fund tap')
       let dialogRef = this.dialog.open(ListFundFormComponent, {
         // width: this.isMobile ? '100vw' : 'auto',
         // height: this.isMobile ? this.window.screen.height + 'px' : 'auto',

@@ -4,6 +4,8 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { ProjectNature, Sector, StartupStage, TeamSizes } from '../../../models/project.model';
 import { CloudinaryUploader, CloudinaryOptions } from 'ng2-cloudinary';
 import { DataService } from '../../../services/data.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-project-form',
@@ -84,7 +86,8 @@ export class ProjectFormComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<ProjectFormComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) private data: any,
-    private dataService: DataService) { }
+    private dataService: DataService,
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.categories = [ProjectNature.CAUSE, ProjectNature.SERVICE ,ProjectNature.PRODUCT, ProjectNature.OTHERS]
@@ -138,7 +141,8 @@ export class ProjectFormComponent implements OnInit {
     }
 
     this.uploader.onWhenAddingFileFailed = (item: any, filter: any, options: any) => {
-      console.log('upload failed')
+      if(!environment.production) console.log('upload failed')
+      this._snackBar.open('Could not upload the Images!', 'X', {duration: 1500})
     }
   }
 

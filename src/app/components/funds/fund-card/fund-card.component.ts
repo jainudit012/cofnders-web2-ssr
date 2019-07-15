@@ -29,7 +29,6 @@ export class FundCardComponent implements OnInit {
     }else {
       this.authService.login(this.router.url)
     }
-    console.log('apply tapped')
   }
 
 }

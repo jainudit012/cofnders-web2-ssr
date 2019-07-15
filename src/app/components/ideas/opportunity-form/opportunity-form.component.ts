@@ -60,7 +60,6 @@ export class OpportunityFormComponent implements OnInit {
 
   createOpportunity(){
     this.dialogRef.close()
-    console.log(this.form.value)
     this.dataService.createOpportunity(this.form.value)
   }
 
