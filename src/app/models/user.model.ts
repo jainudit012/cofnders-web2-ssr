@@ -25,3 +25,12 @@ export enum Purpose {
     INVESTOR = 'Investor',
     MENTOR = 'Mentor'
 }
+
+export enum UserType {
+    Investor = 'Investor',
+    Mentor = 'Mentor', 
+    Consulting_Firm='Consulting Firm', 
+    IT_Services='IT Services', 
+    Investment_Advisor='Investment Advisor', 
+    Startup_Founder='Startup Founder'
+}
