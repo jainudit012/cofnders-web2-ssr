@@ -11,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators'
 import { Requirement } from '../models/opportunity.model';
 import { Router } from '@angular/router';
+import { UserType } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -86,7 +87,7 @@ export class DataService {
   public createProject(data:any){
     if(this.authService.isAuthenticated() && this.authService.isUserAuthenticated()){
       const token = this.authService.userToken
-      const projectData = {
+      let projectData = {
         ...data.projectBasic,
         ...data.projectDetails,
         ...data.projectFinishing
@@ -141,6 +142,39 @@ export class DataService {
         this._snackBar.open('Could not create the Opportunity', 'X', {duration: 2000})
         if(!environment.production) console.log('Error response data',err.response.data)
       })
+    }else {
+      this._snackBar.open('Not Logged In!', 'X',{duration: 2000})
+    }
+  }
+
+  public createGetInTouch(data:any, options:any){
+    if(this.authService.isAuthenticated() && this.authService.isUserAuthenticated()){
+      const token = this.authService.userToken
+      const formData = {
+        ...data
+      }
+
+      formData.userType = Object.keys(UserType).find(k=> UserType[k] === data.userType)
+
+      if(options.type === 'project'){
+        Axios.post(`${environment.apiUrl}/projects/intouch/${options.id}`, formData, {headers: {'Authorization': token}}).then(res=>{
+          this._snackBar.open('Successfully Sent Your Response', 'X', {duration: 2000})
+          if(!environment.production) console.log(res.data)
+        }).catch(err=>{
+          this._snackBar.open('Could not send your Response!', 'X', {duration: 2000})
+          if(!environment.production) console.log('Error response data',err.response.data)
+        })
+      }else if(options.type === 'opportunity'){
+        Axios.post(`${environment.apiUrl}/opportunities/intouch/${options.id}`, formData, {headers: {'Authorization': token}}).then(res=>{
+          this._snackBar.open('Successfully Sent Your Response', 'X', {duration: 2000})
+          if(!environment.production) console.log(res.data)
+        }).catch(err=>{
+          this._snackBar.open('Could not send your Response!', 'X', {duration: 2000})
+          if(!environment.production) console.log('Error response data',err.response.data)
+        })
+      }else {
+        this._snackBar.open('Some Error Occurred', 'X', {duration: 2000})
+      }
     }else {
       this._snackBar.open('Not Logged In!', 'X',{duration: 2000})
     }
