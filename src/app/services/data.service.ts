@@ -233,7 +233,33 @@ export class DataService {
     }
   }
 
-  public editProject(data:any){
+  public editProject(data:any, id:string){
+    if(this.authService.isAuthenticated() && this.authService.isUserAuthenticated()){
+      const token = this.authService.userToken
+
+      let projectData = {
+        ...data.projectBasic,
+        ...data.projectDetails,
+        ...data.projectFinishing
+      }
+      projectData.category = Object.keys(ProjectNature).find(k=> ProjectNature[k]=== data.projectBasic.category)
+      projectData.sector = Object.keys(Sector).find(k=> Sector[k]=== data.projectBasic.sector)
+      projectData.stage = Object.keys(StartupStage).find(k=> StartupStage[k]=== data.projectBasic.stage)
+      projectData.teamSize = Object.keys(TeamSizes).find(k=> TeamSizes[k]=== data.projectBasic.teamSize)
+
+      if(!environment.production) console.log(projectData)
+
+      Axios.put(`${environment.apiUrl}/projects/${id}`, projectData, {headers: {'Authorization': token}}).then(res=>{
+        this._snackBar.open('Successfully Edited the Project', 'X', {duration: 2000})
+        this.redirectTo('ideas')
+        if(!environment.production) console.log(res.data)
+      }).catch(err=>{
+        this._snackBar.open('Could not Edit the Project!', 'X', {duration: 2000})
+        if(!environment.production) console.log('Error response data',err.response.data)
+      })
+    }else {
+      this._snackBar.open('Not Logged In!', 'X',{duration: 2000})
+    }
 
   }
 
