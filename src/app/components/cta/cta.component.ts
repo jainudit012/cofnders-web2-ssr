@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -6,6 +6,8 @@ import { ProjectFormComponent } from '../forms/project-form/project-form.compone
 import { OpportunityFormComponent } from '../forms/opportunity-form/opportunity-form.component';
 import { ListFundFormComponent } from '../forms/list-fund-form/list-fund-form.component';
 import { WINDOW } from '@ng-toolkit/universal';
+import { DataService } from 'src/app/services/data.service';
+import { NoApprovedProjectsComponent } from '../no-approved-projects/no-approved-projects.component';
 
 @Component({
   selector: 'cta',
@@ -13,14 +15,27 @@ import { WINDOW } from '@ng-toolkit/universal';
   styleUrls: ['./cta.component.scss']
 })
 export class CtaComponent implements OnInit {
+
+  userProjectResponse: any
+  userProjects: any[]
+  userApprovedProjects:any[]
+  
   
   constructor(public router: Router,
     private authService: AuthService,
-    public dialog: MatDialog) { 
+    public dialog: MatDialog,
+    public dataService: DataService) { 
       
     }
 
-  ngOnInit() {
+  async ngOnInit() {
+    if(this.authService.isAuthenticated()&&this.authService.isUserAuthenticated()){
+      this.userProjectResponse = await this.dataService.getMyProjects()
+      this.userProjects = [...this.userProjectResponse.projects]
+      this.userApprovedProjects = this.userProjects.filter(p=>{
+        return p.isApproved
+      })
+    }
   }
 
   createProject(){
@@ -38,12 +53,21 @@ export class CtaComponent implements OnInit {
 
   createOpportunity(){
     if(this.authService.isAuthenticated()&&this.authService.isUserAuthenticated()){
-      let dialogRef = this.dialog.open(OpportunityFormComponent, {
-        width: '40rem',
-        height: 'auto',
-        panelClass: "dialog-form-pane",
-        data: {}
-      })
+      if(this.userApprovedProjects.length===0){
+        let dialogRef = this.dialog.open(NoApprovedProjectsComponent, {
+          width: '40rem',
+          height: 'auto',
+          panelClass: "dialog-form-pane",
+          data: {}
+        })
+      }else{
+        let dialogRef = this.dialog.open(OpportunityFormComponent, {
+          width: '40rem',
+          height: 'auto',
+          panelClass: "dialog-form-pane",
+          data: {projects: this.userApprovedProjects}
+        })
+      }
     }else{
       this.authService.login(this.router.url)
     }
