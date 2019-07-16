@@ -46,6 +46,7 @@ import { ProjectStagePipe } from './pipes/projectStage.pipe';
 import { OpportunityRequirementPipe } from './pipes/opportunityRequirement.pipe';
 import { InvestorTypePipe } from './pipes/investorType.pipe';
 import { RemoveQuotesPipe } from './pipes/removeQuotes.pipe';
+import { NoApprovedProjectsComponent } from './components/no-approved-projects/no-approved-projects.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { RemoveQuotesPipe } from './pipes/removeQuotes.pipe';
     ProjectStagePipe,
     OpportunityRequirementPipe,
     InvestorTypePipe,
-    RemoveQuotesPipe
+    RemoveQuotesPipe,
+    NoApprovedProjectsComponent
   ],
   entryComponents: [
     PostSignUpFormComponent,
@@ -89,7 +91,8 @@ import { RemoveQuotesPipe } from './pipes/removeQuotes.pipe';
     OpportunityFormComponent,
     ListFundFormComponent,
     ApplicationFormComponent,
-    GetInTouchFormComponent
+    GetInTouchFormComponent,
+    NoApprovedProjectsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
