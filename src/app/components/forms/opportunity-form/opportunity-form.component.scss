@@ -58,3 +58,19 @@
     align-items: center;
     margin-top: 8rem;
 }
+
+.noProjects {
+    &__box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 5rem;
+        opacity: .7;
+
+    }
+
+    &__text {
+        padding-top: 1.25rem;
+        opacity: .8;
+    }
+}
