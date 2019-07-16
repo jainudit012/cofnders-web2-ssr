@@ -58,3 +58,11 @@ body {
         transition-duration: 400ms;
     }
 }
+
+button:disabled {
+    background: #ADADAD;
+    cursor: default;
+    color: #000;
+    border: none;
+    font-weight: 500;
+}
