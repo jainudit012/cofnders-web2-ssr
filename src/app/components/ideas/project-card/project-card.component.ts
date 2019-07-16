@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { GetInTouchFormComponent } from '../../forms/get-in-touch-form/get-in-touch-form.component';
 import { WINDOW } from '@ng-toolkit/universal';
 import { ConfirmDeleteComponent } from '../../confirm-delete/confirm-delete.component';
+import { ProjectFormComponent } from '../../forms/project-form/project-form.component';
 
 @Component({
   selector: 'project-card',
@@ -39,6 +40,12 @@ export class ProjectCardComponent implements OnInit {
 
   edit(){
     console.log('edit project')
+    let dialogRef = this.dialog.open(ProjectFormComponent, {
+      width: '45rem',
+      height: 'auto',
+      panelClass: "dialog-form-pane",
+      data: {project: this.projectData}
+    })
   }
 
   delete(){
