@@ -216,4 +216,44 @@ export class DataService {
       this._snackBar.open('Not Logged In!', 'X',{duration: 2000})
     }
   }
+
+  public deleteProject(id:any){
+    if(this.authService.isAuthenticated() && this.authService.isUserAuthenticated()){
+      const token = this.authService.userToken
+      Axios.delete(`${environment.apiUrl}/projects/${id}`, {headers: {'Authorization': token}}).then(res=>{
+        this._snackBar.open('Successfully Deleted the Project', 'X', {duration: 2000})
+        this.redirectTo('ideas')
+        if(!environment.production) console.log(res.data)
+      }).catch(err=>{
+        this._snackBar.open('Could not delete the Project!', 'X', {duration: 2000})
+        if(!environment.production) console.log('Error response data',err.response.data)
+      })
+    }else{
+      this._snackBar.open('Not Logged In!', 'X',{duration: 2000})
+    }
+  }
+
+  public editProject(data:any){
+
+  }
+
+  public deleteOpportunity(id:any){
+    if(this.authService.isAuthenticated() && this.authService.isUserAuthenticated()){
+      const token = this.authService.userToken
+      Axios.delete(`${environment.apiUrl}/opportunities/${id}`, {headers: {'Authorization': token}}).then(res=>{
+        this._snackBar.open('Successfully Deleted the Opportunity', 'X', {duration: 2000})
+        this.redirectTo('ideas')
+        if(!environment.production) console.log(res.data)
+      }).catch(err=>{
+        this._snackBar.open('Could not delete the Opportunity', 'X', {duration: 2000})
+        if(!environment.production) console.log('Error response data',err.response.data)
+      })
+    }else{
+      this._snackBar.open('Not Logged In!', 'X',{duration: 2000})
+    }
+  }
+
+  public editOpportunity(data:any){
+
+  }
 }
