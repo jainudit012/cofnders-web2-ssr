@@ -17,8 +17,6 @@ import { DataService } from '../../../services/data.service';
 export class ApplicationFormComponent implements OnInit {
 
   fileName : string | null
-  myProjectResponse : any
-  allUserProjects : any[] = []
   approvedProjects: any[]
 
   form = new FormGroup({
@@ -38,13 +36,9 @@ export class ApplicationFormComponent implements OnInit {
     private _snackBar: MatSnackBar,
     public dataService: DataService) { }
 
-  async ngOnInit() {
+  ngOnInit() {
     this.uploadToCloudinary()
-    this.myProjectResponse = await this.dataService.getMyProjects()
-    this.allUserProjects = [...this.myProjectResponse.projects]
-    this.approvedProjects = this.allUserProjects.filter(p=>{
-      return p.isApproved
-    })
+    this.approvedProjects = this.data.projects
   }
 
   uploadPdf(e){
