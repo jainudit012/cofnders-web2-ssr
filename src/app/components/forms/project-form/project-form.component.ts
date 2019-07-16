@@ -99,6 +99,78 @@ export class ProjectFormComponent implements OnInit {
     this.steps = [1, 2, 3]
     this.prevBtnName = this.pages[this.selectedValue].description
     this.nextBtnName = this.pages[this.selectedValue].nextBtnText
+
+    if(this.data.project){
+      this.setFormValue()
+    }
+  }
+
+  setFormValue() {
+    console.log(this.data.project)
+    this.logoImage = this.data.project.logo
+    this.coverImage = this.data.project.projectCoverImage
+    Object.keys((<FormGroup>this.form.controls['projectBasic']).controls).forEach(field => {
+      console.log(field)
+      const temp = {};
+      temp[field] = this.assignDefaultValue(<FormGroup>this.form.controls['projectBasic'], field);
+      console.log(temp)
+      this.form.controls['projectBasic'].patchValue(temp);
+    });
+    Object.keys((<FormGroup>this.form.controls['projectDetails']).controls).forEach(field => {
+      console.log(field)
+      const temp = {};
+      temp[field] = this.assignDefaultValue(<FormGroup>this.form.controls['projectDetails'], field);
+      console.log(temp)
+      this.form.controls['projectDetails'].patchValue(temp);
+    });
+    Object.keys((<FormGroup>this.form.controls['projectFinishing']).controls).forEach(field => {
+      console.log(field)
+      const temp = {};
+      temp[field] = this.assignDefaultValue(<FormGroup>this.form.controls['projectFinishing'], field);
+      console.log(temp)
+      this.form.controls['projectFinishing'].patchValue(temp);
+    });
+  }
+
+  assignDefaultValue(formGroup: FormGroup, field) {
+    let responseData = '';
+    switch (field) {
+      case 'category':
+        responseData = ProjectNature[this.data.project.projectNature];
+        break;
+      case 'name':
+        responseData = this.data.project.projectName;
+        break;
+      case 'stage':
+        responseData = StartupStage[this.data.project.startupStage];
+        break;
+      case 'sector':
+        responseData = Sector[this.data.project.sector];
+        break;
+      case 'acceptingFunds':
+        responseData = this.data.project.acceptingFunds==='true'?'true':'false';
+        break;
+      case 'teamSize':
+        if(this.data.project.teamSize%10===0) responseData = this.data.project.teamSize
+        else responseData = TeamSizes[this.data.project.teamSize] ;
+        break;
+      case 'websiteLink':
+        responseData = this.data.project.website;
+        break;
+      case 'facebookLink':
+        responseData = this.data.project.facebookPage;
+        break;
+      case 'linkedInLink':
+        responseData = this.data.project.linkedInPage;
+        break;
+      case 'twitterLink':
+        responseData = this.data.project.twitterPage;
+        break;
+      default:
+        if(this.data.project[field]) responseData = this.data.project[field]
+        else responseData = ''
+    }
+    return responseData;
   }
 
   onNoClick(): void {
@@ -230,8 +302,12 @@ export class ProjectFormComponent implements OnInit {
   }
 
   createProject() {
+    if(this.data.project){
+      this.dataService.editProject(this.form.value, this.data.project._id)
+    }else {
+      this.dataService.createProject(this.form.value)
+    }
     this.dialogRef.close()
-    this.dataService.createProject(this.form.value)
   }
 
 
