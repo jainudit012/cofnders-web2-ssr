@@ -112,7 +112,12 @@
       </div>
     </div>
   </mat-card-content>
-  <mat-card-actions class="fund__cardActions" *ngIf="!fundData.applied">
+  <mat-card-actions class="fund__cardActions" *ngIf="!fundData.applied; else applied">
     <button class="btn--app btn--round card__btn fund__apply--btn" (click)="apply()">Apply</button>
   </mat-card-actions>
+  <ng-template #applied>
+      <mat-card-actions class="fund__cardActions">
+        <button class="btn--app btn--round card__btn fund__apply--btn">Applied</button>
+      </mat-card-actions>
+  </ng-template>
 </mat-card>
