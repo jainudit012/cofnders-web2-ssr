@@ -47,6 +47,7 @@ import { OpportunityRequirementPipe } from './pipes/opportunityRequirement.pipe'
 import { InvestorTypePipe } from './pipes/investorType.pipe';
 import { RemoveQuotesPipe } from './pipes/removeQuotes.pipe';
 import { NoApprovedProjectsComponent } from './components/no-approved-projects/no-approved-projects.component';
+import { ConfirmDeleteComponent } from './components/confirm-delete/confirm-delete.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { NoApprovedProjectsComponent } from './components/no-approved-projects/n
     OpportunityRequirementPipe,
     InvestorTypePipe,
     RemoveQuotesPipe,
-    NoApprovedProjectsComponent
+    NoApprovedProjectsComponent,
+    ConfirmDeleteComponent
   ],
   entryComponents: [
     PostSignUpFormComponent,
@@ -92,7 +94,8 @@ import { NoApprovedProjectsComponent } from './components/no-approved-projects/n
     ListFundFormComponent,
     ApplicationFormComponent,
     GetInTouchFormComponent,
-    NoApprovedProjectsComponent
+    NoApprovedProjectsComponent,
+    ConfirmDeleteComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
