@@ -6,7 +6,7 @@ import { ProjectFormComponent } from '../forms/project-form/project-form.compone
 import { OpportunityFormComponent } from '../forms/opportunity-form/opportunity-form.component';
 import { ListFundFormComponent } from '../forms/list-fund-form/list-fund-form.component';
 import { WINDOW } from '@ng-toolkit/universal';
-import { DataService } from 'src/app/services/data.service';
+import { DataService } from '../../services/data.service';
 import { NoApprovedProjectsComponent } from '../no-approved-projects/no-approved-projects.component';
 
 @Component({
