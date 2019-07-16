@@ -23,6 +23,12 @@ a:link, a:visited {
         display: flex;
     }
 
+    &__btn {
+        &--responses {
+            cursor: default;
+        }
+    }
+
     .project {
         &__logo {
             // height: 100%;
@@ -156,13 +162,6 @@ a:link, a:visited {
         }
     }
 }
-
-.bdr_btm {
-    :host /deep/ & > img {
-        border-bottom: none !important;
-    }
-}
-
 
 .border {
     height: 1px;

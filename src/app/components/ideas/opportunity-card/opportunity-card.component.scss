@@ -19,6 +19,12 @@
         display: flex;
     }
 
+    &__btn {
+        &--responses {
+            cursor: default;
+        }
+    }
+
     .opportunity {
 
         &__logo {

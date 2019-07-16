@@ -121,12 +121,12 @@
         <div class="border"></div>
       </ng-template>
     </mat-card-content>
-    <mat-card-actions class="project__cardActions" *ngIf="!projectData.getInTouchFilled">
+    <mat-card-actions class="project__cardActions">
       <div *ngIf="projectData.createdBy._id===authService.decodedToken.id; else getInTouch">
-        <button class="btn--app btn--round card__btn">Response(s) {{projectData?.responseCount || 0}}</button>
+        <button class="btn--app btn--round card__btn--responses">Response(s) {{projectData?.responseCount || 0}}</button>
       </div>
       <ng-template #getInTouch>
-          <button *ngIf="!projectData.getInTouchFilled" class="btn--app btn--round card__btn" (click)="touch()">Get in Touch</button>
+          <button [disabled]="projectData.getInTouchFilled" class="btn--app btn--round card__btn" (click)="touch()">Get in Touch</button>
       </ng-template>
     </mat-card-actions>
 </mat-card>
