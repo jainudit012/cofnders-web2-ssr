@@ -76,6 +76,14 @@ a:link, a:visited {
             color: rgb(112, 112, 112);
         }
 
+        &__options {
+            margin: 0 .5rem 0 2rem;
+            align-self: end;
+            opacity: .6;
+            background: transparent;
+            border: none;
+        }
+
         &__pitch {
             margin-top: 1rem;
             padding: 1.6rem;
