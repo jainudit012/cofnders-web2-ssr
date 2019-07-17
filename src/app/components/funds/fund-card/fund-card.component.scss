@@ -129,6 +129,14 @@ a:link, a:visited {
                 .svg--facebook {
                     transform: translateY(3px);
                 }
+
+                .svg--twitter {
+                    transform: translate(1px, 2.5px);
+                }
+
+                .svg--linkedIn {
+                    transform: translate(1px, 1.5px);
+                }
             }
 
             &--icon {
