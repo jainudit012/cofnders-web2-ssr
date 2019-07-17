@@ -70,8 +70,76 @@
         }
 
         &__requirement {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             padding: 0 1rem;
+        }
+
+        &__project {
+            margin-top: 3rem;
+
+            .project {
+
+                &__heading {
+                    color: rgba(0,0,0,.54);
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                }
+
+                &__details, &__links, &__website, &__links--social {
+                    display: flex;
+                    flex-wrap: wrap;
+                }
+
+                &__website, &__links--social  {
+                    flex-direction: column;
+                }
+
+                &__details > div , &__website, &__links--social  {
+                    width: 45%;
+                    padding: 1rem;
+                    font-size: 1.1rem;
+                }
+
+                &__links--link:link, &__links--link:visited {
+                    text-decoration: none;
+                    color: #007bff;
+                }
+
+                &__socials {
+                    display: flex;
+                }
+
+                &__links {
+                    &--iconBox{
+                        padding: .35rem;
+                        background-color: darkgray;
+                        border-radius: 50%;
+                        margin: 1rem;
+                    }
+        
+                    &--icon {
+                        fill: white;
+                        margin: .15rem;
+                        transform: translate(1px, 2.5px);
+                    }
+
+                    .svg--twitter {
+                        transform: translate(1px, 3.5px);
+                    }
+
+                    .svg--facebook {
+                        transform: translateY(4px);
+                    }
+                }
+
+                &__coverImageBox {
+                    max-width: 100%rem;
+                }
+
+                :host /deep/ &__coverImage > img {
+                    width: 100%;
+                }
+            }
         }
 
         &__cardActions {

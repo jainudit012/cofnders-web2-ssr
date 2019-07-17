@@ -23,6 +23,111 @@
     <mat-card-content class="opportunity__content">
         <div class="opportunity__details">{{opportunityData.details}}</div>
         <div class="opportunity__requirement"><b>Looking For: </b>{{opportunityData.requirement | requirement}}</div>
+        <mat-expansion-panel class="opportunity__project">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="project__heading">Project Details</mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="project__details">
+                <div class="project__stage"><b>Project Stage :</b> {{opportunityData.project.startupStage | stage}}</div>
+                <div class="project__category"><b>Project Category :</b> {{opportunityData.project.projectNature | category}}</div>
+                <div class="project__teamSize"><b>Team Size :</b> {{opportunityData.project.teamSize | teamSize}}</div>
+                <div class="project__sector"><b>Project Sector :</b> {{opportunityData.project.sector | sector}}</div>
+            </div>
+            <div class="project__links">
+                <div *ngIf="opportunityData.project.website" class="project__website">
+                    <span class="project__links--heading"><b>Website: </b></span>
+                    <div *ngIf="(opportunityData.project.website.startsWith('https://')||opportunityData.project.website.startsWith('http://')); else website">
+                    <a [href]="opportunityData.project.website" rel="noopener" target="_blank" class="project__links--link">{{opportunityData.project.website}}</a>
+                    </div>
+                    <ng-template #website>
+                    <a href="//{{opportunityData.project.website}}" rel="noopener" target="_blank" class="project__links--link">{{opportunityData.project.website}}</a>
+                    </ng-template>
+                </div>
+                <div *ngIf="opportunityData.project.facebookPage || opportunityData.project.twitterPage || opportunityData.project.linkedInPage" class="project__links--social">
+                    <span class="project__links--heading"><b>Social Links: </b></span>
+                    <div class="project__socials">
+                    <div *ngIf="opportunityData.project.facebookPage">
+                        <div *ngIf="(opportunityData.project.facebookPage.startsWith('https://')||opportunityData.project.facebookPage.startsWith('http://')); else facebook">
+                            <a [href]="opportunityData.project.facebookPage" rel="noopener" target="_blank" class="project__links--link">
+                                <div class="project__links--iconBox">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 32 32" class="project__links--icon svg--facebook">
+                                    <title>facebook</title>
+                                    <path d="M19 6h5v-6h-5c-3.86 0-7 3.14-7 7v3h-4v6h4v16h6v-16h5l1-6h-6v-3c0-0.542 0.458-1 1-1z"></path>
+                                </svg>
+                                </div>
+                            </a>
+                        </div>
+                        <ng-template #facebook>
+                            <a href="//{{opportunityData.project.facebookPage}}" rel="noopener" target="_blank" class="project__links--link">
+                                <div class="project__links--iconBox">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 32 32" class="project__links--icon svg--facebook">
+                                    <title>facebook</title>
+                                    <path d="M19 6h5v-6h-5c-3.86 0-7 3.14-7 7v3h-4v6h4v16h6v-16h5l1-6h-6v-3c0-0.542 0.458-1 1-1z"></path>
+                                </svg>
+                                </div>
+                            </a>
+                        </ng-template>
+                    </div>
+                    <div *ngIf="opportunityData.project.twitterPage">
+                        <div *ngIf="(opportunityData.project.twitterPage.startsWith('https://')||opportunityData.project.twitterPage.startsWith('http://')); else twitter">
+                            <a [href]="opportunityData.project.twitterPage" rel="noopener" target="_blank" class="project__links--link">
+                                <div class="project__links--iconBox">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 22 16" class="project__links--icon svg--twitter">
+                                    <title>twitter</title>
+                                    <path d="M17.316 6.246c0.008 0.162 0.011 0.326 0.011 0.488 0 4.99-3.797 10.742-10.74 10.742-2.133 0-4.116-0.625-5.787-1.697 0.296 0.035 0.596 0.053 0.9 0.053 1.77 0 3.397-0.604 4.688-1.615-1.651-0.031-3.046-1.121-3.526-2.621 0.23 0.043 0.467 0.066 0.71 0.066 0.345 0 0.679-0.045 0.995-0.131-1.727-0.348-3.028-1.873-3.028-3.703 0-0.016 0-0.031 0-0.047 0.509 0.283 1.092 0.453 1.71 0.473-1.013-0.678-1.68-1.832-1.68-3.143 0-0.691 0.186-1.34 0.512-1.898 1.861 2.285 4.644 3.787 7.781 3.945-0.064-0.277-0.097-0.564-0.097-0.861 0-2.084 1.689-3.773 3.774-3.773 1.086 0 2.067 0.457 2.756 1.191 0.859-0.17 1.667-0.484 2.397-0.916-0.282 0.881-0.881 1.621-1.66 2.088 0.764-0.092 1.49-0.293 2.168-0.594-0.506 0.758-1.146 1.422-1.884 1.953z"></path>
+                                </svg>
+                                </div>
+                            </a>
+                        </div>
+                        <ng-template #twitter>
+                            <a href="//{{opportunityData.project.twitterPage}}" rel="noopener" target="_blank" class="project__links--link">
+                                <div class="project__links--iconBox">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 22 16" class="project__links--icon svg--twitter">
+                                    <title>twitter</title>
+                                    <path d="M17.316 6.246c0.008 0.162 0.011 0.326 0.011 0.488 0 4.99-3.797 10.742-10.74 10.742-2.133 0-4.116-0.625-5.787-1.697 0.296 0.035 0.596 0.053 0.9 0.053 1.77 0 3.397-0.604 4.688-1.615-1.651-0.031-3.046-1.121-3.526-2.621 0.23 0.043 0.467 0.066 0.71 0.066 0.345 0 0.679-0.045 0.995-0.131-1.727-0.348-3.028-1.873-3.028-3.703 0-0.016 0-0.031 0-0.047 0.509 0.283 1.092 0.453 1.71 0.473-1.013-0.678-1.68-1.832-1.68-3.143 0-0.691 0.186-1.34 0.512-1.898 1.861 2.285 4.644 3.787 7.781 3.945-0.064-0.277-0.097-0.564-0.097-0.861 0-2.084 1.689-3.773 3.774-3.773 1.086 0 2.067 0.457 2.756 1.191 0.859-0.17 1.667-0.484 2.397-0.916-0.282 0.881-0.881 1.621-1.66 2.088 0.764-0.092 1.49-0.293 2.168-0.594-0.506 0.758-1.146 1.422-1.884 1.953z"></path>
+                                </svg>
+                                </div>
+                            </a>
+                        </ng-template>
+                    </div>
+                    <div *ngIf="opportunityData.project.linkedInPage">
+                        <div *ngIf="(opportunityData.project.linkedInPage.startsWith('https://')||opportunityData.project.linkedInPage.startsWith('http://')); else linkedIn">
+                            <a [href]="opportunityData.project.linkedInPage" rel="noopener" target="_blank" class="project__links--link">
+                                <div class="project__links--iconBox">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 22 16" class="project__links--icon">
+                                    <title>linkedin</title>
+                                    <path d="M5 3c0 1.062-0.71 1.976-2.001 1.976-1.215 0-1.999-0.862-1.999-1.924 0-1.090 0.76-2.052 2-2.052s1.976 0.91 2 2zM1 19v-13h4v13h-4z"></path>
+                                    <path d="M7 10.444c0-1.545-0.051-2.836-0.102-3.951h3.594l0.178 1.723h0.076c0.506-0.811 1.746-2 3.822-2 2.532 0 4.432 1.695 4.432 5.342v7.442h-4v-6.861c0-1.594-0.607-2.81-2-2.81-1.062 0-1.594 0.86-1.873 1.569-0.102 0.254-0.127 0.608-0.127 0.963v7.139h-4v-8.556z"></path>
+                                </svg>
+                                </div>
+                            </a>
+                        </div>
+                        <ng-template #linkedIn>
+                            <a href="//{{opportunityData.project.linkedInPage}}" rel="noopener" target="_blank" class="project__links--link">
+                                <div class="project__links--iconBox">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 22 16" class="project__links--icon">
+                                    <title>linkedin</title>
+                                    <path d="M5 3c0 1.062-0.71 1.976-2.001 1.976-1.215 0-1.999-0.862-1.999-1.924 0-1.090 0.76-2.052 2-2.052s1.976 0.91 2 2zM1 19v-13h4v13h-4z"></path>
+                                    <path d="M7 10.444c0-1.545-0.051-2.836-0.102-3.951h3.594l0.178 1.723h0.076c0.506-0.811 1.746-2 3.822-2 2.532 0 4.432 1.695 4.432 5.342v7.442h-4v-6.861c0-1.594-0.607-2.81-2-2.81-1.062 0-1.594 0.86-1.873 1.569-0.102 0.254-0.127 0.608-0.127 0.963v7.139h-4v-8.556z"></path>
+                                </svg>
+                                </div>
+                            </a>
+                        </ng-template>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="project__coverImageBox" *ngIf="opportunityData.project.projectCoverImage; else noCoverImage;">
+                <cl-image [public-id]="opportunityData.project.projectCoverImage.substr(54)" secure="true" class="project__coverImage" alt="Cover Image">
+                    <cl-transformation quality="auto" fetch-format="auto" dpr="auto">
+                    </cl-transformation>
+                </cl-image>
+                <!-- <img [clSrc]="opportunityData.project.projectCoverImage" alt="Cover Image" class="project__coverImage" quality="auto" fetch-format="auto" dpr="auto"> -->
+            </div>
+            <ng-template #noCoverImage>
+                <div class="border"></div>
+            </ng-template>
+        </mat-expansion-panel>
     </mat-card-content>
     <mat-card-actions class="opportunity__cardActions">
         <div *ngIf="opportunityData.createdBy._id===authService.decodedToken.id; else getInTouch">
