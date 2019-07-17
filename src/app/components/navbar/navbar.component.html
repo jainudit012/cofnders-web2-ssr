@@ -40,8 +40,8 @@
           <img *ngIf="userService.authUser" [src]="userService.authUser?.picture" alt="User" class="user__menu--image">
           <h3 class="user__menu--name">{{userService.authUser?.name}}</h3>
         </button>
-        <mat-menu #menu="matMenu" class="user__menu--list" [overlapTrigger]="false">
-            <a mat-menu-item (keyup.enter)="logout()" (click)="logout()" class="btn--sign-out btn--app">Log Out</a>
+        <mat-menu #menu="matMenu" class="user__menu--list">
+            <a mat-menu-item (keyup.enter)="logout()" (click)="logout()" class="btn--sign-out btn--app" tabindex="-1">Log Out</a>
         </mat-menu>
       </ng-template>
     </div>
