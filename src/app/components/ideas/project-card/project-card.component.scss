@@ -119,6 +119,7 @@ a:link, a:visited {
 
             &--link:link,  &--link:visited {
                 text-decoration: none;
+                color: #007bff;
             }
 
             &--iconBox{
@@ -128,7 +129,15 @@ a:link, a:visited {
                 margin: 1rem;
 
                 .svg--facebook {
-                    transform: translateY(3px);
+                    transform: translate(0,1.4px);
+                }
+
+                .svg--twitter {
+                    transform: translate(1px, .5px);
+                }
+
+                .svg--linkedIn {
+                    transform: translate(1.5px, -.5px);
                 }
             }
 
