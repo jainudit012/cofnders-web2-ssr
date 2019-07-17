@@ -29,6 +29,7 @@ export class ProjectFormComponent implements OnInit {
   coverImage: any
   fileName: string
   selectedValue: number
+  isEdit:boolean = false
 
   prevBtnName: string = 'Previous'
   nextBtnName: string = 'Next'
@@ -101,6 +102,7 @@ export class ProjectFormComponent implements OnInit {
     this.nextBtnName = this.pages[this.selectedValue].nextBtnText
 
     if(this.data.project){
+      this.isEdit = true
       this.setFormValue()
     }
   }

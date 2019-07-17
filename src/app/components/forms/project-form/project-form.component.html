@@ -1,5 +1,8 @@
 <div class="project--form">
-  <h1 class="heading">Create Project</h1>
+  <h1 *ngIf="!isEdit; else editHeading" class="heading">Create Project</h1>
+  <ng-template #editHeading>
+      <h1 class="heading">Edit Project</h1>
+  </ng-template>
   <div *ngIf="selectedValue===0" class="heading__sub">Project Basics</div>
   <div *ngIf="selectedValue===1" class="heading__sub">Project Details</div>
   <div *ngIf="selectedValue===2" class="heading__sub">Finishing Touch</div>
