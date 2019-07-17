@@ -39,7 +39,6 @@ export class OpportunityCardComponent implements OnInit {
   }
 
   edit(){
-    console.log('edit opportunity')
     let dialogRef = this.dialog.open(OpportunityFormComponent, {
       width: '45rem',
       height: 'auto',

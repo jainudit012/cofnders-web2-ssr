@@ -39,7 +39,6 @@ export class ProjectCardComponent implements OnInit {
   }
 
   edit(){
-    console.log('edit project')
     let dialogRef = this.dialog.open(ProjectFormComponent, {
       width: '45rem',
       height: 'auto',
@@ -49,7 +48,6 @@ export class ProjectCardComponent implements OnInit {
   }
 
   delete(){
-    console.log('delete project')
     let dialogRef = this.dialog.open(ConfirmDeleteComponent, {
       width: '30rem',
       height: 'auto',
