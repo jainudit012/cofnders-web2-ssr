@@ -10,7 +10,7 @@ import { DataService } from '../../services/data.service';
 export class ConfirmDeleteComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<ConfirmDeleteComponent>,
-    @Optional() @Inject(MAT_DIALOG_DATA) private data: any,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
     public dataService: DataService) { }
 
   ngOnInit() {
