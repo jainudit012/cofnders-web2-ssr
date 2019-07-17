@@ -85,6 +85,20 @@ export class DataService {
     }
   }
 
+  public getMyProjects(){
+    if(this.authService.isAuthenticated() && this.authService.isUserAuthenticated()){
+      const token = this.authService.userToken
+      const decodedToken = this.authService.decodedToken
+      return Axios.get(`${environment.apiUrl}/projects/${decodedToken.id}`, {headers: {'Authorization': token}}).then(res=>{
+        return res.data
+      }).catch(err=>{
+        if(!environment.production) console.log(err.response.data)
+      })
+    }else {
+      this._snackBar.open('Not Logged In!', 'X',{duration: 2000})
+    }
+  }
+
   public createProject(data:any){
     if(this.authService.isAuthenticated() && this.authService.isUserAuthenticated()){
       const token = this.authService.userToken
@@ -112,16 +126,47 @@ export class DataService {
     }
   }
 
-  public getMyProjects(){
+  public editProject(data:any, id:string){
     if(this.authService.isAuthenticated() && this.authService.isUserAuthenticated()){
       const token = this.authService.userToken
-      const decodedToken = this.authService.decodedToken
-      return Axios.get(`${environment.apiUrl}/projects/${decodedToken.id}`, {headers: {'Authorization': token}}).then(res=>{
-        return res.data
+
+      let projectData = {
+        ...data.projectBasic,
+        ...data.projectDetails,
+        ...data.projectFinishing
+      }
+      projectData.category = Object.keys(ProjectNature).find(k=> ProjectNature[k]=== data.projectBasic.category)
+      projectData.sector = Object.keys(Sector).find(k=> Sector[k]=== data.projectBasic.sector)
+      projectData.stage = Object.keys(StartupStage).find(k=> StartupStage[k]=== data.projectBasic.stage)
+      projectData.teamSize = Object.keys(TeamSizes).find(k=> TeamSizes[k]=== data.projectBasic.teamSize)
+
+      if(!environment.production) console.log(projectData)
+
+      Axios.put(`${environment.apiUrl}/projects/${id}`, projectData, {headers: {'Authorization': token}}).then(res=>{
+        this._snackBar.open('Successfully Edited the Project', 'X', {duration: 2000})
+        this.redirectTo('ideas')
+        if(!environment.production) console.log(res.data)
       }).catch(err=>{
-        if(!environment.production) console.log(err.response.data)
+        this._snackBar.open('Could not Edit the Project!', 'X', {duration: 2000})
+        if(!environment.production) console.log('Error response data',err.response.data)
       })
     }else {
+      this._snackBar.open('Not Logged In!', 'X',{duration: 2000})
+    }
+  }
+
+  public deleteProject(id:any){
+    if(this.authService.isAuthenticated() && this.authService.isUserAuthenticated()){
+      const token = this.authService.userToken
+      Axios.delete(`${environment.apiUrl}/projects/${id}`, {headers: {'Authorization': token}}).then(res=>{
+        this._snackBar.open('Successfully Deleted the Project', 'X', {duration: 2000})
+        this.redirectTo('ideas')
+        if(!environment.production) console.log(res.data)
+      }).catch(err=>{
+        this._snackBar.open('Could not delete the Project!', 'X', {duration: 2000})
+        if(!environment.production) console.log('Error response data',err.response.data)
+      })
+    }else{
       this._snackBar.open('Not Logged In!', 'X',{duration: 2000})
     }
   }
@@ -144,6 +189,42 @@ export class DataService {
         if(!environment.production) console.log('Error response data',err.response.data)
       })
     }else {
+      this._snackBar.open('Not Logged In!', 'X',{duration: 2000})
+    }
+  }
+
+  public editOpportunity(data:any, id: string){
+    if(this.authService.isAuthenticated() && this.authService.isUserAuthenticated()){
+      const token = this.authService.userToken
+
+      data.requirement = Object.keys(Requirement).find(k=> Requirement[k]=== data.requirement)
+      if(!environment.production) console.log('updated',data)
+
+      Axios.put(`${environment.apiUrl}/opportunities/${id}`, data, {headers: {'Authorization': token}}).then(res=>{
+        this._snackBar.open('Successfully Edited the Opportunity', 'X', {duration: 2000})
+        this.redirectTo('ideas')
+        if(!environment.production) console.log(res.data)
+      }).catch(err=>{
+        this._snackBar.open('Could not Edit the Opportunity!', 'X', {duration: 2000})
+        if(!environment.production) console.log('Error response data',err.response.data)
+      })
+    }else {
+      this._snackBar.open('Not Logged In!', 'X',{duration: 2000})
+    }
+  }
+
+  public deleteOpportunity(id:any){
+    if(this.authService.isAuthenticated() && this.authService.isUserAuthenticated()){
+      const token = this.authService.userToken
+      Axios.delete(`${environment.apiUrl}/opportunities/${id}`, {headers: {'Authorization': token}}).then(res=>{
+        this._snackBar.open('Successfully Deleted the Opportunity', 'X', {duration: 2000})
+        this.redirectTo('ideas')
+        if(!environment.production) console.log(res.data)
+      }).catch(err=>{
+        this._snackBar.open('Could not delete the Opportunity', 'X', {duration: 2000})
+        if(!environment.production) console.log('Error response data',err.response.data)
+      })
+    }else{
       this._snackBar.open('Not Logged In!', 'X',{duration: 2000})
     }
   }
@@ -215,71 +296,5 @@ export class DataService {
     }else {
       this._snackBar.open('Not Logged In!', 'X',{duration: 2000})
     }
-  }
-
-  public deleteProject(id:any){
-    if(this.authService.isAuthenticated() && this.authService.isUserAuthenticated()){
-      const token = this.authService.userToken
-      Axios.delete(`${environment.apiUrl}/projects/${id}`, {headers: {'Authorization': token}}).then(res=>{
-        this._snackBar.open('Successfully Deleted the Project', 'X', {duration: 2000})
-        this.redirectTo('ideas')
-        if(!environment.production) console.log(res.data)
-      }).catch(err=>{
-        this._snackBar.open('Could not delete the Project!', 'X', {duration: 2000})
-        if(!environment.production) console.log('Error response data',err.response.data)
-      })
-    }else{
-      this._snackBar.open('Not Logged In!', 'X',{duration: 2000})
-    }
-  }
-
-  public editProject(data:any, id:string){
-    if(this.authService.isAuthenticated() && this.authService.isUserAuthenticated()){
-      const token = this.authService.userToken
-
-      let projectData = {
-        ...data.projectBasic,
-        ...data.projectDetails,
-        ...data.projectFinishing
-      }
-      projectData.category = Object.keys(ProjectNature).find(k=> ProjectNature[k]=== data.projectBasic.category)
-      projectData.sector = Object.keys(Sector).find(k=> Sector[k]=== data.projectBasic.sector)
-      projectData.stage = Object.keys(StartupStage).find(k=> StartupStage[k]=== data.projectBasic.stage)
-      projectData.teamSize = Object.keys(TeamSizes).find(k=> TeamSizes[k]=== data.projectBasic.teamSize)
-
-      if(!environment.production) console.log(projectData)
-
-      Axios.put(`${environment.apiUrl}/projects/${id}`, projectData, {headers: {'Authorization': token}}).then(res=>{
-        this._snackBar.open('Successfully Edited the Project', 'X', {duration: 2000})
-        this.redirectTo('ideas')
-        if(!environment.production) console.log(res.data)
-      }).catch(err=>{
-        this._snackBar.open('Could not Edit the Project!', 'X', {duration: 2000})
-        if(!environment.production) console.log('Error response data',err.response.data)
-      })
-    }else {
-      this._snackBar.open('Not Logged In!', 'X',{duration: 2000})
-    }
-
-  }
-
-  public deleteOpportunity(id:any){
-    if(this.authService.isAuthenticated() && this.authService.isUserAuthenticated()){
-      const token = this.authService.userToken
-      Axios.delete(`${environment.apiUrl}/opportunities/${id}`, {headers: {'Authorization': token}}).then(res=>{
-        this._snackBar.open('Successfully Deleted the Opportunity', 'X', {duration: 2000})
-        this.redirectTo('ideas')
-        if(!environment.production) console.log(res.data)
-      }).catch(err=>{
-        this._snackBar.open('Could not delete the Opportunity', 'X', {duration: 2000})
-        if(!environment.production) console.log('Error response data',err.response.data)
-      })
-    }else{
-      this._snackBar.open('Not Logged In!', 'X',{duration: 2000})
-    }
-  }
-
-  public editOpportunity(data:any){
-
   }
 }
