@@ -1,6 +1,6 @@
 <div *ngIf="(appUserRes$| async) as userData;else anonymousUser" style="display: inline;">
   <mat-card class="card card--info">
-      <mat-card-header class="card__header" matTooltip="User Profile" matTooltipPosition="before">
+      <mat-card-header class="card__header">
         <div mat-card-avatar [style.background-image]="'url('+userService.authUser.picture+')'" class="card__image"></div>
         <div class="card__line"></div>
         <mat-card-title class="card__title">{{userData.user.fullName}}</mat-card-title>
