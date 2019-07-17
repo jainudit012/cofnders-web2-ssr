@@ -23,7 +23,7 @@
     <mat-card-content class="opportunity__content">
         <div class="opportunity__details">{{opportunityData.details}}</div>
         <div class="opportunity__requirement"><b>Looking For: </b>{{opportunityData.requirement | requirement}}</div>
-        <mat-expansion-panel class="opportunity__project">
+        <mat-expansion-panel class="opportunity__project" matTooltip="Project Details, Click to Expand!">
             <mat-expansion-panel-header>
                 <mat-panel-title class="project__heading">Project Details</mat-panel-title>
             </mat-expansion-panel-header>
