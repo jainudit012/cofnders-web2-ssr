@@ -34,7 +34,7 @@
       </div>
     </div>
     <div class="controls">
-      <a (click)="login()" (keyup.enter)="login()" class="btn--sign-in btn--app" *ngIf="!authService.isAuthenticated(); else loggedInUser" tabindex="0" matTooltip="Sign In">Sign&nbsp;In</a>
+      <a (click)="login()" (keyup.enter)="login()" class="btn--sign-in btn--app" *ngIf="!authService.isAuthenticated(); else loggedInUser" tabindex="0">Sign&nbsp;In</a>
       <ng-template #loggedInUser>
         <button mat-button [matMenuTriggerFor]="menu" class="user__menu--button"  tabindex="0" matTooltip="Log Out">
           <img *ngIf="userService.authUser" [src]="userService.authUser?.picture" alt="User" class="user__menu--image">
