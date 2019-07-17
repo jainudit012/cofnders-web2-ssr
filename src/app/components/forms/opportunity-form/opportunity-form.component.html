@@ -1,5 +1,8 @@
 <div class="opportunity--form">
-    <h1 class="heading">Post Opportunity</h1>
+    <h1 *ngIf="!isEdit; else editHeading" class="heading">Create Opportunity</h1>
+    <ng-template #editHeading>
+        <h1 class="heading">Edit Opportunity</h1>
+    </ng-template>
     <div class="heading__sub">Find Partners, Mentors and Investors</div>
     <svg  version="1.1" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 32 32" class="btn__close" (click)="onClose()" tabindex="0">
       <title>cross</title>
@@ -31,12 +34,16 @@
       </div>
       <div>
         <mat-form-field class="opportunity__details">
-          <textarea matInput placeholder="Specify Details" formControlName="details" maxlength="300"></textarea>
+          <textarea matInput placeholder="Specify Details" formControlName="details" maxlength="300" required></textarea>
+          <mat-error *ngIf="details.touched && details.invalid && details.errors.required">Details are required</mat-error>
         </mat-form-field>
         <div class="characterCount">{{300 - (details ? details.value.length : 0) }} Characters</div>
       </div>
       <div class="footer">
-        <button type="button" [tsSubmitIfValid]="form" class="btn--app btn--round card__btn" (valid)="createOpportunity()">Post Opportunity</button>
+        <button type="button" *ngIf="!isEdit; else editButton" [tsSubmitIfValid]="form" class="btn--app btn--round card__btn" (valid)="createOpportunity()">Post Opportunity</button>
+        <ng-template #editButton>
+          <button type="button" [tsSubmitIfValid]="form" class="btn--app btn--round card__btn" (valid)="createOpportunity()">Edit Opportunity</button>
+        </ng-template>
       </div>
     </form>
 </div>
