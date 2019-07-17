@@ -106,28 +106,21 @@ export class ProjectFormComponent implements OnInit {
   }
 
   setFormValue() {
-    console.log(this.data.project)
     this.logoImage = this.data.project.logo
     this.coverImage = this.data.project.projectCoverImage
     Object.keys((<FormGroup>this.form.controls['projectBasic']).controls).forEach(field => {
-      console.log(field)
       const temp = {};
       temp[field] = this.assignDefaultValue(<FormGroup>this.form.controls['projectBasic'], field);
-      console.log(temp)
       this.form.controls['projectBasic'].patchValue(temp);
     });
     Object.keys((<FormGroup>this.form.controls['projectDetails']).controls).forEach(field => {
-      console.log(field)
       const temp = {};
       temp[field] = this.assignDefaultValue(<FormGroup>this.form.controls['projectDetails'], field);
-      console.log(temp)
       this.form.controls['projectDetails'].patchValue(temp);
     });
     Object.keys((<FormGroup>this.form.controls['projectFinishing']).controls).forEach(field => {
-      console.log(field)
       const temp = {};
       temp[field] = this.assignDefaultValue(<FormGroup>this.form.controls['projectFinishing'], field);
-      console.log(temp)
       this.form.controls['projectFinishing'].patchValue(temp);
     });
   }
