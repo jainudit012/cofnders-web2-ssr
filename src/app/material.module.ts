@@ -8,6 +8,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatSelectModule,
     MatInputModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTooltipModule
   ],
   exports: [
     MatProgressSpinnerModule,
@@ -29,7 +31,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatSelectModule,
     MatInputModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTooltipModule
   ]
 })
 export class MaterialModule { }

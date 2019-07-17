@@ -11,11 +11,11 @@
         <img [src]="fundData.logo" alt="Company Logo" class="fund__logo--other">
       </ng-template>
     </div>
-    <mat-card-title class="fund__company">{{fundData.companyName}}</mat-card-title>
-    <mat-card-subtitle class="fund__type">{{fundData.investorType | investorType}}</mat-card-subtitle>
+    <mat-card-title class="fund__company" matTooltip="Fund/Company Name"  matTooltipPosition="after">{{fundData.companyName}}</mat-card-title>
+    <mat-card-subtitle class="fund__type" matTooltip="Fund Type" matTooltipPosition="after">{{fundData.investorType | investorType}}</mat-card-subtitle>
     <div class="fund__createdAt"> {{ fundData.createdAt | dateFromNow }}</div>
   </mat-card-header>
-  <mat-card-content class="card__content">
+  <mat-card-content class="card__content"  matTooltip="Details">
     <div class="fund__description">{{fundData.description}}</div>
     <div class="fund__details">
       <div class="fund__stage"><b>Preferred Startup Stage: </b>{{fundData.preferredStartupStage}}</div>
@@ -113,11 +113,11 @@
     </div>
   </mat-card-content>
   <mat-card-actions class="fund__cardActions" *ngIf="!fundData.applied; else applied">
-    <button class="btn--app btn--round card__btn fund__apply--btn" (click)="apply()">Apply</button>
+    <button class="btn--app btn--round card__btn fund__apply--btn" (click)="apply()" matTooltip="Tap to Apply for Funds">Apply</button>
   </mat-card-actions>
   <ng-template #applied>
       <mat-card-actions class="fund__cardActions">
-        <button class="btn--app btn--round card__btn fund__apply--btn">Applied</button>
+        <button class="btn--app btn--round card__btn fund__apply--btn" matTooltip="Already Applied">Applied</button>
       </mat-card-actions>
   </ng-template>
 </mat-card>

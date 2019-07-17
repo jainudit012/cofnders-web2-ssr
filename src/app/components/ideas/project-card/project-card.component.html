@@ -8,17 +8,17 @@
         <!-- <img *ngIf="projectData.logo" [clSrc]="projectData.logo" alt="Logo" class="project__logo" quality="auto" fetch-format="auto" dpr="auto"> -->
         <!-- {{projectData.logo.substr(54)}} -->
       </div>
-      <mat-card-title class="project__name">{{ projectData.projectName }}</mat-card-title>
-      <mat-card-subtitle class="project__createdBy">{{ projectData.createdBy.fullName}}</mat-card-subtitle>
+      <mat-card-title class="project__name" matTooltip="Project Name" matTooltipPosition="after">{{ projectData.projectName }}</mat-card-title>
+      <mat-card-subtitle class="project__createdBy" matTooltip="Created By">{{ projectData.createdBy.fullName}}</mat-card-subtitle>
       <div *ngIf="projectData.createdBy._id===authService.decodedToken.id" class="project__status">
         <div *ngIf="projectData.projectApprovalStatus==='APPROVED' || projectData.projectApprovalStatus==='Approved'" class="project__status--approved">{{projectData.projectApprovalStatus}}</div>
         <div *ngIf="projectData.projectApprovalStatus==='REJECTED' || projectData.projectApprovalStatus==='Rejected'" class="project__status--rejected">{{projectData.projectApprovalStatus}}</div>
         <div *ngIf="projectData.projectApprovalStatus==='IN_REVIEW' ||projectData.projectApprovalStatus==='ADDED'" class="project__status--pending">{{projectData.projectApprovalStatus}}</div>
       </div>
       <div class="project__createdAt"> {{ projectData.createdAt | dateFromNow }}</div>
-      <button *ngIf="(!projectData.isApproved) && (projectData.createdBy._id===authService.decodedToken.id)" class="project__options" [matMenuTriggerFor]="menu" tabindex="0">
+      <button *ngIf="(!projectData.isApproved) && (projectData.createdBy._id===authService.decodedToken.id)" class="project__options" [matMenuTriggerFor]="menu" tabindex="0" matTooltip="Options" matTooltipPosition="after">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-          <title>dots-three-vertical</title>
+          <title>Trigger Menu</title>
           <path d="M10.001 7.8c-1.215 0-2.201 0.985-2.201 2.2s0.986 2.2 2.201 2.2c1.215 0 2.199-0.985 2.199-2.2s-0.984-2.2-2.199-2.2zM10.001 5.2c1.215 0 2.199-0.986 2.199-2.2s-0.984-2.2-2.199-2.2c-1.215 0-2.201 0.985-2.201 2.2s0.986 2.2 2.201 2.2zM10.001 14.8c-1.215 0-2.201 0.985-2.201 2.2s0.986 2.2 2.201 2.2c1.215 0 2.199-0.985 2.199-2.2s-0.984-2.2-2.199-2.2z"></path>
         </svg>
       </button>
@@ -30,7 +30,7 @@
     <mat-card-content>
       <!-- {{projectData | json }} -->
       <div class="project__pitch">{{projectData.pitch}}</div>
-      <div class="project__details">
+      <div class="project__details" matTooltip="Project Details" matTooltipPosition="above">
         <div class="project__stage"><b>Project Stage :</b> {{projectData.startupStage | stage}}</div>
         <div class="project__category"><b>Project Category :</b> {{projectData.projectNature | category}}</div>
         <div class="project__teamSize"><b>Team Size :</b> {{projectData.teamSize | teamSize}}</div>
@@ -133,10 +133,10 @@
     </mat-card-content>
     <mat-card-actions class="project__cardActions">
       <div *ngIf="projectData.createdBy._id===authService.decodedToken.id; else getInTouch">
-        <button class="btn--app btn--round card__btn--responses">Response(s): {{projectData?.responseCount || 0}}</button>
+        <button class="btn--app btn--round card__btn--responses"  matTooltip="Number of Responses">Response(s): {{projectData?.responseCount || 0}}</button>
       </div>
       <ng-template #getInTouch>
-          <button [disabled]="projectData.getInTouchFilled" class="btn--app btn--round card__btn" (click)="touch()">Get in Touch</button>
+          <button [disabled]="projectData.getInTouchFilled" class="btn--app btn--round card__btn" (click)="touch()" matTooltip="Tap to Get in Touch">Get in Touch</button>
       </ng-template>
     </mat-card-actions>
 </mat-card>

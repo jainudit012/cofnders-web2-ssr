@@ -6,10 +6,10 @@
                 </cl-transformation>
             </cl-image>
         </div>
-        <mat-card-title class="opportunity__projectName">{{opportunityData.project.projectName}}</mat-card-title>
-        <mat-card-subtitle class="opportunity__createdBy">{{opportunityData.createdBy.fullName}}</mat-card-subtitle>
+        <mat-card-title class="opportunity__projectName" matTooltip="Project Name" matTooltipPosition="after">{{opportunityData.project.projectName}}</mat-card-title>
+        <mat-card-subtitle class="opportunity__createdBy" matTooltip="Created By">{{opportunityData.createdBy.fullName}}</mat-card-subtitle>
         <div class="opportunity__createdAt"> {{ opportunityData.createdAt | dateFromNow }}</div>
-        <button type="button" *ngIf="opportunityData.createdBy._id===authService.decodedToken.id" class="opportunity__options" [matMenuTriggerFor]="menu" tabindex="0">
+        <button type="button" *ngIf="opportunityData.createdBy._id===authService.decodedToken.id" class="opportunity__options" [matMenuTriggerFor]="menu" tabindex="0" matTooltip="Options">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                 <title>dots-three-vertical</title>
                 <path d="M10.001 7.8c-1.215 0-2.201 0.985-2.201 2.2s0.986 2.2 2.201 2.2c1.215 0 2.199-0.985 2.199-2.2s-0.984-2.2-2.199-2.2zM10.001 5.2c1.215 0 2.199-0.986 2.199-2.2s-0.984-2.2-2.199-2.2c-1.215 0-2.201 0.985-2.201 2.2s0.986 2.2 2.201 2.2zM10.001 14.8c-1.215 0-2.201 0.985-2.201 2.2s0.986 2.2 2.201 2.2c1.215 0 2.199-0.985 2.199-2.2s-0.984-2.2-2.199-2.2z"></path>
@@ -26,10 +26,10 @@
     </mat-card-content>
     <mat-card-actions class="opportunity__cardActions">
         <div *ngIf="opportunityData.createdBy._id===authService.decodedToken.id; else getInTouch">
-            <button class="btn--app btn--round card__btn--responses">Response(s): {{opportunityData?.responseCount || 0}}</button>
+            <button class="btn--app btn--round card__btn--responses" matTooltip="Number of Responses">Response(s): {{opportunityData?.responseCount || 0}}</button>
         </div>
         <ng-template #getInTouch>
-            <button [disabled]="opportunityData.getInTouchFilled" class="btn--app btn--round card__btn" (click)="touch()">Get in Touch</button>
+            <button [disabled]="opportunityData.getInTouchFilled" class="btn--app btn--round card__btn" (click)="touch()" matTooltip="Get in Touch">Get in Touch</button>
         </ng-template>
     </mat-card-actions>
 </mat-card>
