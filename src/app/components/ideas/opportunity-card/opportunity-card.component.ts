@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { GetInTouchFormComponent } from '../../forms/get-in-touch-form/get-in-touch-form.component';
 import { WINDOW } from '@ng-toolkit/universal';
 import { ConfirmDeleteComponent } from '../../confirm-delete/confirm-delete.component';
+import { OpportunityFormComponent } from '../../forms/opportunity-form/opportunity-form.component';
 
 @Component({
   selector: 'opportunity-card',
@@ -39,7 +40,12 @@ export class OpportunityCardComponent implements OnInit {
 
   edit(){
     console.log('edit opportunity')
-
+    let dialogRef = this.dialog.open(OpportunityFormComponent, {
+      width: '45rem',
+      height: 'auto',
+      panelClass: "dialog-form-pane",
+      data: {opportunity: this.opportunityData}
+    })
   }
 
   delete(){
