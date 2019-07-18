@@ -1,8 +1,7 @@
 .container {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: [blank-1-start] minmax(min-content,1fr) [blank-1-end container-start block-1-start] minmax(min-content,2fr) [block-1-end block-2-start]
-    minmax(min-content,4fr) [block-2-end block-3-start] minmax(min-content,2fr) [block-3-end container-end blank-2-start] minmax(min-content,1fr) [blank-2-end];
+    -ms-grid-columns: minmax(min-content,1fr),  minmax(min-content,2fr), minmax(min-content,4fr), minmax(min-content,2fr), minmax(min-content,1fr);
     grid-template-columns: [blank-1-start] minmax(-webkit-min-content,1fr) [blank-1-end container-start block-1-start] minmax(-webkit-min-content,2fr) [block-1-end block-2-start]
     minmax(-webkit-min-content,4fr) [block-2-end block-3-start] minmax(-webkit-min-content,2fr) [block-3-end container-end blank-2-start] minmax(-webkit-min-content,1fr) [blank-2-end];
     grid-column-gap: 2rem;
@@ -10,18 +9,18 @@
 
     :host /deep/ & > header {
         grid-column: container-start / container-end;
-        -ms-grid-column: container-start / container-end;
+        -ms-grid-column: 2 / 5;
     }
 
     .aside-1 {
         grid-column: block-1-start / block-1-end;
-        -ms-grid-column: block-1-start / block-1-end;
+        -ms-grid-column: 2 / 3;
 
     }
 
     .aside-2 {
         grid-column:  block-3-start / block-3-end;
-        -ms-grid-column: block-3-start / block-3-end;
+        -ms-grid-column: 4 / 5;
         
         :host /deep/ & > cta > div, :host /deep/ & > recent-card > div {
             padding-bottom: 2rem;
@@ -45,15 +44,15 @@
 
 :host /deep/ router-outlet + app-idea {
     grid-column: block-2-start / block-2-end;
-    -ms-grid-column: block-2-start / block-2-end;
+    -ms-grid-column: 3 / 4 ;
 }
 
 :host /deep/ router-outlet + app-privacy-page, :host /deep/ router-outlet + app-terms-page, :host /deep/ router-outlet + app-trust-page{
     grid-column: container-start / container-end;
-    -ms-grid-column: container-start / container-end;
+    -ms-grid-column: 2 / 5;
 }
 
 :host /deep/ router-outlet + app-about-page  {
     grid-column: blank-1-start / blank-2-end;
-    -ms-grid-column: blank-1-start / blank-2-end;
+    -ms-grid-column: 1 / 6;
 }
