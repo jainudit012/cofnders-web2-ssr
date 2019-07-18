@@ -7,6 +7,7 @@ import { NgtUniversalModule } from '@ng-toolkit/universal';
 import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
 import { Cloudinary } from 'cloudinary-core';
 import { FileUploadModule } from 'ng2-file-upload';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -106,7 +107,8 @@ import { ConfirmDeleteComponent } from './components/confirm-delete/confirm-dele
     ReactiveFormsModule,
     NgtUniversalModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'cofnderscloud' } as CloudinaryConfiguration),
-    FileUploadModule
+    FileUploadModule,
+    InfiniteScrollModule
   ],
   providers: [
     // {provide: MatDialogRef, useValue: {}}
