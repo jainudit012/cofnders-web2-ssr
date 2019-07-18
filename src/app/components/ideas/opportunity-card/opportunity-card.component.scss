@@ -1,9 +1,9 @@
-:host /deep/ mat-card .mat-card-avatar {
+::ng-deep mat-card .mat-card-avatar {
     width: 5rem;
     height: 5rem;
 }
 
-:host /deep/ mat-card .mat-card-content {
+::ng-deep mat-card .mat-card-content {
     margin-bottom: 0;
 }
 
@@ -28,7 +28,7 @@
     .opportunity {
 
         &__logo {
-            :host /deep/ & > img {
+            ::ng-deep & > img {
                 height: 100%;
                 width: 100%;
                 border-radius: 50%;
@@ -142,7 +142,7 @@
                     max-width: 100%rem;
                 }
 
-                :host /deep/ &__coverImage > img {
+                ::ng-deep &__coverImage > img {
                     width: 100%;
                 }
             }

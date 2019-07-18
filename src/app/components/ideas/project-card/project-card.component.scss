@@ -1,9 +1,9 @@
-:host /deep/ mat-card .mat-card-avatar {
+::ng-deep mat-card .mat-card-avatar {
     width: 5rem;
     height: 5rem;
 }
 
-:host /deep/ mat-card .mat-card-content {
+::ng-deep mat-card .mat-card-content {
     margin-bottom: 0;
 }
 
@@ -35,7 +35,7 @@ a:link, a:visited {
             // width: 100%;
             // border-radius: 50%;
 
-            :host /deep/ & > img {
+            ::ng-deep & > img {
                 height: 100%;
                 width: 100%;
                 border-radius: 50%;
@@ -171,7 +171,7 @@ a:link, a:visited {
             // width: 100%;
             // border-bottom: 1px solid rgba(112, 112, 112, 0.3);
 
-            :host /deep/ & > img {
+            ::ng-deep & > img {
                 height: 100%;
                 width: 100%;
                 border-bottom: 1px solid rgba(112, 112, 112, 0.3);
