@@ -1,6 +1,11 @@
 .foot {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     background-color: #0f1010e7;
     padding-top: 1rem;
     margin-top: 5rem;
@@ -8,13 +13,22 @@
 
     &__nav {
         color: whitesmoke;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        justify-content: space-evenly;
+        -webkit-box-pack: space-evenly;
+            -ms-flex-pack: space-evenly;
+                justify-content: space-evenly;
         padding-top: 1rem;
 
         @media only screen and (max-width:768px){
-            flex-direction: column;
-            align-items: center;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
         }
     }
 
@@ -30,7 +44,8 @@
          
         &:last-child {
             border: none;
-            align-self: center;
+            -ms-flex-item-align: center;
+                align-self: center;
             text-align: center;
         }
     }
@@ -48,13 +63,18 @@
 
         &--pics {
             list-style: none;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
             padding-top: 1.5rem;
-            justify-content: center;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
         }
     }
 
     &__item {
+        -webkit-transition: all .2s ease-in;
         transition: all .2s ease-in;
         padding: 1.4rem;
 
@@ -63,12 +83,14 @@
             padding: 1rem .25rem;
             border-radius: 3%;
             margin: .5rem;
+            -webkit-transition: all .2s ease-in;
             transition: all .2s ease-in;
         }
     }
     
     &__item:hover, &__item--pics:hover{
-        transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+                transform: scale(1.2);
     }
 
     &__links {

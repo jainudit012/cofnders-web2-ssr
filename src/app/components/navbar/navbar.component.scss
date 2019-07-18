@@ -61,6 +61,7 @@
 
             &__links {
                 height: 100%;
+                -webkit-transition: all 0.2s ease-in;
                 transition: all 0.2s ease-in;
                 padding: .5rem;
 
@@ -85,7 +86,8 @@
 
             &__links:hover>.routes__icon{
                 fill: #ffda00;
-                transform: scale(1.2);
+                -webkit-transform: scale(1.2);
+                        transform: scale(1.2);
             }
             &__links:hover span {
                 color: #ffda00;
@@ -108,8 +110,12 @@
         .controls {
             font-size: 1.8rem;
             height: 100%;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            align-items: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
 
             @media only screen and (max-width:360px){
                 margin-left: 1rem;
@@ -118,10 +124,14 @@
             .user__menu {
                 &--button {
                     height: 100%;
+                    display: -webkit-box;
+                    display: -ms-flexbox;
                     display: flex;
                     background-color: inherit;
                     border: none;
-                    align-items: center;
+                    -webkit-box-align: center;
+                        -ms-flex-align: center;
+                            align-items: center;
                     padding: .1rem;
                 }
 
@@ -163,8 +173,12 @@
 
 .btn--sign-out {
     font-size: 1.8rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     margin-top: 1rem;
 }
 

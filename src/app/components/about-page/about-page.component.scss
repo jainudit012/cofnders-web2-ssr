@@ -11,7 +11,8 @@
   letter-spacing: 0.0125rem;
   background-color: white;
   padding: 1rem 0.625rem;
-  box-shadow: 2px 2px 2px  #ccc !important;
+  -webkit-box-shadow: 2px 2px 2px  #ccc !important;
+          box-shadow: 2px 2px 2px  #ccc !important;
    z-index: 10; 
    border: 1px solid #e7e7e7!important;
 }
@@ -67,6 +68,7 @@
   }
   .landing-mobile{
     @media screen and (max-width: 575px) {
+      background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(white, 0.75)), to(rgba(white, 0.75))), url("../../../assets/012-compressor.jpg");
       background-image: linear-gradient(rgba(white, 0.75), rgba(white, 0.75)), url("../../../assets/012-compressor.jpg");
       background-size: cover;
       height: 100vh;
@@ -87,8 +89,12 @@
 .landing-detail {
   height: 100%;
   padding-top: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 
   .landing-icon {
     .icon-item {
@@ -103,10 +109,21 @@
       display: none;
     }
 
+    display: -webkit-box;
+
+    display: -ms-flexbox;
+
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
     color: white;
 
     .landing-title {
@@ -146,18 +163,23 @@
 }
 
 .form-control:focus {
-  box-shadow: 0 0 0 black;
+  -webkit-box-shadow: 0 0 0 black;
+          box-shadow: 0 0 0 black;
 }
 
 .row {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .btn:focus {
-  box-shadow: 0 0 0 0rem rgba(0, 123, 255, 0.25);
+  -webkit-box-shadow: 0 0 0 0rem rgba(0, 123, 255, 0.25);
+          box-shadow: 0 0 0 0rem rgba(0, 123, 255, 0.25);
 }
 .btn-primary:not(:disabled):not(.disabled):active:focus{
-    box-shadow: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
 }
 
 .btn-submit:hover,
@@ -172,7 +194,8 @@
   color: white;
   background-color: #00BCD4;
   border: 2px solid #00BCD4;
-  box-shadow: 0rem 1.25px 1.25px rgba(0, 0, 0, 0.34);
+  -webkit-box-shadow: 0rem 1.25px 1.25px rgba(0, 0, 0, 0.34);
+          box-shadow: 0rem 1.25px 1.25px rgba(0, 0, 0, 0.34);
   padding: 1rem 1.2rem;
   font-size: 1.4rem;
   border-radius: 100px;
@@ -213,11 +236,18 @@
 
     @media screen and (max-width: 767px) {
       .mobile-dir {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
 
         .mobile-order-2 {
-          order: -1;
+          -webkit-box-ordinal-group: 0;
+              -ms-flex-order: -1;
+                  order: -1;
           text-align: center;
         }
       }
@@ -231,7 +261,10 @@
     img {
       width: 100%;
       // margin-bottom: 2rem;
+      -webkit-transition: -webkit-transform 0.5s;
+      transition: -webkit-transform 0.5s;
       transition: transform 0.5s;
+      transition: transform 0.5s, -webkit-transform 0.5s;
 
       @media screen and (max-width: 767px) {
         max-width: 80%;
@@ -239,7 +272,8 @@
       }
 
       &:hover {
-        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+                transform: scale(1.1);
       }
     }
     .feature-heading {
@@ -266,6 +300,7 @@
 }
 
 .current-alt {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(white, 0.95)), to(rgba(white, 0.95))), url("../../../assets/07-compressor.jpg");
   background-image: linear-gradient(rgba(white, 0.95), rgba(white, 0.95)), url("../../../assets/07-compressor.jpg");
   background-size: cover;
   background-repeat: no-repeat;

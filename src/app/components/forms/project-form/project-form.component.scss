@@ -38,6 +38,8 @@
     }
 
     &__identity {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         margin-top: 3rem;
 
@@ -46,9 +48,16 @@
         }
         &--details-box {
             margin-left: 4rem;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
         }
 
         &--heading {
@@ -125,19 +134,33 @@
     &__coverImage {
         &--box {
             padding-bottom: 7rem !important;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            flex-wrap: wrap;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
             padding-bottom: 10rem;
         }
 
         display: none;
 
         &--input-box {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            align-items: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
             background-color: #e9ecef;
             border: 3px solid #DFDFDF;
             border-radius: 5px;
@@ -176,6 +199,8 @@ input[type='file'] {
   }
 
 .pager {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     background-color: #000000;
     position: absolute;
@@ -183,8 +208,11 @@ input[type='file'] {
     left: 0;
     width: 100%;
     height: 5rem;
-    justify-content: space-around;
-    align-items: center;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 
     &__dots {
         width : 10px;
@@ -194,8 +222,12 @@ input[type='file'] {
         margin: 0px 3px;
     
         &--wrapper {
+            display : -webkit-box;
+            display : -ms-flexbox;
             display : flex;
-            align-items: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
         }
     
         &--selected {

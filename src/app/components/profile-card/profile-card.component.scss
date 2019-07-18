@@ -1,6 +1,7 @@
 .card {
     border-radius: 8px;
-    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    -webkit-box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+            box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
     display: inline-block;
     
     &__heading {
@@ -14,6 +15,8 @@
     }
 
     &__actions {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
     }
 
@@ -30,9 +33,16 @@
     }
 
     &__header {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
         text-align: center;
         position: relative;
     }
@@ -55,7 +65,8 @@
         height: 1px;
         border: .5px solid rgba(112, 112, 112, 0.3);
         position: absolute;
-        transform: translate(0, 6rem);
+        -webkit-transform: translate(0, 6rem);
+                transform: translate(0, 6rem);
         top: 0;
         left: 0;
     }
@@ -70,6 +81,8 @@
 
     &__ideas {
         margin-bottom: 1.5rem;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
     }
 

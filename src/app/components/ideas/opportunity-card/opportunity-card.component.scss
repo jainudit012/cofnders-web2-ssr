@@ -9,13 +9,16 @@
 
 .card {
     border-radius: 8px;
-    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    -webkit-box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+            box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
     padding: 0;
     margin-bottom: 5rem;
 
     &__header {
         border-bottom: 1px solid rgba(112, 112, 112, 0.3);
         padding: 1.6rem 1.6rem 0 1.6rem;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
     }
 
@@ -53,7 +56,8 @@
 
         &__options {
             margin: 0 .5rem 0 2rem;
-            align-self: end;
+            -ms-flex-item-align: end;
+                align-self: end;
             opacity: .6;
             background: transparent;
             border: none;
@@ -86,12 +90,18 @@
                 }
 
                 &__details, &__links, &__website, &__links--social {
+                    display: -webkit-box;
+                    display: -ms-flexbox;
                     display: flex;
-                    flex-wrap: wrap;
+                    -ms-flex-wrap: wrap;
+                        flex-wrap: wrap;
                 }
 
                 &__website, &__links--social  {
-                    flex-direction: column;
+                    -webkit-box-orient: vertical;
+                    -webkit-box-direction: normal;
+                        -ms-flex-direction: column;
+                            flex-direction: column;
                 }
 
                 &__details > div , &__website, &__links--social  {
@@ -107,6 +117,8 @@
                 }
 
                 &__socials {
+                    display: -webkit-box;
+                    display: -ms-flexbox;
                     display: flex;
                 }
 
@@ -126,15 +138,18 @@
                     &--icon {
                         fill: white;
                         margin: .15rem;
-                        transform: translate(1px, 2.5px);
+                        -webkit-transform: translate(1px, 2.5px);
+                                transform: translate(1px, 2.5px);
                     }
 
                     .svg--twitter {
-                        transform: translate(1px, 3.5px);
+                        -webkit-transform: translate(1px, 3.5px);
+                                transform: translate(1px, 3.5px);
                     }
 
                     .svg--facebook {
-                        transform: translateY(4px);
+                        -webkit-transform: translateY(4px);
+                                transform: translateY(4px);
                     }
                 }
 
@@ -149,8 +164,12 @@
         }
 
         &__cardActions {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            justify-content: flex-end;
+            -webkit-box-pack: end;
+                -ms-flex-pack: end;
+                    justify-content: flex-end;
             padding: 1.2rem 2.5rem 1.5rem 0;
         }
     }
