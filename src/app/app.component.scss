@@ -7,22 +7,25 @@
     grid-column-gap: 2rem;
     grid-row-gap: 2rem;
 
-    :host /deep/ & > header {
+    ::ng-deep & > header {
         grid-column: container-start / container-end;
         -ms-grid-column: 2 / 5;
+        -ms-grid-row: 1/2;
     }
 
     .aside-1 {
         grid-column: block-1-start / block-1-end;
         -ms-grid-column: 2 / 3;
+        -ms-grid-row: 2/-1;
 
     }
 
     .aside-2 {
         grid-column:  block-3-start / block-3-end;
         -ms-grid-column: 4 / 5;
+        -ms-grid-row: 2/-1;
         
-        :host /deep/ & > cta > div, :host /deep/ & > recent-card > div {
+        ::ng-deep & > cta > div, ::ng-deep & > recent-card > div {
             padding-bottom: 2rem;
         }
     }
@@ -42,17 +45,20 @@
     }
 }
 
-:host /deep/ router-outlet + app-idea {
+::ng-deep  router-outlet + app-idea {
     grid-column: block-2-start / block-2-end;
     -ms-grid-column: 3 / 4 ;
+    -ms-grid-row: 2/-1;
 }
 
-:host /deep/ router-outlet + app-privacy-page, :host /deep/ router-outlet + app-terms-page, :host /deep/ router-outlet + app-trust-page{
+::ng-deep  router-outlet + app-privacy-page, ::ng-deep  router-outlet + app-terms-page, ::ng-deep  router-outlet + app-trust-page{
     grid-column: container-start / container-end;
     -ms-grid-column: 2 / 5;
+    -ms-grid-row: 2/-1;
 }
 
-:host /deep/ router-outlet + app-about-page  {
+::ng-deep  router-outlet + app-about-page  {
     grid-column: blank-1-start / blank-2-end;
     -ms-grid-column: 1 / 6;
+    -ms-grid-row: 2/-1;
 }
