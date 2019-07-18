@@ -103,6 +103,7 @@
                 &__links--link:link, &__links--link:visited {
                     text-decoration: none;
                     color: #007bff;
+                    word-break: break-all;
                 }
 
                 &__socials {
@@ -115,6 +116,11 @@
                         background-color: darkgray;
                         border-radius: 50%;
                         margin: 1rem;
+
+                        @media only screen and (max-width:790px){
+                            padding: 0;
+                            margin: 0 1rem;
+                        }
                     }
         
                     &--icon {

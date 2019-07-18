@@ -118,6 +118,7 @@ a:link, a:visited {
                 text-decoration: none;
                 font-size: 1.2rem;
                 color: #007bff;
+                word-break: break-all;
             }
 
             &--iconBox{
@@ -125,6 +126,11 @@ a:link, a:visited {
                 background-color: darkgray;
                 border-radius: 50%;
                 margin: 1rem;
+
+                @media only screen and (max-width:790px){
+                    padding: 0;
+                    margin: 0 1rem;
+                }
 
                 .svg--facebook {
                     transform: translateY(3px);

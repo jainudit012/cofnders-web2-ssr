@@ -118,6 +118,7 @@ a:link, a:visited {
             }
 
             &--link:link,  &--link:visited {
+                word-break: break-all;
                 text-decoration: none;
                 color: #007bff;
             }
@@ -128,6 +129,11 @@ a:link, a:visited {
                 border-radius: 50%;
                 margin: 1rem;
 
+                @media only screen and (max-width:790px){
+                    padding: 0;
+                    margin: 0 1rem;
+                }
+
                 .svg--facebook {
                     transform: translate(0,1.4px);
                 }
@@ -137,7 +143,7 @@ a:link, a:visited {
                 }
 
                 .svg--linkedIn {
-                    transform: translate(1.5px, -.5px);
+                    transform: translate(0.8px, -0.8px);
                 }
             }
 
