@@ -2,7 +2,7 @@
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: minmax(min-content,1fr),  minmax(min-content,2fr), 2rem , minmax(min-content,4fr), 2rem , minmax(min-content,2fr), minmax(min-content,1fr);
-    -ms-grid-rows: 1fr 1fr;
+    -ms-grid-rows: 1fr 1fr 1fr;
     grid-template-columns: [blank-1-start] minmax(min-content,1fr) [blank-1-end container-start block-1-start] minmax(min-content,2fr) [block-1-end block-2-start]
     minmax(min-content,4fr) [block-2-end block-3-start] minmax(min-content,2fr) [block-3-end container-end blank-2-start] minmax(min-content,1fr) [blank-2-end];
     grid-column-gap: 2rem;
@@ -14,17 +14,23 @@
         -ms-grid-row: 1/2;
     }
 
+    ::ng-deep & > .filter {
+        grid-column: container-start / container-end;
+        -ms-grid-column: 2 / 5;
+        -ms-grid-row: 1/2;
+    }
+
     .aside-1 {
         grid-column: block-1-start / block-1-end;
         -ms-grid-column: 2 / 3;
-        -ms-grid-row: 2/-1;
+        -ms-grid-row: 3/4;
 
     }
 
     .aside-2 {
         grid-column:  block-3-start / block-3-end;
         -ms-grid-column: 4 / 5;
-        -ms-grid-row: 2/-1;
+        -ms-grid-row: 3/4;
         
         ::ng-deep & > cta > div, ::ng-deep & > recent-card > div {
             padding-bottom: 2rem;
@@ -49,13 +55,13 @@
 ::ng-deep  router-outlet + app-idea {
     grid-column: block-2-start / block-2-end;
     -ms-grid-column: 3 / 4 ;
-    -ms-grid-row: 2/-1;
+    -ms-grid-row: 3/4;
 }
 
 ::ng-deep  router-outlet + app-privacy-page, ::ng-deep  router-outlet + app-terms-page, ::ng-deep  router-outlet + app-trust-page{
     grid-column: container-start / container-end;
     -ms-grid-column: 2 / 5;
-    -ms-grid-row: 2/-1;
+    -ms-grid-row: 2/3;
 }
 
 ::ng-deep  router-outlet + app-about-page  {

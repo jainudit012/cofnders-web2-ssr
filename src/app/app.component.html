@@ -1,4 +1,6 @@
 <navbar class="container" style="background-color: black" *ngIf="!(router.url.includes('/about'))"></navbar>
+<app-filter class="container" *ngIf="(router.url.includes('/ideas')||router.url.includes('/funds')||router.url === '/')"></app-filter>
+
 <!-- <div > -->
 <div class="container">
     <aside class="aside-1" *ngIf="(router.url.includes('/ideas')||router.url.includes('/funds')||router.url === '/')">

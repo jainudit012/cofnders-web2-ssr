@@ -1,3 +1,62 @@
-<p>
-  filter works!
-</p>
+<div class="filter">
+  <div *ngIf="router.url =='/funds'; else IdeaFilter">
+    <p class="filter__text">Explore investment opportunities from leading investors and incubators.</p>
+    <!-- <label for="menu1">Choose Menu</label> -->
+    <div class="filter__menu">
+      <select name="menu1" id="menu1" class="filter__select">
+        <option value="0" selected disabled class="filter__options">Funds</option>
+        <option value="1" class="filter__options">All Funds</option>
+        <option value="2" class="filter__options">Applied Funds</option>
+      </select> 
+      <!-- <label for="investorType">Project Stage</label> -->
+      <select name="investorType" id="investorType" class="filter__select">
+          <option value="" disabled class="filter__options">Investor Type</option>
+          <option *ngFor="let inv of investorTypes" value="inv" class="filter__options">{{inv}}</option>
+      </select>
+      <!-- <label for="sector">Project Sector</label> -->
+      <select name="sector" id="sector" class="filter__select">
+          <option value="" disabled class="filter__options">Project Sector</option>
+          <option *ngFor="let sec of sectors" value="sec" class="filter__options">{{sec}}</option>
+      </select>
+      <!-- <label for="fundValue">Looking For</label> -->
+      <select name="fundValue" id="fundValue" class="filter__select">
+          <option value="" disabled class="filter__options">Fund Value</option>
+          <option *ngFor="let fun of fundValues" value="fun" class="filter__options">{{fun}}</option>
+      </select>
+    </div>
+    <div class="filter__clear">
+      <span matBadge="4" matBadgeOverlap="false" matBadgePosition="above after" class="filter__clear--text" (click)="clear()">Clear&nbsp;All</span>
+    </div>
+  </div>
+  <ng-template #IdeaFilter>
+    <div>
+      <p class="filter__text">Explore opportunities to partner with startup founders, looking for cofounders, mentors, investors and more.</p>
+      <!-- <label for="menu1">Choose Menu</label> -->
+      <div class="filter__menu">
+        <select name="menu1" id="menu1" class="filter__select">
+            <option value="0" selected disabled class="filter__options">All</option>
+            <option value="1" class="filter__options">My Projects</option>
+            <option value="2" class="filter__options">My Opportunities</option>
+        </select>
+        <!-- <label for="stage">Project Stage</label> -->
+        <select name="stage" id="stage" class="filter__select">
+            <option value="" disabled class="filter__options">Project Stage</option>
+            <option *ngFor="let stg of stages" value="stg" class="filter__options">{{stg}}</option>
+        </select>
+        <!-- <label for="sector">Project Sector</label> -->
+        <select name="sector" id="sector" class="filter__select">
+            <option value="" disabled class="filter__options">Project Sector</option>
+            <option *ngFor="let sec of sectors" value="sec" class="filter__options">{{sec}}</option>
+        </select>
+        <!-- <label for="requirement">Looking For</label> -->
+        <select name="requirement" id="requirement" class="filter__select">
+            <option value="" disabled class="filter__options">Looking For</option>
+            <option *ngFor="let req of lookingFor" value="req" class="filter__options">{{req}}</option>
+        </select>
+      </div>
+      <div class="filter__clear">
+        <span matBadge="4" matBadgeOverlap="false" matBadgePosition="above after" class="filter__clear--text" (click)="clear()" tabindex="0">Clear&nbsp;All</span>
+      </div>
+    </div>
+  </ng-template>
+</div>
