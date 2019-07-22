@@ -67,7 +67,6 @@ export class IdeaComponent implements OnInit, OnDestroy{
 
   listenToValueChange(){
     this.filterSubscription = this.filterService.generalData.subscribe(async(data)=>{
-      console.log('data from subscription', data)
       if(data[0]&&data[0].length>0){
         if(this.authService.isAuthenticated()&&this.authService.isUserAuthenticated()){
           if(data[0]==='myProjects') {

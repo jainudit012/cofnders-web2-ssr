@@ -59,7 +59,6 @@ export class FilterComponent implements OnInit {
   }
 
   updateValuesInFilterService(arr:any[]){
-    console.log('Value to set', arr)
     this.filterService.setData(arr)
     this.calculateFilterCount()
   }
@@ -73,19 +72,16 @@ export class FilterComponent implements OnInit {
 
   filterByInvestorType(){
     this.filterArray[1] = this.investor_type
-    console.log(this.filterArray[1])
     this.updateValuesInFilterService(this.filterArray)
   }
 
   filterByProjectSector(){
     this.filterArray[2] = this.project_sector
-    console.log(this.filterArray[2])
     this.updateValuesInFilterService(this.filterArray)
   }
 
   filterByFundValue(){
     this.filterArray[3] = this.fund_value
-    console.log(this.filterArray[3])
     this.updateValuesInFilterService(this.filterArray)
   }
 
@@ -97,13 +93,11 @@ export class FilterComponent implements OnInit {
 
   filterByProjectStage(){
     this.filterArray[1] = this.project_stage
-    console.log(this.filterArray[1])
     this.updateValuesInFilterService(this.filterArray)
   }
 
   filterByLookingFor(){
     this.filterArray[3] = this.looking_for
-    console.log(this.filterArray[3])
     this.updateValuesInFilterService(this.filterArray)
   }
 }
