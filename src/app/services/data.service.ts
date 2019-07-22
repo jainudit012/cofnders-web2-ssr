@@ -66,17 +66,17 @@ export class DataService {
     }
   }
 
-  public getFunds(offset?:number){
+  public getFunds(investorType?:string, stage?: string, fundValue?:string, type?: string,  offset?:number){
     if(this.authService.isAuthenticated() && this.authService.isUserAuthenticated()){
       const token = this.authService.userToken
-      return Axios.get(`${environment.apiUrl}/funds?limit=10&&offset=${offset}`, {headers: {'Authorization': token}}).then(res=>{
+      return Axios.get(`${environment.apiUrl}/funds?limit=10&&offset=${offset}&&investorType=${investorType}&&stage=${stage}&&fundValue=${fundValue}&&type=${type}`, {headers: {'Authorization': token}}).then(res=>{
         return res.data
       }).catch(err=>{
         if(!environment.production) console.log(err)
         this._snackBar.open('Could not Load Funds!', 'X', {duration: 2000})
       })
     }else{
-      return Axios.get(`${environment.apiUrl}/funds?limit=10&&offset=${offset}`).then(res=>{
+      return Axios.get(`${environment.apiUrl}/funds?limit=10&&offset=${offset}&&investorType=${investorType}&&stage=${stage}&&fundValue=${fundValue}`).then(res=>{
         return res.data
       }).catch(err=>{
         if(!environment.production) console.log(err)
