@@ -38,17 +38,17 @@ export class DataService {
     })
   }
 
-  public getFeed(offset?:number){
+  public getFeed(type?: string , stage?: string, sector?:string , requirement?: string, offset?:number){
     if(this.authService.isAuthenticated() && this.authService.isUserAuthenticated()){
       const token = this.authService.userToken
-      return Axios.get(`${environment.apiUrl}/feed?limit=5&&offset=${offset}`, {headers: {'Authorization': token}}).then(res=>{
+      return Axios.get(`${environment.apiUrl}/feed?limit=5&&offset=${offset}&&type=${type}&&stage=${stage}&&sector=${sector}&&requirement=${requirement}`, {headers: {'Authorization': token}}).then(res=>{
         return res.data
       }).catch(err=>{
         if(!environment.production) console.log(err)
         this._snackBar.open('Could not Load Your Feed!', 'X', {duration: 2000})
       })
     }else {
-      return Axios.get(`${environment.apiUrl}/feed?limit=5&&offset=${offset}`).then(res=>{
+      return Axios.get(`${environment.apiUrl}/feed?limit=5&&offset=${offset}&&stage=${stage}&&sector=${sector}&&requirement=${requirement}`).then(res=>{
         return res.data
       }).catch(err=>{
         if(!environment.production) console.log(err)
