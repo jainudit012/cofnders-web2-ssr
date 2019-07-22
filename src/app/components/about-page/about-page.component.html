@@ -1,19 +1,20 @@
-<div class="wrapper">
-  <header>
+<header>
     <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container-fluid">
+        <div class="container-fluid navbar-inline">
             <a class="navbar-brand" routerLink="/ideas"><img src="../../../assets/logo-black-compressor.png" alt="Cofnders Logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
+                <label for="show-menu" class="navbar-toggler-icon">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                    <title>menu</title>
+                    <path d="M16.4 9h-12.8c-0.552 0-0.6 0.447-0.6 1s0.048 1 0.6 1h12.8c0.552 0 0.6-0.447 0.6-1s-0.048-1-0.6-1zM16.4 13h-12.8c-0.552 0-0.6 0.447-0.6 1s0.048 1 0.6 1h12.8c0.552 0 0.6-0.447 0.6-1s-0.048-1-0.6-1zM3.6 7h12.8c0.552 0 0.6-0.447 0.6-1s-0.048-1-0.6-1h-12.8c-0.552 0-0.6 0.447-0.6 1s0.048 1 0.6 1z"></path>
+                    </svg>
+                </label>
             </button>
-            <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                <!-- <form class="form-inline ml-auto">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                </form> -->
+            <div class=" navbar-collapse " id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/about">About us </a>
+                        <a class="nav-link" routerLink="/about">About us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" routerLink="/ideas">Ignite Your Idea</a>
@@ -27,26 +28,40 @@
                 </ul>
             </div>
         </div>
+        <input style="display: none" type="checkbox" id="show-menu"/>
+         <ul id="topbar" class="navbar-mobile">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/about">About us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/ideas">Ignite Your Idea</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/funds">Invest in Ideas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/ideas">Contact</a>
+            </li>
+        </ul>
     </nav>
-  </header>
-  <div class="home-wrap">
+</header>
+<div class="home-wrap">
     <div class="home-inner">
         <div class="landing-detail">
             <div class="feature-part" style="width:100%">
                 <div class="row landing-des" style="margin-right: 0;margin-left: 0">
                     <div class="col-md-6">
                         <div class="feature-detail text-center">
-                            <p class="feature-para"> Nothing is more powerful than The Idea, whose time has come.
-                            </p>
+                            <p class="feature-para"> Nothing is more powerful than The Idea, whose time has come.</p>
                             <a routerLink="/ideas" class="btn btn-primary btn-submit">Begin Now</a>
                         </div>
                     </div>
-                    <div class="col-md-6" style="width:100%;padding-right: 0;">
-                        <img style="width:100%;max-height:95vh" src="../../../assets/012-compressor.jpg" alt="Back Ground Image">
+                    <div class="col-md-6" style="padding-right: 0;">
+                        <img style="width:100%;max-height:100vh" src="../../../assets/012-compressor.jpg" alt="Back Ground Image">
                     </div>
                 </div>
                 <div class="row landing-mobile" style="margin-right: 0;margin-left: 0">
-                    <div class="col-12">
+                    <div class="col-12" style="width:100%">
                         <div class="feature-detail text-center">
                             <p class="feature-para"> Nothing is more powerful than The Idea, whose time has come.
                             </p>
@@ -57,8 +72,8 @@
             </div>
         </div>
     </div>
-  </div>
-  <section class="features offset">
+</div>
+<section class="features offset">
     <div class="narrow">
         <div class="feature-part">
             <div class="row">
@@ -73,7 +88,7 @@
                             Technology, Finance, Strategy, Marketing and Investment to make your Ideas work and
                             win. We exist to make Ideas thrive.
                         </p>
-  
+
                     </div>
                 </div>
             </div>
@@ -155,8 +170,8 @@
             </div>
         </div>
     </div>
-  </section>
-  <section class="current-alt offset" id="Get in Touch">
+</section>
+<section class="current-alt offset" id="Get in Touch">
     <h2 class="section-heading text-center">
         Get in Touch
     </h2>
@@ -164,7 +179,6 @@
         <p>The time is now and we are here...</p>
     </div>
     <div class="text-center">
-        <a routerLInk="/ideas" class="btn btn-primary btn-submit">Contact Us</a>
+        <a routerLink="/ideas" class="btn btn-primary btn-submit">Contact Us</a>
     </div>
-  </section>
-</div>
+</section>
