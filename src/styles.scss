@@ -35,6 +35,8 @@ body {
     box-sizing: border-box;
 }
 
+[hidden] { display: none !important;}
+
 .btn--app {
     cursor: pointer;
 }
