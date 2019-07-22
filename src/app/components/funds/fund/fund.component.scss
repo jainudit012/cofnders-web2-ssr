@@ -1,3 +1,38 @@
 .funds {
     margin-top: 1rem;
 }
+
+// .noPosts {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+
+//     &__icon {
+//         cursor: pointer;
+//     }
+//     &__text {
+//         font-size: 2rem;
+//         padding: 2rem;
+//     }
+// }
+
+.noData {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+
+    & > .text {
+        text-align: center;
+        padding: .5rem;
+
+        & > h3 {
+            font-size: 1.7rem;
+        }
+
+        & > h5 {
+            font-size: 1.4rem;
+        }
+    }
+}
