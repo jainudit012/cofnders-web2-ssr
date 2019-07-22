@@ -1,25 +1,29 @@
 <div class="filter">
   <div *ngIf="router.url =='/funds'; else IdeaFilter">
     <p class="filter__text">Explore investment opportunities from leading investors and incubators.</p>
-    <!-- <label for="menu1">Choose Menu</label> -->
     <div class="filter__menu">
-      <select name="menu1" id="menu1" class="filter__select" [(ngModel)]="menu_type" (change)="filterByFundType()">
-        <option value="null" selected disabled class="filter__options">Funds</option>
-        <option [ngValue]="1" class="filter__options">All Funds</option>
-        <option [ngValue]="2" class="filter__options">Applied Funds</option>
+      <select name="menu1" id="menu1" class="filter__select" [(ngModel)]="menu_type" (change)="filterByFundType()" aria-label="menu1">
+          <option value="null" selected disabled class="filter__options">Funds</option>
+          <option [ngValue]="1" class="filter__options">All Funds</option>
+          <option [ngValue]="2" class="filter__options">Applied Funds</option>
       </select> 
+      <!-- <select name="menu1" id="menu1" class="filter__select" [(ngModel)]="menu_type" (change)="filterByFundType()">
+          <option value="null" selected disabled class="filter__options">Funds</option>
+          <option [ngValue]="1" class="filter__options">All Funds</option>
+          <option [ngValue]="2" class="filter__options">Applied Funds</option>
+      </select>  -->
       <!-- <label for="investorType">Project Stage</label> -->
-      <select name="investorType" id="investorType" class="filter__select" [(ngModel)]="investor_type" (change)="filterByInvestorType()">
+      <select name="investorType" id="investorType" class="filter__select" [(ngModel)]="investor_type" (change)="filterByInvestorType()" aria-label="investorType">
           <option value="null" disabled class="filter__options">Investor Type</option>
           <option *ngFor="let inv of investorTypes" [ngValue]="inv" class="filter__options">{{inv}}</option>
       </select>
       <!-- <label for="sector">Project Sector</label> -->
-      <select name="sector" id="sector" class="filter__select" [(ngModel)]="project_sector" (change)="filterByProjectSector()">
+      <select name="sector" id="sector" class="filter__select" [(ngModel)]="project_sector" (change)="filterByProjectSector()" aria-label="sector">
           <option value="null" disabled class="filter__options">Preferred Startup Stage</option>
           <option *ngFor="let stg of stages" [ngValue]="stg" class="filter__options">{{stg}}</option>
       </select>
       <!-- <label for="fundValue">Looking For</label> -->
-      <select name="fundValue" id="fundValue" class="filter__select" [(ngModel)]="fund_value" (change)="filterByFundValue()">
+      <select name="fundValue" id="fundValue" class="filter__select" [(ngModel)]="fund_value" (change)="filterByFundValue()" aria-label="fundValue">
           <option value="null" disabled class="filter__options">Fund Value</option>
           <option *ngFor="let fun of fundValues" [ngValue]="fun" class="filter__options">{{fun}}</option>
       </select>
@@ -33,23 +37,23 @@
       <p class="filter__text">Explore opportunities to partner with startup founders, looking for cofounders, mentors, investors and more.</p>
       <!-- <label for="menu1">Choose Menu</label> -->
       <div class="filter__menu">
-        <select name="menu1" id="menu1" class="filter__select" [(ngModel)]="menu_type" (change)="filterByIdeasType()">
+        <select name="menu1" id="menu1" class="filter__select" [(ngModel)]="menu_type" (change)="filterByIdeasType()" aria-label="menu1">
             <option value="null" selected disabled class="filter__options">All</option>
             <option [ngValue]="1" class="filter__options">My Projects</option>
             <option [ngValue]="2" class="filter__options">My Opportunities</option>
         </select>
         <!-- <label for="stage">Project Stage</label> -->
-        <select name="stage" id="stage" class="filter__select" [(ngModel)]="project_stage" (change)="filterByProjectStage()">
+        <select name="stage" id="stage" class="filter__select" [(ngModel)]="project_stage" (change)="filterByProjectStage()" aria-label="stage">
             <option value="null" disabled class="filter__options">Project Stage</option>
             <option *ngFor="let stg of stages" [ngValue]="stg" class="filter__options">{{stg}}</option>
         </select>
         <!-- <label for="sector">Project Sector</label> -->
-        <select name="sector" id="sector" class="filter__select" [(ngModel)]="project_sector" (change)="filterByProjectSector()">
+        <select name="sector" id="sector" class="filter__select" [(ngModel)]="project_sector" (change)="filterByProjectSector()" aria-label="sector">
             <option value="null" disabled class="filter__options">Project Sector</option>
             <option *ngFor="let sec of sectors" [ngValue]="sec" class="filter__options">{{sec}}</option>
         </select>
         <!-- <label for="requirement">Looking For</label> -->
-        <select name="requirement" id="requirement" class="filter__select" [(ngModel)]="looking_for" (change)="filterByLookingFor()">
+        <select name="requirement" id="requirement" class="filter__select" [(ngModel)]="looking_for" (change)="filterByLookingFor()" aria-label="requirement">
             <option value="null" disabled class="filter__options">Looking For</option>
             <option *ngFor="let req of lookingFor" [ngValue]="req" class="filter__options">{{req}}</option>
         </select>
