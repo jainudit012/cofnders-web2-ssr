@@ -15,8 +15,8 @@
       </select>
       <!-- <label for="sector">Project Sector</label> -->
       <select name="sector" id="sector" class="filter__select" [(ngModel)]="project_sector" (change)="filterByProjectSector()">
-          <option value="null" disabled class="filter__options">Project Sector</option>
-          <option *ngFor="let sec of sectors" [ngValue]="sec" class="filter__options">{{sec}}</option>
+          <option value="null" disabled class="filter__options">Preferred Startup Stage</option>
+          <option *ngFor="let stg of stages" [ngValue]="stg" class="filter__options">{{stg}}</option>
       </select>
       <!-- <label for="fundValue">Looking For</label> -->
       <select name="fundValue" id="fundValue" class="filter__select" [(ngModel)]="fund_value" (change)="filterByFundValue()">
