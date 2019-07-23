@@ -1,5 +1,5 @@
 import { Directive, EventEmitter, HostListener, Input, Output } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Directive({
   selector: '[tsSubmitIfValid]',

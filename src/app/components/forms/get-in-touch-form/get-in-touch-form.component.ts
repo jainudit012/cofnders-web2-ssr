@@ -1,6 +1,7 @@
-import { Component, OnInit, Optional, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+
 import { UserType } from '../../../models/user.model';
 import { DataService } from '../../../services/data.service';
 

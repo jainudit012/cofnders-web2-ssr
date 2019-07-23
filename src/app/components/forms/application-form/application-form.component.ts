@@ -1,8 +1,9 @@
-import { Component, OnInit, Optional, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { CloudinaryUploader, CloudinaryOptions } from 'ng2-cloudinary';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
+
 import { environment } from '../../../../environments/environment';
 import { DataService } from '../../../services/data.service';
 

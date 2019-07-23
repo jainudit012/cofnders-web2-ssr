@@ -1,6 +1,7 @@
-import { Component, OnInit, Inject, Optional } from '@angular/core';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 import { Requirement } from '../../../models/opportunity.model';
 import { DataService } from '../../../services/data.service';
 

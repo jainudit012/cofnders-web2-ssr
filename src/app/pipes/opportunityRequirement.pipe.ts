@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+
 import { Requirement } from '../models/opportunity.model';
 
 

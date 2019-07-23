@@ -1,11 +1,12 @@
-import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { WINDOW } from '@ng-toolkit/universal';
-import { DataService } from '../../../services/data.service';
 import { Subscription } from 'rxjs';
-import { FilterService } from '../../../services/filter.service';
-import { AuthService } from '../../../services/auth.service';
-import { StartupStage, Sector } from '../../../models/project.model';
+
 import { Requirement } from '../../../models/opportunity.model';
+import { Sector, StartupStage } from '../../../models/project.model';
+import { AuthService } from '../../../services/auth.service';
+import { DataService } from '../../../services/data.service';
+import { FilterService } from '../../../services/filter.service';
 
 
 @Component({

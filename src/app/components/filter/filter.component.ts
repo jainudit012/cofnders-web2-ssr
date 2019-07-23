@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { StartupStage, Sector } from '../../models/project.model';
+
+import { FundValue, InvestorType } from '../../models/fund.model';
 import { Requirement } from '../../models/opportunity.model';
-import { InvestorType, FundValue } from '../../models/fund.model';
+import { Sector, StartupStage } from '../../models/project.model';
 import { FilterService } from '../../services/filter.service';
 
 @Component({

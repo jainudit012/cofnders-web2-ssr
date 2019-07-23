@@ -1,11 +1,12 @@
-import { Component, OnInit, Optional, Inject, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit, Optional, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { ProjectNature, Sector, StartupStage, TeamSizes } from '../../../models/project.model';
-import { CloudinaryUploader, CloudinaryOptions } from 'ng2-cloudinary';
-import { DataService } from '../../../services/data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
+
 import { environment } from '../../../../environments/environment';
+import { ProjectNature, Sector, StartupStage, TeamSizes } from '../../../models/project.model';
+import { DataService } from '../../../services/data.service';
 
 @Component({
   selector: 'app-project-form',

@@ -1,9 +1,9 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
-import { AuthService } from '../../../services/auth.service';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+
+import { AuthService } from '../../../services/auth.service';
 import { ApplicationFormComponent } from '../../forms/application-form/application-form.component';
-import { WINDOW } from '@ng-toolkit/universal';
 import { NoApprovedProjectsComponent } from '../../no-approved-projects/no-approved-projects.component';
 
 @Component({

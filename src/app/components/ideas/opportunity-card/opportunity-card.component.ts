@@ -1,10 +1,10 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
-import { AuthService } from '../../../services/auth.service';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { GetInTouchFormComponent } from '../../forms/get-in-touch-form/get-in-touch-form.component';
-import { WINDOW } from '@ng-toolkit/universal';
+import { Router } from '@angular/router';
+
+import { AuthService } from '../../../services/auth.service';
 import { ConfirmDeleteComponent } from '../../confirm-delete/confirm-delete.component';
+import { GetInTouchFormComponent } from '../../forms/get-in-touch-form/get-in-touch-form.component';
 import { OpportunityFormComponent } from '../../forms/opportunity-form/opportunity-form.component';
 
 @Component({

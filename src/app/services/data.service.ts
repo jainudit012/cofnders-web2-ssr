@@ -1,18 +1,15 @@
-import { Injectable, Output, EventEmitter } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import Axios from 'axios';
 
 import { environment } from '../../environments/environment';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { AuthService } from './auth.service';
-
-import { ProjectNature, Sector, StartupStage, TeamSizes } from '../models/project.model';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators'
-import { Requirement } from '../models/opportunity.model';
-import { Router } from '@angular/router';
-import { UserType } from '../models/user.model';
 import { InvestorType } from '../models/fund.model';
+import { Requirement } from '../models/opportunity.model';
+import { ProjectNature, Sector, StartupStage, TeamSizes } from '../models/project.model';
+import { UserType } from '../models/user.model';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'

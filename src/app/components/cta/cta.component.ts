@@ -1,12 +1,12 @@
-import { Component, OnInit, Inject, Input } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ProjectFormComponent } from '../forms/project-form/project-form.component';
-import { OpportunityFormComponent } from '../forms/opportunity-form/opportunity-form.component';
-import { ListFundFormComponent } from '../forms/list-fund-form/list-fund-form.component';
-import { WINDOW } from '@ng-toolkit/universal';
+import { Router } from '@angular/router';
+
+import { AuthService } from '../../services/auth.service';
 import { DataService } from '../../services/data.service';
+import { ListFundFormComponent } from '../forms/list-fund-form/list-fund-form.component';
+import { OpportunityFormComponent } from '../forms/opportunity-form/opportunity-form.component';
+import { ProjectFormComponent } from '../forms/project-form/project-form.component';
 import { NoApprovedProjectsComponent } from '../no-approved-projects/no-approved-projects.component';
 
 @Component({

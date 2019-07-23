@@ -1,11 +1,11 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SwUpdate } from '@angular/service-worker';
+import { WINDOW } from '@ng-toolkit/universal';
 
 import { environment } from '../environments/environment';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
-import { SwUpdate } from '@angular/service-worker';
-import { WINDOW } from '@ng-toolkit/universal';
 
 @Component({
   selector: 'app-root',
