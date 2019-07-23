@@ -14,7 +14,7 @@ import { FilterService } from '../../../services/filter.service';
   templateUrl: './fund.component.html',
   styleUrls: ['./fund.component.scss']
 })
-export class FundComponent implements OnInit, OnDestroy {
+export class FundComponent implements OnInit {
 
   userProjectResponse: any;
   userProjects: any[];
@@ -107,8 +107,8 @@ export class FundComponent implements OnInit, OnDestroy {
     })
   }
 
-  ngOnDestroy(){
-    this.filterSubscription.unsubscribe()
-  }
+  // ngOnDestroy(){
+  //   this.filterSubscription.unsubscribe()
+  // }
 
 }

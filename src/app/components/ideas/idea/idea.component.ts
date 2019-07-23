@@ -14,7 +14,7 @@ import { FilterService } from '../../../services/filter.service';
   templateUrl: './idea.component.html',
   styleUrls: ['./idea.component.scss']
 })
-export class IdeaComponent implements OnInit, OnDestroy{
+export class IdeaComponent implements OnInit {
 
   feedData:any[]
   feedBackup: any[]
@@ -105,7 +105,7 @@ export class IdeaComponent implements OnInit, OnDestroy{
     })
   }
 
-  ngOnDestroy(){
-    this.filterSubscription.unsubscribe()
-  }
+  // ngOnDestroy(){
+  //   this.filterSubscription.unsubscribe()
+  // }
 }
