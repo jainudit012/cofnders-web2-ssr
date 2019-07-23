@@ -60,18 +60,18 @@
         background: white;
         height: 3.5rem;
         width: 20%;
-        -webkit-border-top-right-radius: 2px;
-        -webkit-border-bottom-right-radius: 2px;
-        -webkit-border-bottom-left-radius: 2px;
-        -webkit-border-bottom-left-radius: 2px;
-        -moz-border-radius-topright: 2px;
-        -moz-border-radius-topleft: 2px;
-        -moz-border-radius-bottomright: 2px;
-        -moz-border-radius-bottomleft: 2px;
-        border-top-right-radius: 2px;
-        border-top-left-radius: 2px;
-        border-bottom-left-radius: 2px;
-        border-bottom-right-radius: 2px;
+        -webkit-border-top-right-radius: 5px;
+        -webkit-border-bottom-right-radius: 5px;
+        -webkit-border-bottom-left-radius: 5px;
+        -webkit-border-bottom-left-radius: 5px;
+        -moz-border-radius-topright: 5px;
+        -moz-border-radius-topleft: 5px;
+        -moz-border-radius-bottomright: 5px;
+        -moz-border-radius-bottomleft: 5px;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
 
         @media only screen and (max-width:1120px){
             width: 35%;
