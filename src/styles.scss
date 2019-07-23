@@ -13,9 +13,21 @@ $black-color: black;
 html {
     font-size: 62.5%; // 1rem is 10 px
 
-    @media only screen and (max-width:575px){
+    @media only screen and (max-width:990px){
+        font-size: 58%;
+    }
+
+    @media only screen and (max-width:910px){
         font-size: 55%;
     }
+
+    @media only screen and (max-width:810px){
+        font-size: 52%;
+    }
+
+    // @media only screen and (max-width:575px){
+    //     font-size: 55%;
+    // }
 
     @media only screen and (max-width:375px){
         font-size: 50%;
@@ -44,6 +56,7 @@ body {
 .btn--round {
     border: 2px solid #00BCD4; 
     background: #00BCD4;
+    // background: #000;
     color: #fff;
     font-weight: 300;
     display: inline-block;

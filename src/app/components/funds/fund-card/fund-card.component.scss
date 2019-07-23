@@ -24,6 +24,10 @@ a:link, a:visited {
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
+
+        @media only screen and (max-width:874px){
+            padding: 1rem 1.6rem 0 1.6rem;
+        }
     }
 
     &__content {
@@ -69,6 +73,12 @@ a:link, a:visited {
         &__description {
             margin-top: 1rem;
             padding: 1.6rem;
+
+            @media only screen and (max-width:874px){
+                margin: 0;
+                margin-left: 1rem;
+                padding: 1rem;
+            }
         }
 
         &__details {
@@ -79,9 +89,13 @@ a:link, a:visited {
             -ms-flex-wrap: wrap;
                 flex-wrap: wrap;
 
+            @media only screen and (max-width:874px){
+                padding: 1rem;
+            }
+
             & > * {
                 padding: 1rem;
-                font-size: 1.2rem;
+                font-size: 1.3rem;
 
                 &:not(:last-child) {
                     width: 50%;
@@ -110,6 +124,10 @@ a:link, a:visited {
                 flex-wrap: wrap;
             width: 100% !important;
             padding: 1.6rem;
+
+            @media only screen and (max-width:874px){
+                padding: 1rem;
+            }
 
             & > * {
                 width: 50%;

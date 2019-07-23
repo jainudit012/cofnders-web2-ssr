@@ -3,8 +3,8 @@
     display: grid;
     -ms-grid-columns: minmax(min-content,1fr),  minmax(min-content,2fr), 2rem , minmax(min-content,4fr), 2rem , minmax(min-content,2fr), minmax(min-content,1fr);
     -ms-grid-rows: 1fr 1fr 1fr;
-    grid-template-columns: [blank-1-start] minmax(min-content,1fr) [blank-1-end container-start block-1-start] minmax(min-content,2fr) [block-1-end block-2-start]
-    minmax(min-content,4fr) [block-2-end block-3-start] minmax(min-content,2fr) [block-3-end container-end blank-2-start] minmax(min-content,1fr) [blank-2-end];
+    grid-template-columns: [blank-1-start] minmax(2rem,1fr) [blank-1-end container-start block-1-start] minmax(min-content,2fr) [block-1-end block-2-start]
+    minmax(min-content,4fr) [block-2-end block-3-start] minmax(min-content,2fr) [block-3-end container-end blank-2-start] minmax(2rem,1fr) [blank-2-end];
     grid-column-gap: 2rem;
     grid-row-gap: 2rem;
 
@@ -25,15 +25,31 @@
         -ms-grid-column: 2 / 3;
         -ms-grid-row: 3/4;
 
+        ::ng-deep & > profile-card > mat-card {
+            min-width: 18rem;
+            max-width: 30rem;
+        }
+
     }
 
     .aside-2 {
         grid-column:  block-3-start / block-3-end;
         -ms-grid-column: 4 / 5;
         -ms-grid-row: 3/4;
+
         
+        ::ng-deep & > app-footer  > mat-card {
+            min-width: 18rem;
+            max-width: 30rem;
+        }
+
         ::ng-deep & > cta > div, ::ng-deep & > recent-card > div {
             padding-bottom: 2rem;
+
+            & > mat-card {
+                min-width: 18rem;
+                max-width: 30rem;
+            }
         }
     }
 

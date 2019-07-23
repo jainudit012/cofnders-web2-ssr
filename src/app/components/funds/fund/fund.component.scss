@@ -1,5 +1,10 @@
 .funds {
     margin-top: 1rem;
+    min-width: 45rem;
+
+    @media only screen and (max-width:874px){
+        min-width: 38rem;
+    }
 }
 
 // .noPosts {
