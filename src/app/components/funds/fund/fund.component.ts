@@ -38,6 +38,7 @@ export class FundComponent implements OnInit {
   async ngOnInit() {
     this.initData()
     this.listenToValueChange()
+    this.scrollToTop()
 
     if(this.authService.isAuthenticated()&&this.authService.isUserAuthenticated()){
       this.userProjectResponse = await this.dataService.getMyProjects()
