@@ -6,6 +6,7 @@ import { WINDOW } from '@ng-toolkit/universal';
 import { environment } from '../environments/environment';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
@@ -20,15 +21,20 @@ export class AppComponent implements OnInit {
     private userService: UserService,
     public router: Router,
     private swUpdate: SwUpdate,
-    @Inject(WINDOW) private window: Window){ 
+    @Inject(WINDOW) private window: Window,
+    private _snackbar: MatSnackBar){ 
   }
 
   ngOnInit(){
     if(this.swUpdate.isEnabled){
       this.swUpdate.available.subscribe(()=>{
-        if(confirm('New Version Available, RELOAD?')){
+        // if(confirm('New Version Available, RELOAD?')){
+        //   this.window.location.reload()
+        // }
+        const snackBarRef = this._snackbar.open('New version available', 'Load New Version')
+        snackBarRef.onAction().subscribe(()=>{
           this.window.location.reload()
-        }
+        })
       })
     }
 
