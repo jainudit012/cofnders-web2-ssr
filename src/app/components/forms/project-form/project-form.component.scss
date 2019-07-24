@@ -19,6 +19,12 @@
     }
 }
 
+.logo-input {
+    display: block;
+    width: 10rem;
+    height: 10rem;
+}
+
 .startup {
 
     &__img {
@@ -33,6 +39,15 @@
         }
         &--block {
             background: #ccc;
+
+            & > .project__logo {
+                
+                &--label {
+                    display: block;
+                    width: 10rem;
+                    height: 10rem;
+                }
+            }
         }
 
     }

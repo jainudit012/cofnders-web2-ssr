@@ -18,7 +18,11 @@
           <div class="startup__identity--image-box">
             <img *ngIf="logoImage; else block" [src]="logoImage" alt="Logo Image" class="startup__img">
             <ng-template #block>
-                <div class="startup__img--block">&nbsp;</div>
+                <div class="startup__img--block">
+                    <label class="project__logo--label" for="validatedCustomLogo"  tabindex="0">
+                        <input type="file" class="project__logo logo-input"  ng2FileSelect [uploader]="uploader" (change)="insertedFile($event)" id="validatedCustomLogo" accept="image/*" >
+                    </label>
+                </div>
             </ng-template>
           </div>
           <div class="startup__identity--details-box">
