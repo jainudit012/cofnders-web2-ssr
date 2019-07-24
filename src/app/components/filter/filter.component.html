@@ -29,7 +29,7 @@
       </select>
     </div>
     <div class="filter__clear">
-      <span [matBadge]="filterCount" matBadgeOverlap="false" matBadgePosition="above after" class="filter__clear--text" (click)="clear()">Clear&nbsp;All</span>
+      <span [matBadge]="filterCount" matBadgeColor="warn" matBadgeOverlap="false" matBadgePosition="above after" class="filter__clear--text" (click)="clear()">Clear&nbsp;All</span>
     </div>
   </div>
   <ng-template #IdeaFilter>
@@ -59,7 +59,7 @@
         </select>
       </div>
       <div class="filter__clear">
-        <span [matBadge]="filterCount" matBadgeOverlap="false" matBadgePosition="above after" class="filter__clear--text" (click)="clear()" tabindex="0">Clear&nbsp;All</span>
+        <span [matBadge]="filterCount" matBadgeColor="warn" matBadgeOverlap="false" matBadgePosition="above after" class="filter__clear--text" (click)="clear()" tabindex="0">Clear&nbsp;All</span>
       </div>
     </div>
   </ng-template>
