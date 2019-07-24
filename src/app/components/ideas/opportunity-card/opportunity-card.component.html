@@ -126,7 +126,7 @@
     </mat-card-content>
     <mat-card-actions class="opportunity__cardActions">
         <div *ngIf="opportunityData.createdBy._id===authService.decodedToken.id; else getInTouch">
-            <button class="btn--app btn--round card__btn--responses" matTooltip="Number of Responses">Response(s): {{opportunityData?.responseCount || 0}}</button>
+            <div class="btn--app btn--round card__btn--responses" matTooltip="Number of Responses">Response(s): {{opportunityData?.responseCount || 0}}</div>
         </div>
         <ng-template #getInTouch>
             <button [disabled]="opportunityData.getInTouchFilled" class="btn--app btn--round card__btn" (click)="touch()" matTooltip="Tap to Get in Touch">Get in Touch</button>
