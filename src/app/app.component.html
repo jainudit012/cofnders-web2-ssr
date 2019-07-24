@@ -1,4 +1,4 @@
-<navbar class="container" style="background-color: black" *ngIf="!(router.url.includes('/about'))"></navbar>
+<navbar class="container" style="background-color: black; padding: .5rem 0 0 0;" *ngIf="!(router.url.includes('/about'))"></navbar>
 <app-filter class="container" style="-webkit-box-shadow: 0 0px 5px rgba(0, 0, 0, 0.125); 
 box-shadow: 0 0px 5px rgba(0, 0, 0, 0.125);" *ngIf="(router.url.includes('/ideas')||router.url.includes('/funds')||router.url === '/')"></app-filter>
 
