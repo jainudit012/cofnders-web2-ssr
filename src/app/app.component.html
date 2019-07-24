@@ -3,9 +3,10 @@
 box-shadow: 0 0px 5px rgba(0, 0, 0, 0.125);" *ngIf="(router.url.includes('/ideas')||router.url.includes('/funds')||router.url === '/')"></app-filter>
 
 <!-- <div > -->
-<div class="container">
+<div class="container" style="margin-top: 2.5rem;">
     <aside class="aside-1" *ngIf="(router.url.includes('/ideas')||router.url.includes('/funds')||router.url === '/')">
         <profile-card></profile-card>
+        <span class="copyright__cofnders">&copy; Cofnders 2019</span>
     </aside>
     <router-outlet></router-outlet>
     <aside class="aside-2" *ngIf="(router.url.includes('/ideas')||router.url.includes('/funds')||router.url === '/')">
