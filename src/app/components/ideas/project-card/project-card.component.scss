@@ -54,10 +54,12 @@ a:link, a:visited {
             font-size: 2rem;
             width: 10vw;
             overflow: hidden;
+            margin: 0 16px;
         }
 
         &__createdBy {
             font-size: 1.35rem;
+            margin: 0 16px;
         }
 
         &__status {

@@ -60,6 +60,10 @@ a:link, a:visited {
             overflow: hidden;
         }
 
+        &__company, &__type {
+            margin: 0 16px;
+        }
+
         &__createdBy {
             font-size: 1.35rem;
         }
