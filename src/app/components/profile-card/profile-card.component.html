@@ -1,4 +1,4 @@
-<div *ngIf="(appUserRes$| async) as userData;else anonymousUser" style="display: inline;">
+<div *ngIf="(appUserRes$| async) as userData;else anonymousUser">
   <mat-card class="card card--info">
       <mat-card-header class="card__header">
         <div mat-card-avatar [style.background-image]="'url('+userService.authUser.picture+')'" class="card__image"></div>
@@ -125,10 +125,10 @@
 <ng-template #anonymousUser>
   <mat-card class="card">
     <mat-card-header>
-        <mat-card-title class="card__heading">New User?</mat-card-title>
+        <mat-card-title class="card__heading--logout">New User?</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <p class="card__content">Signup/Login to list your ideas and apply for funding.</p>
+      <p class="card__content--logout">Signup/Login to list your ideas and apply for funding.</p>
     </mat-card-content>
     <mat-card-actions class="card__actions">
       <button class="btn--app btn--round card__btn" (click)="login()">Login</button>
