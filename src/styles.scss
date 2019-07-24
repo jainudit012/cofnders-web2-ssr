@@ -54,9 +54,9 @@ body {
 }
 
 .btn--round {
-    border: 1px solid #00BCD4; 
+    // border: 1px solid #00BCD4; 
     background: #007888;
-    // background: #000;
+    // background: #00BCD4;
     color: whitesmoke;
     // color: #fff;
     font-weight: 300;
@@ -70,7 +70,7 @@ body {
     &:hover {
         background: #ffda00;
         color: #000;
-        border: 2px solid #ffc400;
+        // border: 2px solid #ffc400;
         transition-duration: 400ms;
     }
 }
