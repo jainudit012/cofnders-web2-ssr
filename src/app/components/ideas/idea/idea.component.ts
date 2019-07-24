@@ -36,7 +36,6 @@ export class IdeaComponent implements OnInit {
   ngOnInit() {
     this.initData()
     this.listenToValueChange()
-    this.scrollToTop()
   }
 
   initData(){
