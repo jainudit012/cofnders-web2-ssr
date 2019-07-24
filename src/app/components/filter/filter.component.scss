@@ -30,8 +30,12 @@
         max-width: 30.5rem;
         min-width: 20rem;
         line-height: 1.8rem;
-        font-size: 1.35rem;
+        font-size: 1.1rem;
         word-break: break-word;
+
+        @media only screen and (max-width:1120px){
+            font-size: 1.3rem;
+        }
 
         @media only screen and (max-width:765px){
             display: none;
