@@ -54,7 +54,8 @@ body {
 }
 
 .btn--round {
-    // border: 1px solid #00BCD4; 
+    // border: 1px solid #00BCD4;
+    border: none; 
     background: #007888;
     // background: #00BCD4;
     color: whitesmoke;
@@ -71,6 +72,7 @@ body {
         background: #ffda00;
         color: #000;
         // border: 2px solid #ffc400;
+        border: none;
         transition-duration: 400ms;
     }
 }
