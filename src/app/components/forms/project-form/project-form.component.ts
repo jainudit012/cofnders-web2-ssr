@@ -31,6 +31,8 @@ export class ProjectFormComponent implements OnInit {
   fileName: string
   selectedValue: number
   isEdit:boolean = false
+  uploadProgress:number = 0
+  uploadProgress_cover:number = 0
 
   prevBtnName: string = 'Previous'
   nextBtnName: string = 'Next'
@@ -184,15 +186,19 @@ export class ProjectFormComponent implements OnInit {
   }
 
   uploadCoverImage(e) {
+    this.uploadProgress_cover = 1
     this.uploader.uploadAll();
     this.imageType = 'coverImage';
   }
 
   uploadToCloudinary(){
     this.uploader.onAfterAddingFile = (file)=>{
+      this.uploadProgress = 1
       this.fileName = null 
     }
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any)=>{
+      if(this.imageType === 'logo') this.uploadProgress = 100
+      else this.uploadProgress_cover = 100
       const res = JSON.parse(response)
       if(this.imageType === 'logo'){
         this.logoImage = res.secure_url;

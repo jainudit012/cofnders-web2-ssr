@@ -19,6 +19,11 @@
     }
 }
 
+.progress__spinner {
+    position: absolute;
+    transform: translate(110%,110%);
+}
+
 .logo-input {
     display: block;
     width: 10rem;
