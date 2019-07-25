@@ -66,7 +66,11 @@ export class IdeaComponent implements OnInit {
 
   scrollToTop(){
     this.hideUpArrow = true;
-    this.window.scroll(0,0)
+    this.window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    })
   }
 
   listenToValueChange(){
