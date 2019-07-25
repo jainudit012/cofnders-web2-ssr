@@ -73,7 +73,7 @@
         }
 
         &__content {
-            padding: 1.6rem;
+            // padding: 1.6rem;
             border-bottom: .1rem solid rgba(112, 112, 112, 0.3);
 
             @media only screen and (max-width:874px){
@@ -84,7 +84,7 @@
 
         &__details {
             margin-top: 1rem;
-            padding: 1.6rem 0;
+            padding: 1.6rem;
 
             @media only screen and (max-width:874px){
                 margin: 0;
@@ -93,8 +93,8 @@
         }
 
         &__requirement {
-            font-size: 1.4rem;
-            padding: 0 1rem;
+            font-size: 1.5rem;
+            padding: 0 2.6rem;
         }
 
         // & > .project {
@@ -192,6 +192,11 @@
 }
 
 .project {
+
+    &__details {
+        padding: 0 1.6rem;
+    }
+
     &__details, &__links {
         display: flex;
         flex-wrap: wrap;
@@ -213,7 +218,7 @@
         height: 100%;
         width: 100%;
         display: block;
-        border-radius: 4px;
+        // border-radius: 4px;
     }
 
     &__links--link:link, &__links--link:visited {
