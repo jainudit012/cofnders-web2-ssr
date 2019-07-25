@@ -25,6 +25,7 @@ export class IdeaComponent implements OnInit {
   stage: StartupStage | string
   requirement: Requirement | string
   type: string
+  hideUpArrow:boolean = true
 
   constructor(private dataService: DataService,
     @Inject(WINDOW) private window: Window,
@@ -48,7 +49,8 @@ export class IdeaComponent implements OnInit {
   }
 
   onScrollDown() {
-  
+    this.hideUpArrow = false;
+
     if(this.doNextCallback){
       this.offset += 5
       this.dataService.getFeed(this.type, this.stage, this.sector, this.requirement, this.offset).then(data=>{
@@ -63,6 +65,7 @@ export class IdeaComponent implements OnInit {
   }
 
   scrollToTop(){
+    this.hideUpArrow = true;
     this.window.scroll(0,0)
   }
 

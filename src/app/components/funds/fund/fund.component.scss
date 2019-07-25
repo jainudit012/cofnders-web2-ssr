@@ -48,3 +48,16 @@
         }
     }
 }
+
+
+.up-arrow{
+    position: fixed;
+    z-index: 1;
+    top: 90vh;
+    right: 5vw;
+    cursor: pointer;
+
+    & > svg {
+        fill: rgba(0, 0, 0, 0.54);
+    }
+}

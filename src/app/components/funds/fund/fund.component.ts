@@ -28,6 +28,7 @@ export class FundComponent implements OnInit {
   stage: StartupStage | string
   fundValue: FundValue | string
   type: string
+  hideArrow:boolean = true
 
   constructor(private dataService: DataService,
     private authService: AuthService,
@@ -38,7 +39,6 @@ export class FundComponent implements OnInit {
   async ngOnInit() {
     this.initData()
     this.listenToValueChange()
-    this.scrollToTop()
 
     if(this.authService.isAuthenticated()&&this.authService.isUserAuthenticated()){
       this.userProjectResponse = await this.dataService.getMyProjects()
@@ -56,6 +56,8 @@ export class FundComponent implements OnInit {
   }
 
   onScrollDown(){
+    this.hideArrow = false
+
     if(this.fundData.length < 10) this.doNextCallback = false;
     if(this.doNextCallback){
       this.offset += 10
@@ -70,6 +72,7 @@ export class FundComponent implements OnInit {
   }
 
   scrollToTop(){
+    this.hideArrow = true
     this.window.scroll(0,0)
   }
 
