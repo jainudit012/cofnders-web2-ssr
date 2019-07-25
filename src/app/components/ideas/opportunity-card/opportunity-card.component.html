@@ -114,7 +114,7 @@
             </div>
         </div>
         <div class="project__coverImageBox" *ngIf="opportunityData.project.projectCoverImage; else noCoverImage;">
-            <cl-image [public-id]="opportunityData.project.projectCoverImage.substr(54)" secure="true" class="project__coverImage" alt="Cover Image">
+            <cl-image [public-id]="opportunityData.project.projectCoverImage.substr(54)" secure="true" class="project__coverImage-o" alt="Cover Image">
                 <cl-transformation quality="auto" fetch-format="auto" dpr="auto">
                 </cl-transformation>
             </cl-image>

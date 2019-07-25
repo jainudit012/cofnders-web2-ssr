@@ -203,7 +203,16 @@
         }
     }
 
-    ::ng-deep &__coverImage > img {
+    &__coverImage-o {
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
+
+    ::ng-deep &__coverImage-o > img {
+        height: 100%;
+        width: 100%;
+        display: block;
         border-radius: 4px;
     }
 
