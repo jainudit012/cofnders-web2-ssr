@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutPageComponent implements OnInit {
 
+  navbarSmallDisplay: boolean = true
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  toggle(){
+    this.navbarSmallDisplay = !this.navbarSmallDisplay
   }
 
 }
