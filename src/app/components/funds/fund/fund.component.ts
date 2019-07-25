@@ -20,7 +20,6 @@ export class FundComponent implements OnInit {
   userProjects: any[];
   userApprovedProjects:any[];
   fundData:any [];
-  fundBackup: any[];
   offset: number = 0;
   doNextCallback: boolean = true;
   filterSubscription: Subscription;

@@ -17,7 +17,6 @@ import { FilterService } from '../../../services/filter.service';
 export class IdeaComponent implements OnInit {
 
   feedData:any[]
-  feedBackup: any[]
   offset: number = 0
   doNextCallback: boolean;
   filterSubscription: Subscription
