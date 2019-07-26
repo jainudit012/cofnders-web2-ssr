@@ -25,7 +25,7 @@ export class PostSignUpFormComponent implements OnInit {
   form = new FormGroup({
     purpose: new FormControl('', Validators.required),
     brief: new FormControl(''),
-    phone: new FormControl('', [Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$'), Validators.maxLength(13)])
+    phone: new FormControl('', [Validators.required, Validators.pattern(new RegExp('^\\d+$')) , Validators.minLength(10), Validators.maxLength(10)])
   });
 
   constructor(
