@@ -47,7 +47,9 @@ import { ProjectSectorPipe } from './pipes/projectSector.pipe';
 import { ProjectStagePipe } from './pipes/projectStage.pipe';
 import { RemoveQuotesPipe } from './pipes/removeQuotes.pipe';
 import { TeamSizePipe } from './pipes/teamSize.pipe';
-import { SubmitIfValidDirective } from './submit-if-valid.directive';
+import { SubmitIfValidDirective } from './directives/submit-if-valid.directive';
+import { BadInputDirective } from './directives/bad-input.directive';
+import { BadNameDirective } from './directives/bad-name.directive';
 
 @NgModule({
   declarations: [
@@ -85,7 +87,9 @@ import { SubmitIfValidDirective } from './submit-if-valid.directive';
     InvestorTypePipe,
     RemoveQuotesPipe,
     NoApprovedProjectsComponent,
-    ConfirmDeleteComponent
+    ConfirmDeleteComponent,
+    BadInputDirective,
+    BadNameDirective
   ],
   entryComponents: [
     PostSignUpFormComponent,
