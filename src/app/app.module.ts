@@ -50,6 +50,7 @@ import { TeamSizePipe } from './pipes/teamSize.pipe';
 import { SubmitIfValidDirective } from './directives/submit-if-valid.directive';
 import { BadInputDirective } from './directives/bad-input.directive';
 import { BadNameDirective } from './directives/bad-name.directive';
+import { CheckUrlDirective } from './directives/check-url.directive';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { BadNameDirective } from './directives/bad-name.directive';
     NoApprovedProjectsComponent,
     ConfirmDeleteComponent,
     BadInputDirective,
-    BadNameDirective
+    BadNameDirective,
+    CheckUrlDirective
   ],
   entryComponents: [
     PostSignUpFormComponent,
