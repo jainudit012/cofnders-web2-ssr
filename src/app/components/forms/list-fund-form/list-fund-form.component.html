@@ -20,14 +20,20 @@
     </div>
     <div>
       <mat-form-field class="listFund__name">
-        <input matInput placeholder="Name" formControlName="name" required>
+        <input matInput placeholder="Name" formControlName="name" required appBadName>
         <mat-error *ngIf="name.touched && name.invalid && name.errors.required">Name is Required</mat-error>
+        <mat-error *ngIf="name.touched && name.invalid && name.errors.appBadName">Invalid Name!</mat-error>
+        <mat-error *ngIf="name.touched && name.invalid && name.errors.minlength">Name should be at least 3 characters!</mat-error>
       </mat-form-field>
     </div>
     <div>
       <mat-form-field class="listFund__contact">
-        <input matInput placeholder="Mobile Number" formControlName="contact" required>
+        <input matInput placeholder="Mobile Number" formControlName="contact" required type="tel" maxlength="10">
+        <span matPrefix>+91&nbsp;</span>
         <mat-error *ngIf="contact.touched && contact.invalid && contact.errors.required">Mobile Number is Required</mat-error>
+        <mat-error *ngIf="contact.touched && contact.invalid && contact.errors.pattern">Mobile Number is Invalid!</mat-error>
+        <mat-error *ngIf="contact.touched && contact.invalid && contact.errors.minlength">Invalid Mobile Number (must be 10 characters!)</mat-error>
+        <mat-error *ngIf="contact.touched && contact.invalid && contact.errors.maxlength">Invalid Mobile Number (must be 10 characters!)</mat-error>
       </mat-form-field>
     </div>
     <div>

@@ -22,7 +22,7 @@ export class OpportunityFormComponent implements OnInit {
   form = new FormGroup({
     projectId: new FormControl('', Validators.required),
     requirement: new FormControl('', Validators.required),
-    details: new FormControl('', [Validators.required, Validators.maxLength(300)])
+    details: new FormControl('', [Validators.required, Validators.minLength(16) ,Validators.maxLength(300)])
   })
 
   constructor(public dialogRef: MatDialogRef<OpportunityFormComponent>,

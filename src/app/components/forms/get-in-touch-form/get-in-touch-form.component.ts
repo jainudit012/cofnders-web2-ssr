@@ -20,7 +20,7 @@ export class GetInTouchFormComponent implements OnInit {
   form = new FormGroup({
     userType: new FormControl('', Validators.required),
     linkedInLink: new FormControl('', Validators.required),
-    message : new FormControl('', [Validators.required,Validators.maxLength(300)])
+    message : new FormControl('', [Validators.required, Validators.minLength(16), Validators.maxLength(300)])
   })
 
   constructor(public dialogRef: MatDialogRef<GetInTouchFormComponent>,

@@ -38,8 +38,11 @@
         <div class="project__details--basic">
           <div>
             <mat-form-field class="project__name">
-              <input matInput placeholder="Name Your Startup Project" formControlName="name" class="form-control" required>
-              <mat-error *ngIf="projectName.touched && projectName.invalid && projectName.errors.required">Please enter a Project Name</mat-error>
+              <input matInput placeholder="Name Your Startup Project" formControlName="name" class="form-control" required appBadInput>
+              <mat-error *ngIf="projectName.touched && projectName.invalid && projectName.errors.required">Please enter a Project Name!</mat-error>
+              <mat-error *ngIf="projectName.touched && projectName.invalid && projectName.errors.appBadInput">Project Name must start with an alphabet!</mat-error>
+              <mat-error *ngIf="projectName.touched && projectName.invalid && projectName.errors.maxlength">Project Name must be less than 64 characters!</mat-error>
+              <mat-error *ngIf="projectName.touched && projectName.invalid && projectName.errors.minlength">Project Name must be at least 3 characters!</mat-error>
             </mat-form-field>
           </div>
           <div>
@@ -103,6 +106,7 @@
           <mat-form-field class="project__pitch">
             <textarea matInput placeholder="Write your 300 character pitch" required formControlName="pitch" maxlength="300"></textarea>
             <mat-error *ngIf="projectPitch.touched && projectPitch.invalid && projectPitch.errors.required">Pitch is Required</mat-error>
+            <mat-error *ngIf="projectPitch.touched && projectPitch.invalid && projectPitch.errors.minlength">Pitch should at least be 16 Characters</mat-error>
             <mat-error *ngIf="projectPitch.touched && projectPitch.invalid && projectPitch.errors.maxlength">Pitch should be less than 300 Characters</mat-error>
           </mat-form-field>
           <div class="characterCount">{{300 - (projectPitch? projectPitch.value.length : 0) }} Characters</div> 

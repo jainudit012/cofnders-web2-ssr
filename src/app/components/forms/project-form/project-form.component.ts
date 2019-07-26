@@ -67,7 +67,7 @@ export class ProjectFormComponent implements OnInit {
   form = new FormGroup({
     projectBasic: new FormGroup({
       logo: new FormControl(''),
-      name: new FormControl('', Validators.required),
+      name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(64)]),
       category: new FormControl('', Validators.required),
       sector: new FormControl('', Validators.required),
       stage: new FormControl('', Validators.required),
@@ -75,7 +75,7 @@ export class ProjectFormComponent implements OnInit {
     }),
     projectDetails: new FormGroup({
       acceptingFunds: new FormControl('', Validators.required),
-      pitch: new FormControl('', [Validators.required, Validators.maxLength(300)]),
+      pitch: new FormControl('', [Validators.required, Validators.minLength(16) ,Validators.maxLength(300)]),
       problemSolvingDescription: new FormControl(''),
       valueAddDescription: new FormControl('')
     }),

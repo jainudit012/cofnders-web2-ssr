@@ -36,6 +36,7 @@
         <mat-form-field class="opportunity__details">
           <textarea matInput placeholder="Specify Details" formControlName="details" maxlength="300" required></textarea>
           <mat-error *ngIf="details.touched && details.invalid && details.errors.required">Details are required</mat-error>
+          <mat-error *ngIf="details.touched && details.invalid && details.errors.minlength">Details must be at least 16 characters!</mat-error>
         </mat-form-field>
         <div class="characterCount">{{300 - (details ? details.value.length : 0) }} Characters</div>
       </div>

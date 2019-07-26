@@ -20,8 +20,8 @@ export class ListFundFormComponent implements OnInit {
 
   form = new FormGroup({
     investorType: new FormControl('', Validators.required),
-    name: new FormControl('', Validators.required),
-    contact: new FormControl('', Validators.required),
+    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    contact: new FormControl('', [Validators.required,Validators.pattern(new RegExp('^\\d+$')) ,Validators.minLength(10), Validators.maxLength(10)]),
     linkedInLink: new FormControl('', Validators.required),
     startupStage: new FormControl('', Validators.required)
   })

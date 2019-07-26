@@ -28,6 +28,7 @@
       <mat-form-field class="message__field">
         <textarea required matInput placeholder="Additional message" formControlName="message" maxlength="300"></textarea>
         <mat-error *ngIf="message.touched && message.invalid && message.errors.required">Message is Required</mat-error>
+        <mat-error *ngIf="message.touched && message.invalid && message.errors.minlength">Message must be at least 16 characters!</mat-error>
       </mat-form-field>
       <div class="characterCount">{{300 - (message ? message.value.length : 0) }} Characters</div>
     </div>
