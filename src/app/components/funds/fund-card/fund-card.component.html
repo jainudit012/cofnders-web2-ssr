@@ -11,7 +11,7 @@
         <img [src]="fundData.logo" alt="Company Logo" class="fund__logo--other">
       </ng-template>
     </div>
-    <mat-card-title class="fund__company" matTooltip="Fund/Company Name"  matTooltipPosition="after">{{fundData.companyName}}</mat-card-title>
+    <mat-card-title class="fund__company" [matTooltip]="fundData.companyName"  matTooltipPosition="after">{{fundData.companyName}}</mat-card-title>
     <mat-card-subtitle class="fund__type" matTooltip="Fund Type" matTooltipPosition="after">{{fundData.investorType | investorType}}</mat-card-subtitle>
     <div class="fund__createdAt"> {{ fundData.createdAt | dateFromNow }}</div>
   </mat-card-header>
