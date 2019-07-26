@@ -19,13 +19,14 @@ export class ApplicationFormComponent implements OnInit {
 
   fileName : string | null
   approvedProjects: any[]
+  uploadProgressPdf:number = 0
 
   form = new FormGroup({
     projectId : new FormControl('', Validators.required),
     amount: new FormControl('', Validators.required),
     valuation : new FormControl('', Validators.required),
     pdf: new FormControl(''),
-    message : new FormControl('', [Validators.required, Validators.maxLength(300)])
+    message : new FormControl('', [Validators.required, Validators.minLength(16), Validators.maxLength(300)])
   })
 
   uploader: CloudinaryUploader = new CloudinaryUploader(
@@ -48,9 +49,11 @@ export class ApplicationFormComponent implements OnInit {
 
   uploadToCloudinary(){
     this.uploader.onAfterAddingFile = (file)=>{
+      this.uploadProgressPdf = 1
       this.fileName = null 
     }
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any)=>{
+      this.uploadProgressPdf = 100
       const res = JSON.parse(response)
       this.fileName = res.original_filename + '.' + res.format;
       this.form.controls['pdf'].setValue(res.secure_url)

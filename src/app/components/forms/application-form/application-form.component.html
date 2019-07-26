@@ -31,11 +31,14 @@
       </mat-form-field>
     </div>
     <div class="applyFunds__pdf--box">
-      <div class="applyFunds__pdf--input-box">
-          <label class="applyFunds__pdf--label" for="validatedCustomFile" tabindex="0">{{ fileName || 'Upload Pitch Deck' }}
-            <input type="file" class="applyFunds__pdf"  ng2FileSelect [uploader]="uploader" (change)="uploadPdf($event)" id="validatedCustomFile" accept="application/pdf">
-            <span class="applyFunds__pdf--text">Choose File</span>
-          </label>
+      <div class="applyFunds__pdf--input-box" tabindex="0">
+        <div *ngIf="uploadProgressPdf !==0 &&  uploadProgressPdf !== 100" class="progress__spinner-3">
+          <mat-spinner class="example-margin" color="accent" [value]="uploadProgressPdf" diameter="30"></mat-spinner>
+        </div>
+        <label class="applyFunds__pdf--label" for="validatedCustomFile">{{ fileName || 'Upload Pitch Deck' }}
+          <input type="file" class="applyFunds__pdf"  ng2FileSelect [uploader]="uploader" (keyup.enter)="uploadPdf($event)" (change)="uploadPdf($event)" id="validatedCustomFile" accept="application/pdf">
+          <span class="applyFunds__pdf--text">Choose File</span>
+        </label>
       </div>
       <div class="file-css">Only pdf files</div>
     </div>
@@ -43,6 +46,7 @@
       <mat-form-field class="applyFunds__message">
         <textarea matInput placeholder="Write your 300 character pitch" formControlName="message" maxlength="300" required></textarea>
         <mat-error *ngIf="message.touched && message.invalid && message.errors.required">Pitch is Required</mat-error>
+        <mat-error *ngIf="message.touched && message.invalid && message.errors.minlength">Pitch must be at least 16 characters!</mat-error>
       </mat-form-field>
       <div class="characterCount">{{300 - (message ? message.value.length : 0) }} Characters</div>
     </div>
