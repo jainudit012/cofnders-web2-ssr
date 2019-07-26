@@ -64,3 +64,17 @@
             align-items: center;
     margin-top: 8rem;
 }
+
+.tick{
+    &--box{
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    &--svg {
+        fill: greenyellow;
+        border-radius: 100%;
+    }
+    
+}

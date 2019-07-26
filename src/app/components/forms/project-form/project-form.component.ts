@@ -327,6 +327,4 @@ export class ProjectFormComponent implements OnInit {
     }
     this.dialogRef.close()
   }
-
-
 }
