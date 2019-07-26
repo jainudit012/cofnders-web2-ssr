@@ -19,7 +19,7 @@ export class GetInTouchFormComponent implements OnInit {
 
   form = new FormGroup({
     userType: new FormControl('', Validators.required),
-    linkedInLink: new FormControl('', Validators.required),
+    linkedInLink: new FormControl('', [Validators.required, Validators.pattern('^.*(?:linkedin\.com).*$')]),
     message : new FormControl('', [Validators.required, Validators.minLength(16), Validators.maxLength(300)])
   })
 

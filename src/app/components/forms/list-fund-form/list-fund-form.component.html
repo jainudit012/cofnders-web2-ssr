@@ -40,6 +40,7 @@
       <mat-form-field class="listFund__linkedInLink">
         <input matInput placeholder="LinkedIn Profile" formControlName="linkedInLink" required>
         <mat-error *ngIf="linkedInLink.touched && linkedInLink.invalid && linkedInLink.errors.required">LinkedIn Profile is Required</mat-error>
+        <mat-error *ngIf="linkedInLink.touched && linkedInLink.invalid && linkedInLink.errors.pattern">Not a LinkedIn Link!</mat-error>
       </mat-form-field>
     </div>
     <div>

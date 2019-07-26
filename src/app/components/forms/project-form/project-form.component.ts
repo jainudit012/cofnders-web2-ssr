@@ -81,9 +81,9 @@ export class ProjectFormComponent implements OnInit {
     }),
     projectFinishing : new FormGroup({
       websiteLink: new FormControl(''),
-      facebookLink: new FormControl(''),
-      twitterLink: new FormControl(''),
-      linkedInLink: new FormControl(''),
+      facebookLink: new FormControl('', Validators.pattern('^.*(?:facebook\.com|fb\.me).*$')),
+      twitterLink: new FormControl('', Validators.pattern('^.*(?:twitter\.com).*$')),
+      linkedInLink: new FormControl('', Validators.pattern('^.*(?:linkedin\.com).*$')),
       coverImage: new FormControl('')
     })
   })
@@ -254,6 +254,22 @@ export class ProjectFormComponent implements OnInit {
 
   get projectValue(){
     return this.form.get('projectDetails.valueAddDescription')
+  }
+
+  get websiteLink(){
+    return this.form.get('projectFinishing.websiteLink')
+  }
+
+  get facebookLink(){
+    return this.form.get('projectFinishing.facebookLink')
+  }
+
+  get twitterLink(){
+    return this.form.get('projectFinishing.twitterLink')
+  }
+
+  get linkedInLink(){
+    return this.form.get('projectFinishing.linkedInLink')
   }
 
   clickNext() {

@@ -127,22 +127,28 @@
       <div formGroupName="projectFinishing" *ngIf="selectedValue===2" class="project__finishing">
         <div>
           <mat-form-field class="project__website">
-            <input matInput placeholder="Link to Website" formControlName="websiteLink" class="form-control">
+            <input matInput placeholder="Link to Website" formControlName="websiteLink" class="form-control" appCheckUrl>
+            <mat-error *ngIf="websiteLink.touched && websiteLink.invalid && websiteLink.errors.appCheckUrl">Invalid Website Link!</mat-error>
           </mat-form-field>
         </div>
         <div>
           <mat-form-field class="project__facebook">
-            <input matInput placeholder="Link to Facebook Page" formControlName="facebookLink" class="form-control">
+            <input matInput placeholder="Link to Facebook Page" formControlName="facebookLink" class="form-control" appCheckUrl>
+            <mat-error *ngIf="facebookLink.touched && facebookLink.invalid && facebookLink.errors.pattern">Not a Facebook Link!</mat-error>
+            <mat-error *ngIf="facebookLink.touched && facebookLink.invalid && facebookLink.errors.appCheckUrl">Invalid Link!</mat-error>
           </mat-form-field>
         </div>
         <div>
           <mat-form-field class="project__twitter">
-            <input matInput placeholder="Link to Twitter Page" formControlName="twitterLink" class="form-control">
+            <input matInput placeholder="Link to Twitter Page" formControlName="twitterLink" class="form-control" appCheckUrl>
+            <mat-error *ngIf="twitterLink.touched && twitterLink.invalid && twitterLink.errors.pattern">Not a Twitter Link!</mat-error>
+            <mat-error *ngIf="twitterLink.touched && twitterLink.invalid && twitterLink.errors.appCheckUrl">Invalid Link!</mat-error>
           </mat-form-field>
         </div>
         <div>
           <mat-form-field class="project__linkedIn">
             <input matInput placeholder="Link to LinkedIn Page" formControlName="linkedInLink" class="form-control">
+            <mat-error *ngIf="linkedInLink.touched && linkedInLink.invalid && linkedInLink.errors.pattern">Not a LinkedIn Link!</mat-error>
           </mat-form-field>
         </div>
         <div class="project__coverImage--box">

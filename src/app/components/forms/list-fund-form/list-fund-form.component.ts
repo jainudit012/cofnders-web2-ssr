@@ -22,7 +22,7 @@ export class ListFundFormComponent implements OnInit {
     investorType: new FormControl('', Validators.required),
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     contact: new FormControl('', [Validators.required,Validators.pattern(new RegExp('^\\d+$')) ,Validators.minLength(10), Validators.maxLength(10)]),
-    linkedInLink: new FormControl('', Validators.required),
+    linkedInLink: new FormControl('', [Validators.required, Validators.pattern('^.*(?:linkedin\.com).*$')]),
     startupStage: new FormControl('', Validators.required)
   })
 
